@@ -9,7 +9,9 @@ class ApplicationController < ActionController::API
         end
 
         if current_user
-            render json: { user: current_user.slice('id', 'username', 'session_token') }
+            @user = current_user
+            render 'api/users/show'
+            # render json: {user: @user}
         else
             render json: ['No current user']
         end
