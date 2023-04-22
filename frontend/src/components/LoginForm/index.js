@@ -1,25 +1,41 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUser, login, logout } from "../store/session";
+import { getCurrentUserId, login, logout, showCurrentUser } from "../../store/session";
 import { useState } from "react";
-import UserGreeting from "./UserGreeting";
+import UserGreeting from "../UserGreeting";
+import { useEffect } from "react";
+import './LoginForm.css'
+import { Redirect, useHistory } from "react-router-dom";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const currentUser = useSelector(getCurrentUser);
+    const currentUserId = useSelector(getCurrentUserId);
+
+    useEffect(() => {
+        dispatch(showCurrentUser())
+    }, [dispatch, currentUserId])
+
+    if (currentUserId) {
+        // console.log(currentUserId)
+        return <Redirect to="/" />
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(login({username, password}))
+            .then(()=> {
+                history.pushState('/')
+            })
+            .catch(error=> {
+                console.error('login failed', error)
+            })
     }
 
     return (
         <>  
-            <h2>{currentUser ? <UserGreeting/> : null } </h2>
-            
-            
-            <h1>LOGIN</h1>
+            <h1>LOG IN</h1>
             <form onSubmit={handleSubmit} > 
 
             <label>username

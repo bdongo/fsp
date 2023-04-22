@@ -1,7 +1,7 @@
 import { CURRENT_USER, currentUser } from "./session";
 
 export const getUser = (userId) => (state) => (
-    state?.users ? state.users.userId : null
+    state?.users ? state.users[userId] : null
 )
 
 const usersReducer = (state = {}, action) => {

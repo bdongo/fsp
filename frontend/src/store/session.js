@@ -5,9 +5,9 @@ export const CURRENT_USER = 'session/CURRENTUSER'
 
 // {:username, :password}
 
-export const currentUser = ({currentUser, users}) => ({
+export const currentUser = ({currentUserId, users}) => ({
     type: CURRENT_USER,
-    currentUser,
+    currentUserId,
     users
 })
 
@@ -15,8 +15,8 @@ export const removeCurrentUser = () => ({
     type: REMOVECURRENTUSER
 })
 
-export const getCurrentUser = (state) => (
-    state?.session?.currentUser ? state.session.currentUser : null
+export const getCurrentUserId = (state) => (
+    state?.session?.currentUserId ? state.session.currentUserId : null
 )
 
 export const showCurrentUser = () => async (dispatch) => {
@@ -52,15 +52,15 @@ export const logout = () => async (dispatch) => {
     }
 }
 
-const sessionReducer = (state = {currentUser: null}, action) => {
+const sessionReducer = (state = {currentUserId: null}, action) => {
     const newState = {...state}
 
     switch (action.type) {
         case CURRENT_USER:
-            newState.currentUser = action.currentUser;
+            newState.currentUserId = action.currentUserId;
             return newState;
         case REMOVECURRENTUSER:
-            newState.currentUser = null
+            newState.currentUserId = null
             return newState
         default:
             return state;
