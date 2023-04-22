@@ -3,11 +3,12 @@ import csrfFetch from "./csrf"
 export const REMOVECURRENTUSER = 'session/REMOVECURRENTUSER'
 export const CURRENT_USER = 'session/CURRENTUSER'
 
-// {credentials:{:username, :password}}
+// {:username, :password}
 
-export const currentUser = (user) => ({
+export const currentUser = ({currentUser, users}) => ({
     type: CURRENT_USER,
-    user
+    currentUser,
+    users
 })
 
 export const removeCurrentUser = () => ({
@@ -56,7 +57,7 @@ const sessionReducer = (state = {currentUser: null}, action) => {
 
     switch (action.type) {
         case CURRENT_USER:
-            newState.currentUser = action.user;
+            newState.currentUser = action.currentUser;
             return newState;
         case REMOVECURRENTUSER:
             newState.currentUser = null
