@@ -11,7 +11,6 @@ const FormLogin = () => {
     const history = useHistory();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const currentUser = useSelector(getCurrentUser);
 
     const handleSubmit = (e) => {
         e.preventDefault();

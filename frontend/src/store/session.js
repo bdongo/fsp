@@ -64,6 +64,40 @@ export const login = (credentials) => async (dispatch) => {
     }
 }
 
+export const signup = (user) => async (dispatch) => {
+    const {username, email, fName, lName, password} = user
+    const res = await csrfFetch('/api/users', {
+        method: "POST",
+        body: JSON.stringify({user: {
+            username,
+            email,
+            fName,
+            lName,
+            password
+        }})
+    })
+    console.log(res, "res")
+    if (res.ok) {
+        console.log(res, "res.ok")
+        const user = await res.json()
+        storeCurrentUser(user)
+        dispatch(currentUser(user))
+        return res
+    }
+}
+
+export const demoLogin = () => async (dispatch) => {
+    const res = await csrfFetch('/api/demo?login', {
+        method: 'POST'
+    })
+    if (res.ok) {
+        const user = await res.json()
+        storeCurrentUser(user)
+        dispatch(currentUser(user))
+        return res
+    }
+}
+
 
 export const logout = () => async (dispatch) => {
     const res = await csrfFetch('/api/session', {

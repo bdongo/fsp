@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUser, login, logout, showCurrentUser } from "../../store/session";
+import { demoLogin, getCurrentUser, login, logout, showCurrentUser } from "../../store/session";
 import { useState } from "react";
 import UserGreeting from "../UserGreeting";
 import { useEffect } from "react";
@@ -10,12 +10,10 @@ import FormSignUp from "./FormSignUp";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const currentUser = useSelector(getCurrentUser);
     const location = useLocation();
     const currentPath = location.pathname;
+    const history = useHistory();
 
     console.log("in login form")
     useEffect(() => {
@@ -27,13 +25,13 @@ const LoginForm = () => {
         return <Redirect to="/" />
     }
 
-    const handleSubmit = (e) => {
+    const handleDemo = (e) => {
         e.preventDefault();
-        dispatch(login({username, password}))
-            .then(()=> {
+        dispatch(demoLogin())
+            .then(() => {
                 history.pushState('/')
             })
-            .catch(error=> {
+            .catch(error => {
                 console.error('login failed', error)
             })
     }
@@ -46,7 +44,7 @@ const LoginForm = () => {
             {currentPath === '/login' && <p className="subheading">New to Yelp?  <Link to="/signup">Sign Up</Link> </p>}
            
 
-            <button>Continue With Dummy Account</button>
+            <button onClick={handleDemo}>Continue With Demo Account</button>
 
             
             <fieldset>
