@@ -5,26 +5,46 @@ export const CURRENT_USER = 'session/CURRENTUSER'
 
 // {:username, :password}
 
-export const currentUser = ({currentUserId, users}) => ({
+export const currentUser = ({user}) => ({
     type: CURRENT_USER,
-    currentUserId,
-    users
+    user
 })
 
 export const removeCurrentUser = () => ({
     type: REMOVECURRENTUSER
 })
 
-export const getCurrentUserId = (state) => (
-    state?.session?.currentUserId ? state.session.currentUserId : null
+export const getCurrentUser = (state) => (
+    state?.session?.currentUser ? state.session.currentUser : null
 )
 
-export const showCurrentUser = () => async (dispatch) => {
-    const res = await fetch('api/session')
+export const storeCurrentUser = ({user}) => {
+    if (user) {
+        const userJSON = JSON.stringify(user)
+        sessionStorage.setItem('CurrentUser', userJSON)
+    }
+    console.log( "in sessionstorage currentuser")
+}
 
+export const storeCSRFtoken = (res) => {
+    const token = res.headers.get('X-CSRF-Token');
+    console.log("in store token")
+    if (token) {
+        sessionStorage.setItem('X-CSRF-Token', token);
+        // TEST
+        console.log(token)
+    }
+}
+
+export const showCurrentUser = () => async (dispatch) => {
+    const res = await csrfFetch('api/session')
+    console.log("in showCurrentUser")
     if (res.ok) {
         const user = await res.json()
-        return dispatch(currentUser(user))
+        dispatch(currentUser(user))
+        storeCSRFtoken(res)
+        storeCurrentUser(user)
+        return res
     }
 }
 
@@ -38,9 +58,12 @@ export const login = (credentials) => async (dispatch) => {
     })
     if (res.ok) {
         const user = await res.json()
-        return dispatch(currentUser(user))
+        storeCurrentUser(user)
+        dispatch(currentUser(user)) 
+        return res
     }
 }
+
 
 export const logout = () => async (dispatch) => {
     const res = await csrfFetch('/api/session', {
@@ -48,19 +71,26 @@ export const logout = () => async (dispatch) => {
     })
 
     if (res.ok) {
-       return dispatch(removeCurrentUser)
+        sessionStorage.removeItem('CurrentUser')
+        dispatch(removeCurrentUser())
+        return res
     }
 }
 
-const sessionReducer = (state = {currentUserId: null}, action) => {
+const previousSession = {
+    currentUser: JSON.parse(sessionStorage.getItem('CurrentUser'))
+}
+
+
+const sessionReducer = (state = previousSession, action) => {
     const newState = {...state}
 
     switch (action.type) {
         case CURRENT_USER:
-            newState.currentUserId = action.currentUserId;
+            newState.currentUser = action.user;
             return newState;
         case REMOVECURRENTUSER:
-            newState.currentUserId = null
+            newState.currentUser = null
             return newState
         default:
             return state;

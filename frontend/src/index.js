@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider} from 'react-redux';
+import { Provider, useDispatch} from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
@@ -35,7 +35,9 @@ function Root() {
 }
 
 if (sessionStorage.getItem('X-CSRF-Token') === null) {
-  restoreCSRF().then(renderApp);
+  store.dispatch(sessionActions.showCurrentUser).then(renderApp);
+  console.log("token = null")
+  // restoreCSRF().then(renderApp);
 } else {
   renderApp();
 }

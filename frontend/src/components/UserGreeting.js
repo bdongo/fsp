@@ -1,14 +1,21 @@
 import { useDispatch, useSelector } from "react-redux"
-import { getCurrentUserId, logout, showCurrentUser } from "../store/session"
+import { getCurrentUser, logout, showCurrentUser } from "../store/session"
 import { useEffect } from "react"
 import { getUser } from "../store/users";
 
-const UserGreeting = ({id}) => {
+const UserGreeting = ({currentUser}) => {
     const dispatch = useDispatch();
-    const {currentUserId} = useSelector(getCurrentUserId)
-    const currentUser = useSelector(getUser(id))
+    // const {currentUser} = useSelector(getCurrentUser)
+    // const currentUser = useSelector(getUser(id))
+    console.log("in user greeting")
+    // console.log(id, "id")
+    // console.log(useSelector(getUser(id)), 'currentuser')
 
-    if (!id) {
+    if (currentUser === null) {
+        return null;
+    }
+    
+    if (sessionStorage.getItem('CurrentUser') === null) {
         return null;
     }
     

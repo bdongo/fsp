@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUserId, login, logout, showCurrentUser } from "../../store/session";
+import { getCurrentUser, login, logout, showCurrentUser } from "../../store/session";
 import { useState } from "react";
 import UserGreeting from "../UserGreeting";
 import { useEffect } from "react";
@@ -11,13 +11,13 @@ const LoginForm = () => {
     const history = useHistory();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const currentUserId = useSelector(getCurrentUserId);
-
+    const currentUser = useSelector(getCurrentUser);
+    console.log("in login form")
     useEffect(() => {
         dispatch(showCurrentUser())
-    }, [dispatch, currentUserId])
+    }, [dispatch, currentUser])
 
-    if (currentUserId) {
+    if (currentUser) {
         // console.log(currentUserId)
         return <Redirect to="/" />
     }
