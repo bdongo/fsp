@@ -31,6 +31,7 @@ const FormLogin = () => {
 
             <label className="input-a11y">Username</label>
             <input
+                value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Username"
                 required="required"
@@ -38,6 +39,7 @@ const FormLogin = () => {
 
             <label className="input-a11y">Password</label>
             <input
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 type="password"
