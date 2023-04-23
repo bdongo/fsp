@@ -8,6 +8,7 @@ function App() {
       {/* <h1>Hello from App</h1> */}
       <Route path="/login" component={LoginForm} />
       <Route exact path="/" component={LandingPage} />
+      <Route path="/signup" component={LoginForm}/>
     </>
  
 

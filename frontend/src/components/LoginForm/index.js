@@ -4,7 +4,9 @@ import { useState } from "react";
 import UserGreeting from "../UserGreeting";
 import { useEffect } from "react";
 import './LoginForm.css'
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, Link, useLocation } from "react-router-dom";
+import FormLogin from "./FormLogin";
+import FormSignUp from "./FormSignUp";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -12,6 +14,9 @@ const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const currentUser = useSelector(getCurrentUser);
+    const location = useLocation();
+    const currentPath = location.pathname;
+
     console.log("in login form")
     useEffect(() => {
         dispatch(showCurrentUser())
@@ -35,20 +40,21 @@ const LoginForm = () => {
 
     return (
         <>  
-            <h1>LOG IN</h1>
-            <form onSubmit={handleSubmit} > 
+            <h2>{currentPath === '/login' ?
+                'Log in to Yelp' : 'Sign Up for Yelp'}</h2>
 
-            <label>username
-                <input onChange={(e)=> setUsername(e.target.value)} />
-            </label>
+            {currentPath === '/login' && <p className="subheading">New to Yelp?  <Link to="/signup">Sign Up</Link> </p>}
+           
 
-             <label>password
-                <input onChange={(e)=> setPassword(e.target.value)}/>
-            </label>
+            <button>Continue With Dummy Account</button>
 
-            <input type="submit" value="Log In"/>
+            
+            <fieldset>
+                <legend align="center">OR</legend>
+            </fieldset>
 
-            </form>
+            {currentPath === '/login' && <FormLogin/> }
+            {currentPath === '/signup' && <FormSignUp />}
 
             
         </>
