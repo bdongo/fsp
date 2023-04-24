@@ -6,7 +6,8 @@
     font-size: 14px;
     font-weight: bold;
     padding-top: 15px;
-    padding-bottom: 15px
+    padding-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 #header {
@@ -22,7 +23,6 @@
     min-height: 70px;
     max-height: 95px;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
 }
 
@@ -110,6 +110,44 @@ form>input {
     background: #000000c7;
 }
 
+#birthday-list {
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+#birthday-list > li > select {
+    margin-top: 10px;
+    width: 95px;
+    /* color: #333; */
+    color: #999;
+    height: 27px;
+    margin-bottom: 8px;
+    padding-left: 8px;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+}
+
+#name-container {
+    display: flex;
+
+}
+
+#fName {
+    height: 26px;
+    width: 133px;
+    margin-bottom: 8px;
+    margin-right: 6px;
+    padding-left: 8px;
+}
+
+#lName {
+    height: 26px;
+    width: 133px;
+    margin-bottom: 8px;
+    padding-left: 8px;
+}
+
+
 .spacer {
     margin-top: 12px;
     margin-bottom: 19px;
@@ -135,13 +173,11 @@ form>input {
     margin-left: 10px;
 }
 
-.small-footer {
-    font-size: 12px;
-}
-
 .align-right {
     width: 300px;
     text-align: end;
 }
+
+
 
 

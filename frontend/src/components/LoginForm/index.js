@@ -59,6 +59,11 @@ const LoginForm = () => {
                             New to Yelp? <Link className="link" to="/signup">Sign Up</Link>
                         </p>}
 
+                    {currentPath === '/signup' &&
+                        <p className="subheading">
+                            Connect with great local businesses
+                        </p>}
+
                     <button className="button blue-button" onClick={handleDemo}>Continue With Demo Account</button>
                     <button className="button white-button" onClick={handleDemo}>Continue With Demo Account</button>
                     <button className="button black-button" onClick={handleDemo}>Continue With Demo Account</button>
@@ -70,12 +75,12 @@ const LoginForm = () => {
                     {currentPath === '/signup' && <FormSignUp />}
 
                     {currentPath === '/login' &&
-                        <div className="small-footer align-right">
+                        <div className="small-footer align-right subtle">
                             <small>New to Yelp? <Link className="link" to="/signup">Sign up</Link></small>
                         </div>
                     }
                     {currentPath === '/signup' &&
-                        <div className="small-footer alight-right"> 
+                        <div className="small-footer align-right subtle"> 
                             <small>Already on Yelp? <Link className="link" to="/login">Log in</Link></small>
                         </div>
                     }

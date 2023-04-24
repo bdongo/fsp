@@ -19,3 +19,11 @@ h2 {
     font-size: 22px;
     color: #d32323;
 }
+
+.subtle {
+    color: #999;
+}
+
+.small-footer {
+    font-size: 12px;
+}

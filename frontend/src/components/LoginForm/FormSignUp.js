@@ -30,22 +30,26 @@ const FormSignUp = () => {
 
     return (
         <div className="form">
-            <form onSubmit={handleSubmit} >
+            <form className="form" onSubmit={handleSubmit} >
 
-                <label className="input-a11y">First Name</label>
-                <input
-                    value={fName}
-                    onChange={(e) => setFName(e.target.value)}
-                    placeholder="First Name"
-                    required="required"
-                />
-                <label className="input-a11y">Last Name</label>
-                <input
-                    value={lName}
-                    onChange={(e) => setLName(e.target.value)}
-                    placeholder="Last Name"
-                    required="required"
-                />
+                <div id="name-container">
+                    <label className="input-a11y">First Name</label>
+                    <input
+                        id="fName"
+                        value={fName}
+                        onChange={(e) => setFName(e.target.value)}
+                        placeholder="First Name"
+                        required="required"
+                    />
+                    <label className="input-a11y">Last Name</label>
+                    <input
+                        id="lName"
+                        value={lName}
+                        onChange={(e) => setLName(e.target.value)}
+                        placeholder="Last Name"
+                        required="required"
+                    />
+                </div>
 
                 <label className="input-a11y">Email</label>
                 <input
@@ -72,7 +76,8 @@ const FormSignUp = () => {
                     required="required"
                 />
 
-                <label>Birthday</label>
+                <div >
+                    <label className="subheading">Birthday</label> <small className="small-footer subtle">Optional</small>
                 <ul id="birthday-list">
                     <li>
                         <select value={month} onChange={(e) => setMonth(e.target.value)}>
@@ -257,6 +262,7 @@ const FormSignUp = () => {
                     </li>
                 </ul>
                 <input className="button red-button" type="submit" value="Sign Up" />
+                </div>
             </form >
         </div>
     )
