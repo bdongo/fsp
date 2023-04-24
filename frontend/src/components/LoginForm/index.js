@@ -21,6 +21,14 @@ const LoginForm = () => {
         dispatch(showCurrentUser())
     }, [dispatch, currentUser])
 
+    useEffect(() => {
+        if (currentPath === '/login'){
+            document.title = "Log In - Yelp";
+        } else {
+            document.title = "Sign Up - Yelp";
+        }
+    }, []);
+
     if (currentUser) {
         // console.log(currentUserId)
         return <Redirect to="/" />
