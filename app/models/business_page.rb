@@ -1,0 +1,2 @@
+class BusinessPage < ApplicationRecord
+end
