@@ -4,6 +4,5 @@
     /* position: fixed;
     top: 0; */
     background-color: gray;
-
-
+    z-index: 5;
 }

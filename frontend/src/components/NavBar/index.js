@@ -17,6 +17,9 @@ const NavBar = () => {
         navDisplay = false;
     }
 
+    const splashBar = currentPath === '/'
+
+
     return (
         <header id="header" 
             className={navDisplay ? 'fixed-top' : 'border-bottom'}>
@@ -27,21 +30,24 @@ const NavBar = () => {
                 </Link>    
             </div>
            
-            
+            {splashBar &&
+                <>
+                    <div>
+                        <SearchBar />
+                    </div>
+
+                    <div>
+                        Yelp for Business
+                    </div>
+
+                    <div>
+                        <Link className="link" to="/writeareview">Write a Review</Link>
+                    </div>
+                </>
+            }
 
             {navDisplay &&
             <>
-                 <div>
-                    <SearchBar/>
-                </div>
-
-                <div>
-                    Yelp for Business
-                </div>
-
-                <div>
-                    <Link className="link" to="/writeareview">Write a Review</Link>
-                </div>
                 <ul id='action-container'>
                     <li>
                         <Link to='/login'><button className="clear-button nav-button">Log In</button></Link>

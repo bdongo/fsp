@@ -34,6 +34,8 @@ h2 {
     font-weight: bold;
     border: none;
     border-radius: 3px;
+    transition: all 0.7s;
+    transition-property: background-color, background-position, background-size, border-color;
 }
 
 .red-button:hover {
@@ -53,6 +55,8 @@ h2 {
     border: 1px solid #1877f2;
     border-radius: 3px;
     color: #fff;
+    transition: all 0.7s;
+    transition-property: background-color, background-position, background-size, border-color;
 }
 
 .blue-button:hover {
@@ -64,6 +68,8 @@ h2 {
     background: #000;
     border: 1px solid #000;
     border-radius: 3px;
+    transition: all 0.7s;
+    transition-property: background-color, background-position, background-size, border-color;
 }
 
 .black-button:hover {
@@ -76,4 +82,10 @@ h2 {
     color: #fff;
     border: 2px solid #fff;
     border-radius: 3px;
+    transition: all 0.7s;
+    transition-property: background-color, background-position, background-size, border-color;
+}
+
+.clear-button:hover {
+    background-color: #ffffff6b;
 }
