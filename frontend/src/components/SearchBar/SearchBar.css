@@ -1,0 +1,11 @@
+#searchbar {
+    display: flex;
+    width: 25vw;
+    border-radius: 3px;
+}
+
+#searchbar > input{
+    height: 44px;
+    border: none;
+   
+}

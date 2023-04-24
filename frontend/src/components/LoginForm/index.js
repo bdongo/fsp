@@ -7,7 +7,6 @@ import './LoginForm.css'
 import { Redirect, useHistory, Link, useLocation } from "react-router-dom";
 import FormLogin from "./FormLogin";
 import FormSignUp from "./FormSignUp";
-import logo from '../../assets/logo.png'
 import NavBar from "../NavBar";
 
 const LoginForm = () => {

@@ -38,25 +38,26 @@ const FormLogin = () => {
         <div className="form">
             <form onSubmit={handleSubmit} className="form" >
 
-            <label className="input-a11y">Username</label>
-            <input
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-                required="required"
-            />
+                <label className="input-a11y">Username</label>
+                <input
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username"
+                    required="required"
+                />
 
-            <label className="input-a11y">Password</label>
-            <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-                type="password"
-                required="required"
-            />
+                <label className="input-a11y">Password</label>
+                <input
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                    type="password"
+                    required="required"
+                />
 
-
+                <div>
                 <input className="button red-button" type="submit" value="Log In" />
+                </div>
                 <ul className="error-container">
                     {errors.map(error => <li key={error}>{error}</li>)}
                 </ul>

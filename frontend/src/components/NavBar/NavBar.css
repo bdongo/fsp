@@ -3,14 +3,19 @@
     height: 10vw;
     min-height: 70px;
     max-height: 95px;
-    border-bottom: 1px solid #ebebeb;
     align-items: center;
-   
+    display: flex;
+    justify-content: space-between;
 }
 
 .fixed-top{
     position: fixed;
     top: 0;
+
+}
+
+.border-bottom{
+    border-bottom: 1px solid #ebebeb;
 }
 
 .logo-container {
@@ -28,14 +33,20 @@
 }
 
 .nav-button {
-    width: 70px;
-    height: 40px;
+    /* width: 80px; */
+    /* font-weight: ; */
+    font-size: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 44px;
+    border-radius: 5px;
 }
 
 #action-container{
     display: flex;
-    width: 150px;
+    width: 188px;
     justify-content: space-between;
+    margin-right: 40px;
 }
 
 /* .red-nav-button {

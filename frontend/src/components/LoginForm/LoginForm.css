@@ -48,7 +48,7 @@
     align-items: center;    
 }
 
-form>input {
+.form > input {
     width: 286px;
     height: 25px;
     border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));

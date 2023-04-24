@@ -71,6 +71,7 @@ h2 {
 }
 
 .clear-button {
+    font-weight: bold;
     background-color: transparent;
     color: #fff;
     border: 2px solid #fff;
