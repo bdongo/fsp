@@ -5,6 +5,10 @@
     max-height: 95px;
     border-bottom: 1px solid #ebebeb;
     align-items: center;
+   
+}
+
+.fixed-top{
     position: fixed;
     top: 0;
 }

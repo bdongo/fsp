@@ -16,7 +16,8 @@ const NavBar = () => {
     }
 
     return (
-        <header id="header">
+        <header id="header" 
+            className={navDisplay ? 'fixed-top' : ''}>
             <div className="logo-container">
                 <Link to="/">
                     <img class="logo" src={logo} alt="logo" />
