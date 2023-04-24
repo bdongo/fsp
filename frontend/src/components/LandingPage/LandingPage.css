@@ -1,0 +1,9 @@
+#image-container {
+    width: 100vw;
+    height: 600px;
+    /* position: fixed;
+    top: 0; */
+    background-color: gray;
+
+
+}

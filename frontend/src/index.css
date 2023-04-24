@@ -27,3 +27,52 @@ h2 {
 .small-footer {
     font-size: 12px;
 }
+
+.red-button {
+    background-color: #d32323;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+}
+
+.red-button:hover {
+    background-color: #d32323d3;
+}
+
+.white-button {
+    color: #666;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+
+.blue-button {
+    background-color: #1877f2;
+    border: 1px solid #1877f2;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.blue-button:hover {
+    background-color: #1876f2ca;
+}
+
+.black-button {
+    color: #fff;
+    background: #000;
+    border: 1px solid #000;
+    border-radius: 3px;
+}
+
+.black-button:hover {
+    background: #000000c7;
+}
+
+.clear-button {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 3px;
+}
