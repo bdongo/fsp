@@ -10,27 +10,27 @@
     margin-bottom: 5px;
 }
 
-#header {
+/* #header {
     height: 10vw;
     min-height: 70px;
     max-height: 95px;
     border-bottom: 1px solid #ebebeb;
     align-items: center;
-}
-
+} */
+/* 
 .logo-container {
     height: 10vw;
     min-height: 70px;
     max-height: 95px;
     display: flex;
     align-items: center;
-}
+} */
 
-.logo {
+/* .logo {
     height: auto;
     width: 87px;
     padding: 17px;
-}
+} */
 
 #form-container {
     margin-top: 5vh;
@@ -156,6 +156,11 @@ form>input {
     align-items: center;
     text-align: center;
     color: #666;
+}
+
+.error-container > li {
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
 

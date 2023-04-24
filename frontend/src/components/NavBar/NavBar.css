@@ -1,0 +1,21 @@
+#header {
+    height: 10vw;
+    min-height: 70px;
+    max-height: 95px;
+    border-bottom: 1px solid #ebebeb;
+    align-items: center;
+}
+
+.logo-container {
+    height: 10vw;
+    min-height: 70px;
+    max-height: 95px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: auto;
+    width: 87px;
+    padding: 17px;
+}

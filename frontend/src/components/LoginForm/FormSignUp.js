@@ -14,6 +14,7 @@ const FormSignUp = () => {
     const [month, setMonth] = useState('');
     const [day, setDay] = useState('');
     const [year, setYear] = useState('');
+    const [errors, setErrors] = useState([]);
 
 
 
@@ -23,9 +24,18 @@ const FormSignUp = () => {
             .then(() => {
                 history.pushState('/')
             })
-            .catch(error => {
-                console.error('login failed', error)
-            })
+            .catch(async (res) => {
+                let data;
+                try {
+                    // .clone() essentially allows you to read the response body twice
+                    data = await res.clone().json();
+                } catch {
+                    data = await res.text(); // Will hit this case if, e.g., server is down
+                }
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
+            });
     }
 
     return (
@@ -263,6 +273,9 @@ const FormSignUp = () => {
                 </ul>
                 <input className="button red-button" type="submit" value="Sign Up" />
                 </div>
+                <ul className="error-container">
+                    {errors.map(error => <li key={error}>{error}</li>)}
+                </ul>
             </form >
         </div>
     )

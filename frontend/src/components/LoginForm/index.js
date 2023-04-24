@@ -8,6 +8,7 @@ import { Redirect, useHistory, Link, useLocation } from "react-router-dom";
 import FormLogin from "./FormLogin";
 import FormSignUp from "./FormSignUp";
 import logo from '../../assets/logo.png'
+import NavBar from "../NavBar";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -48,14 +49,14 @@ const LoginForm = () => {
     return (
         <div>
             <div>
-                <header id="header">
+                {/* <header id="header">
                     <div className="logo-container">
                         <Link to="/">
                             <img class="logo" src={logo} alt="lgog" />
                         </Link>
                     </div>
-                  
-                </header>
+                </header> */}
+                <NavBar/>
             </div>
             <div id="form-container">
                 <div className="form">

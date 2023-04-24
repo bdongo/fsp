@@ -11,6 +11,7 @@ const FormLogin = () => {
     const history = useHistory();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -18,9 +19,18 @@ const FormLogin = () => {
             .then(() => {
                 history.pushState('/')
             })
-            .catch(error => {
-                console.error('login failed', error)
-            })
+            .catch(async (res) => {
+                let data;
+                try {
+                    // .clone() essentially allows you to read the response body twice
+                    data = await res.clone().json();
+                } catch {
+                    data = await res.text(); // Will hit this case if, e.g., server is down
+                }
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
+            });
     }
 
 
@@ -47,7 +57,9 @@ const FormLogin = () => {
 
 
                 <input className="button red-button" type="submit" value="Log In" />
-
+                <ul className="error-container">
+                    {errors.map(error => <li key={error}>{error}</li>)}
+                </ul>
             </form >
         </div>
     )
