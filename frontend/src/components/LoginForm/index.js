@@ -7,6 +7,7 @@ import './LoginForm.css'
 import { Redirect, useHistory, Link, useLocation } from "react-router-dom";
 import FormLogin from "./FormLogin";
 import FormSignUp from "./FormSignUp";
+import logo from '../../assets/logo.png'
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -37,25 +38,50 @@ const LoginForm = () => {
     }
 
     return (
-        <>  
-            <h2>{currentPath === '/login' ?
-                'Log in to Yelp' : 'Sign Up for Yelp'}</h2>
+        <div>
+            <div>
+                <header id="header">
+                    <div className="logo-container">
+                        <Link to="/">
+                            <img class="logo" src={logo} alt="lgog" />
+                        </Link>
+                    </div>
+                  
+                </header>
+            </div>
+            <div id="form-container">
+                <div className="form">
+                    <h2>{currentPath === '/login' ?
+                        'Log in to Yelp' : 'Sign Up for Yelp'}</h2>
 
-            {currentPath === '/login' && <p className="subheading">New to Yelp?  <Link to="/signup">Sign Up</Link> </p>}
-           
+                    {currentPath === '/login' &&
+                        <p className="subheading">
+                            New to Yelp? <Link className="link" to="/signup">Sign Up</Link>
+                        </p>}
 
-            <button onClick={handleDemo}>Continue With Demo Account</button>
+                    <button className="button blue-button" onClick={handleDemo}>Continue With Demo Account</button>
+                    <button className="button white-button" onClick={handleDemo}>Continue With Demo Account</button>
+                    <button className="button black-button" onClick={handleDemo}>Continue With Demo Account</button>
 
-            
-            <fieldset>
-                <legend align="center">OR</legend>
-            </fieldset>
+                    
+                    <div className="spacer">OR</div>
 
-            {currentPath === '/login' && <FormLogin/> }
-            {currentPath === '/signup' && <FormSignUp />}
+                    {currentPath === '/login' && <FormLogin />}
+                    {currentPath === '/signup' && <FormSignUp />}
 
-            
-        </>
+                    {currentPath === '/login' &&
+                        <div className="small-footer align-right">
+                            <small>New to Yelp? <Link className="link" to="/signup">Sign up</Link></small>
+                        </div>
+                    }
+                    {currentPath === '/signup' &&
+                        <div className="small-footer alight-right"> 
+                            <small>Already on Yelp? <Link className="link" to="/login">Log in</Link></small>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     )
 }
 

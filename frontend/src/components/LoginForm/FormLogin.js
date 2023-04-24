@@ -25,8 +25,8 @@ const FormLogin = () => {
 
 
     return (
-        <>
-            <form onSubmit={handleSubmit} >
+        <div className="form">
+            <form onSubmit={handleSubmit} className="form" >
 
             <label className="input-a11y">Username</label>
             <input
@@ -46,10 +46,10 @@ const FormLogin = () => {
             />
 
 
-            <input type="submit" value="Log In" />
+                <input className="button red-button" type="submit" value="Log In" />
 
             </form >
-        </>
+        </div>
     )
 }
 

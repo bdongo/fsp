@@ -5,4 +5,143 @@
 .subheading {
     font-size: 14px;
     font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 15px
 }
+
+#header {
+    height: 10vw;
+    min-height: 70px;
+    max-height: 95px;
+    border-bottom: 1px solid #ebebeb;
+    align-items: center;
+}
+
+.logo-container {
+    height: 10vw;
+    min-height: 70px;
+    max-height: 95px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.logo {
+    height: auto;
+    width: 87px;
+    padding: 17px;
+}
+
+#form-container {
+    margin-top: 15vh;
+    min-height: 300px;
+    width: 550px;
+    padding: 30px;
+}
+
+
+.form {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;    
+}
+
+form>input {
+    width: 286px;
+    height: 25px;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    margin-bottom: 8px;
+    padding-left: 8px;
+}
+
+.button {
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 300px;
+    height: 45px;
+    transition: all 0.7s;
+    transition-property: background-color, background-position, background-size, border-color;
+    margin-bottom: 12px;
+}
+
+
+.red-button {
+    background-color: #d32323;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+}
+
+.red-button:hover {
+    background-color: #d32323d3;
+}
+
+.white-button {
+    color: #666;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+
+.blue-button {
+    background-color: #1877f2;
+    border: 1px solid #1877f2;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.blue-button:hover {
+    background-color: #1876f2ca;
+}
+
+.black-button {
+    color: #fff;
+    background: #000;
+    border: 1px solid #000;
+    border-radius: 3px;
+}
+
+.black-button:hover {
+    background: #000000c7;
+}
+
+.spacer {
+    margin-top: 12px;
+    margin-bottom: 19px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #666;
+}
+
+.spacer::before,
+.spacer::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.spacer::before {
+    margin-right: 10px;
+}
+
+.spacer::after {
+    margin-left: 10px;
+}
+
+.small-footer {
+    font-size: 12px;
+}
+
+.align-right {
+    width: 300px;
+    text-align: end;
+}
+
+

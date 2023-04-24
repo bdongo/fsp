@@ -29,7 +29,7 @@ const FormSignUp = () => {
     }
 
     return (
-        <>
+        <div className="form">
             <form onSubmit={handleSubmit} >
 
                 <label className="input-a11y">First Name</label>
@@ -256,9 +256,9 @@ const FormSignUp = () => {
                         </select>
                     </li>
                 </ul>
-                <input type="submit" value="Sign Up" />
+                <input className="button red-button" type="submit" value="Sign Up" />
             </form >
-        </>
+        </div>
     )
 
 }
