@@ -10,6 +10,9 @@
     margin-bottom: 5px;
 }
 
+.form>h2{
+    color: #d32323;
+}
 /* #header {
     height: 10vw;
     min-height: 70px;
