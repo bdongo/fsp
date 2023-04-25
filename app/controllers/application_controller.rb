@@ -7,19 +7,13 @@ class ApplicationController < ActionController::API
     rescue_from ActionController::InvalidAuthenticityToken,
         with: :invalid_authenticity_token
 
-    def test
+    def demo
         if params.has_key?(:login)
-            login(User.first)
+            @user = User.first
+            login(@user)
+            render 'api/users/show'
         elsif params.has_key?(:logout)
             logout
-        end
-
-        if current_user
-            @user = current_user
-            render 'api/users/show'
-            # render json: {user: @user}
-        else
-            render json: ['No current user']
         end
     end
 
