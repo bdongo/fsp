@@ -2,12 +2,12 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import './Business.css';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { showBusiness } from '../../store/businessPages';
+import NavBar from '../NavBar';
 
 // 1: {
 //     id: 1,
 //         name: "mcdonalds",
-//         rating: 3,
-//         pricing: "$",
 //         hours: {
 //                  mon: "6:30am-10pm",
 //                  tues: "6:30am-10pm",
@@ -30,17 +30,25 @@ import { useEffect } from 'react';
 
 const Business = () => {
     const dispatch = useDispatch();
-    const bizId = useParams();
+    const {bizId} = useParams();
 
     useEffect(() => {
         // dispatch get business
+        dispatch(showBusiness(bizId))
     }, [dispatch, bizId])
 
 
     return (
         <div>
-            Business
+           <div>
+                <NavBar></NavBar>
+           </div>
+           <div id='business-container'>
+                <div id='photo-container'>
+                    
+                </div>
 
+           </div>
         </div>
     )
 }

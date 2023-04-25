@@ -1,0 +1,10 @@
+#business-container{
+    width: 100vw;
+    height: 800px;
+}
+
+#photo-container {
+    width: 100vw;
+    height: 426px;
+    background-color: grey;
+}

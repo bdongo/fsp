@@ -22,7 +22,7 @@ const NavBar = () => {
 
     return (
         <header id="header" 
-            className={navDisplay ? 'fixed-top' : 'border-bottom'}>
+            className={splashBar ? 'fixed-top' : 'border-bottom'}>
             <div className="logo-container">
                 <Link to="/">
                     <img class="logo" 
