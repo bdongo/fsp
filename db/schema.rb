@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_24_220231) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_25_164021) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "business_pages", force: :cascade do |t|
     t.string "name", null: false
     t.json "hours", null: false
-    t.text "about", null: false
+    t.text "about"
     t.string "phone_num", null: false
     t.json "address", null: false
     t.string "postal_code", null: false

@@ -2,11 +2,14 @@ import './SearchBar.css'
 
 const SearchBar = () => {
     return (
-        <form id='searchbar'>
-            <input placeholder='search bar'/>
-            <input placeholder='location dummy' />
-            <input className='red-button' type='submit' />
-        </form>
+        <div id='searchbar'>
+            <form>
+                <input placeholder='search bar' />
+                <div id='divider'/>
+                <input placeholder='location dummy' />
+            </form>
+            <button >Q</button>
+        </div>
     )
 }
 

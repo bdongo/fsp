@@ -17,12 +17,12 @@ const NavBar = () => {
         navDisplay = false;
     }
 
-    const splashBar = currentPath === '/'
+    const splashBar = currentPath !== '/login' || currentPath !== '/signup'
 
 
     return (
         <header id="header" 
-            className={splashBar ? 'fixed-top' : 'border-bottom'}>
+            className={!splashBar ? 'fixed-top' : 'border-bottom'}>
             <div className="logo-container">
                 <Link to="/">
                     <img class="logo" 
