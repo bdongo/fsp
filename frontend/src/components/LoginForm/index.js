@@ -48,13 +48,6 @@ const LoginForm = () => {
     return (
         <div>
             <div>
-                {/* <header id="header">
-                    <div className="logo-container">
-                        <Link to="/">
-                            <img class="logo" src={logo} alt="lgog" />
-                        </Link>
-                    </div>
-                </header> */}
                 <NavBar/>
             </div>
             <div id="form-container">

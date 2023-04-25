@@ -12,10 +12,7 @@ const NavBar = () => {
     const location = useLocation();
     const currentPath = location.pathname;
 
-    let navDisplay = true;
-    if (currentUser || currentPath === '/login' || currentPath === '/signup') {
-        navDisplay = false;
-    }
+    const navDisplay = currentUser || currentPath === '/login' || currentPath === '/signup'
 
     const splashBar = currentPath !== '/login' || currentPath !== '/signup'
 

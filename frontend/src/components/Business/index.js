@@ -38,6 +38,11 @@ const Business = () => {
         dispatch(showBusiness(bizId))
     }, [dispatch, bizId])
 
+    useEffect(() => {
+        if (biz) {
+            document.title = `${biz.name} - Yelp"`;
+        }
+    }, []);
 
     return (
         <div>
