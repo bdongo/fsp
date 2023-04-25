@@ -5,10 +5,15 @@ import { getCurrentUser, showCurrentUser } from '../../store/session'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useEffect } from 'react'
 import NavBar from '../NavBar'
+import { indexBusiness } from '../../store/businessPages'
 
 const LandingPage = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(getCurrentUser)
+
+    useEffect(()=> {
+        dispatch(indexBusiness())
+    }, [])
 
     return (
         <div>
@@ -18,22 +23,6 @@ const LandingPage = () => {
 
             <div id="image-container">
             </div>
-
-            {currentUser && <UserGreeting currentUser={currentUser} />}
-
-            {/* {!currentUser &&
-                <ul>
-                    <li>
-                        <Link to='/login'><button>Log In</button></Link>
-                    </li>
-                    <li>
-                        <Link to='/signup'><button>Sign Up</button></Link>
-                    </li>
-                </ul>
-            } */}
-
-
-            
         </div>
     )
 }

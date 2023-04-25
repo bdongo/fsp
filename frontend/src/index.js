@@ -35,9 +35,7 @@ function Root() {
 }
 
 if (sessionStorage.getItem('X-CSRF-Token') === null) {
-  store.dispatch(sessionActions.showCurrentUser).then(renderApp);
-  console.log("token = null")
-  // restoreCSRF().then(renderApp);
+  store.dispatch(sessionActions.showCurrentUser()).then(renderApp);
 } else {
   renderApp();
 }

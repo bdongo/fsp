@@ -42,7 +42,6 @@ const businessPagesReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVEBUSINESS:
-            console.log(action.businessPage.id)
             newState[action.businessPage.id] = action.businessPage
             return newState;
         case RECEIVEALLBUSINESSES:

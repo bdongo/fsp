@@ -12,14 +12,18 @@ const NavBar = () => {
     const location = useLocation();
     const currentPath = location.pathname;
 
-    const navDisplay = currentUser || currentPath === '/login' || currentPath === '/signup'
+    const showLoginSignupButton = currentPath === '/login' || currentPath === '/signup' || currentUser
 
-    const splashBar = currentPath !== '/login' || currentPath !== '/signup'
+    const needSearchBar = currentPath === '/' || currentPath.startsWith('/biz/')
+
+    const needGrayButton = currentPath === '/writeareview' || currentPath.startsWith('/biz/')
+
+    const home = currentPath === '/'
 
 
     return (
         <header id="header" 
-            className={!splashBar ? 'fixed-top' : 'border-bottom'}>
+            className={currentPath === '/' ? 'fixed-top' : 'border-bottom'}>
             <div className="logo-container">
                 <Link to="/">
                     <img class="logo" 
@@ -27,7 +31,7 @@ const NavBar = () => {
                 </Link>    
             </div>
            
-            {splashBar &&
+            {needSearchBar &&
                 <>
                     <div>
                         <SearchBar />
@@ -43,7 +47,19 @@ const NavBar = () => {
                 </>
             }
 
-            {navDisplay &&
+            {needGrayButton &&
+            <>
+                <ul id='action-container'>
+                    <li>
+                        <Link to='/login'><button className="clear-button-outline nav-button">Log In</button></Link>
+                    </li>
+                    <li>
+                        <Link to='/signup'><button className='red-button nav-button'>Sign Up</button></Link>
+                    </li>
+                </ul>
+            </>
+            }
+            {home &&
             <>
                 <ul id='action-container'>
                     <li>
@@ -55,7 +71,7 @@ const NavBar = () => {
                 </ul>
             </>
             }
-            {navDisplay && <UserGreeting currentUser={currentUser} />}
+            {showLoginSignupButton && <UserGreeting currentUser={currentUser} />}
         </header>
     )
 }

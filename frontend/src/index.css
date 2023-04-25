@@ -89,3 +89,17 @@ h2 {
 .clear-button:hover {
     background-color: #ffffff6b;
 }
+
+.clear-button-outline {
+        font-weight: bold;
+        background-color: transparent;
+        color: #333;
+        border: 1px solid rgb(195, 195, 195);
+        border-radius: 3px;
+        transition: all 0.7s;
+        transition-property: background-color, background-position, background-size, border-color;
+}
+
+.clear-buttonioutline:hover {
+    background-color: #ffffff6b;
+}
