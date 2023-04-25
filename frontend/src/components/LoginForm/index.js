@@ -15,8 +15,6 @@ const LoginForm = () => {
     const location = useLocation();
     const currentPath = location.pathname;
     const history = useHistory();
-
-    console.log("in login form")
     useEffect(() => {
         dispatch(showCurrentUser())
     }, [dispatch, currentUser])
@@ -30,7 +28,6 @@ const LoginForm = () => {
     }, []);
 
     if (currentUser) {
-        // console.log(currentUserId)
         return <Redirect to="/" />
     }
 

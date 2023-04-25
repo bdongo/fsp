@@ -5,11 +5,6 @@ import { getUser } from "../store/users";
 
 const UserGreeting = ({currentUser}) => {
     const dispatch = useDispatch();
-    // const {currentUser} = useSelector(getCurrentUser)
-    // const currentUser = useSelector(getUser(id))
-    console.log("in user greeting")
-    // console.log(id, "id")
-    // console.log(useSelector(getUser(id)), 'currentuser')
 
     if (currentUser === null) {
         return null;
