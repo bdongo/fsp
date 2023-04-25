@@ -11,5 +11,6 @@ class Api::BusinessPagesController < ApplicationController
 
     def index 
         @bizs = BusinessPage.all
+        render :index
     end
 end

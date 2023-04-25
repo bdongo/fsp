@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+ua = User.create(
+        f_name: "John",
+        l_name: "S",
+        email:"j@j.com",
+        username: "John",
+        password: "123456"
+)
 
 a = BusinessPage.create({
     name: "McDonald's",
