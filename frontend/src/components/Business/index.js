@@ -42,7 +42,7 @@ const Business = () => {
         if (biz) {
             document.title = `${biz.name} - Yelp`;
         }
-    }, []);
+    }, [biz]);
 
     return (
         <div>
@@ -53,10 +53,10 @@ const Business = () => {
                 <div id='photo-container'>
                     <div id="top-info">
                         <h1>{biz?.name}</h1>
-                        <div>stars</div>
+                        <div>*****</div>
                         <ul>
                             <li>
-                                unclaimed
+                                Unclaimed
                             </li>
                             <li>
                                 $$
@@ -69,12 +69,12 @@ const Business = () => {
                             <li>
                                 Open/closed
                             </li>
-                            <li>
+                            <li className='hours'>
                                 Hours updated 2 months ago
                             </li>
-                            <li>
-                                <button>See Hours</button>
-                            </li>
+                           
+                            <button>See Hours</button>
+                            
                         </ul>
                     </div>
                     
@@ -89,9 +89,11 @@ const Business = () => {
                     <div id='location-hours'>
                         <div id='location-left'>
                             <h2>Location & Hours</h2>
-                            <map>
+                            <div id='map'>
+                                <map>
 
-                            </map>
+                                </map>
+                            </div>
                             <div>
                                 <ul>
                                     <li>

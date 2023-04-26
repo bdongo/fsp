@@ -8,3 +8,116 @@
     height: 426px;
     background-color: grey;
 }
+
+#top-info{
+    position: relative;
+    left: 100px;
+    top: 200px;
+}
+
+#top-info > h1 {
+    font-size: 48px;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #fff;
+}
+#top-info>div {
+    font-size: 48px;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #fff;
+    align-items: center;
+}
+
+#top-info > ul {
+    width: 500px;
+    display: flex;
+    justify-content: flex-start;
+    list-style: inside
+}
+#top-info>ul>li:first-child {
+    list-style: none;
+    /* other styles for the first and second <li> elements */
+}
+
+#top-info>ul> li{
+    
+    color: #fff;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    
+}
+
+#left-scroll {
+    border: 1px solid red;
+    width: 70vw;    
+}
+
+#action-items {
+    border: 1px solid blue;
+    height: 100px;
+    margin-left: 60px;
+    display: flex;
+    align-items: center;
+}
+
+#action-items > button {
+    height: 45px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 10px;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+#location-hours{
+    border: 1px solid purple;
+    margin-left: 60px;
+    display: flex;
+    justify-content: flex-start;
+    height: 600px;
+
+}
+
+#location-hours > div {
+    margin-right: 30px;
+}
+
+#location-left {
+    border: 1px solid green; 
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#location-left > #map {
+    height: 200px;
+    width: 350px;
+    border: 1px solid grey;
+}
+#location-left >div> ul {
+    display: flex;
+    /* height */
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+
+#location-middle {
+    border: 1px solid orange;
+}
+
+#location-right {
+    border: 1px solid yellow;
+}
+
+#review-container {
+    border: 1px solid fuchsia;
+}
+
+#rightscroll {
+    border: 1px solid brown;
+}
