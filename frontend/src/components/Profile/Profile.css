@@ -1,26 +1,44 @@
-/* .name-text {
+.name-text {
     position: relative;
     display: inline-block;
-} */
+}
 
-.name-text {
+.name-text-tooltip {
     visibility: hidden;
-    width: 120px;
+    
+    min-width: 80px;
+    height: 20px;
+    padding: 10px;
     background-color: #555;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
 
     /* Position the text bubble */
     position: absolute;
     z-index: 1;
     bottom: 100%;
+    top: 135%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -51px;
 }
 
-.name-text:hover {
+.name-text:hover .name-text-tooltip {
     opacity: 1;
     visibility: visible;
+}
+
+.name-text-tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.name-text > img {
+    height: 35px;
 }

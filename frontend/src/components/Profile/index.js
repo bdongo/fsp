@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
+import "./Profile.css"
 import profilePic from "../../assets/user.png"
 import { logout } from "../../store/session";
 
@@ -15,10 +16,12 @@ const Profile = ({currentUser}) => {
     
     return (
         <>
-            
-            <span class="name-text" title={`${currentUser.fName} ${currentUser.lName}`} >
-                <img src={profilePic} />
+        <div class="name-text">
+            <span className="name-text-tooltip" >
+                {currentUser.fName} {currentUser.lName}
             </span>
+            <img src={profilePic} />
+        </div>
 
             
             <button onClick={() => dispatch(logout())} >Log Out</button>
