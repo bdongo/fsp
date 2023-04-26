@@ -23,22 +23,18 @@ export const storeCurrentUser = ({user}) => {
         const userJSON = JSON.stringify(user)
         sessionStorage.setItem('CurrentUser', userJSON)
     }
-    console.log( "in sessionstorage currentuser")
 }
 
 export const storeCSRFtoken = (res) => {
     const token = res.headers.get('X-CSRF-Token');
-    console.log("in store token")
     if (token) {
         sessionStorage.setItem('X-CSRF-Token', token);
-        // TEST
-        console.log(token)
     }
 }
 
 export const showCurrentUser = () => async (dispatch) => {
     const res = await csrfFetch('api/session')
-    console.log("in showCurrentUser")
+
     if (res.ok) {
         const user = await res.json()
         dispatch(currentUser(user))
@@ -76,9 +72,9 @@ export const signup = (user) => async (dispatch) => {
             password
         }})
     })
-    console.log(res, "res")
+
     if (res.ok) {
-        console.log(res, "res.ok")
+
         const user = await res.json()
         storeCurrentUser(user)
         dispatch(currentUser(user))
