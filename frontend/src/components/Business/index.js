@@ -4,32 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getBusiness, showBusiness } from '../../store/businessPages';
 import NavBar from '../NavBar';
-
-// 1: {
-//     id: 1,
-//         name: "mcdonalds",
-//         hours: {
-//                  mon: "6:30am-10pm",
-//                  tues: "6:30am-10pm",
-//                  weds: "6:30am-10pm",
-//                  thurs: "6:30am-10pm",
-//                  fri: "6:30am-10pm",
-//                  sat: "6:30am-10pm",
-//                  sun: "6:30am-10pm"
-//                 },
-//         about: "american fast food",
-//         phoneNum: " (408) 554-0883",
-//         address: {
-//                  street: "5122 Stevens Creek Blvd",
-//                  city: "San Jose",
-//                  state: "CA"
-//                  },
-//         postalCode: "95129",
-//         location: { lat: -121° 56' 58.4664, lng: 37° 19' 22.6128 }
-// }
+import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 
 const Business = () => {
     const dispatch = useDispatch();
+    const location = useLocation()
     const {bizId} = useParams();
     const biz = useSelector(getBusiness(bizId))
 
@@ -43,6 +22,13 @@ const Business = () => {
             document.title = `${biz.name} - Yelp`;
         }
     }, [biz]);
+
+    const handleReviewClick = (e) => {
+        // e.preventDefault;
+        const targetUrl = `/writeareview?bizId=${bizId}`;
+        // navigate to the review page
+        window.location.href = targetUrl;
+    }
 
     return (
         <div>
@@ -81,7 +67,7 @@ const Business = () => {
            <div id='business-container'>
                 <div id='left-scroll'>
                     <div id="action-items">
-                        <button className='red-button' bizId={bizId} >Write a Review</button>
+                        <button className='red-button' onClick={handleReviewClick}>Write a Review</button>
                         <button>Add photo</button>
                         <button>Share</button>
                         <button>Save</button>
