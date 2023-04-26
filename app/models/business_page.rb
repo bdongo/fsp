@@ -5,7 +5,7 @@
 #  id          :bigint           not null, primary key
 #  name        :string           not null
 #  hours       :json             not null
-#  about       :text             not null
+#  about       :text
 #  phone_num   :string           not null
 #  address     :json             not null
 #  postal_code :string           not null
@@ -14,6 +14,6 @@
 #  updated_at  :datetime         not null
 #
 class BusinessPage < ApplicationRecord
-    validates :name, :hours, :about, :phone_num, :address, :postal_code, :location,
+    validates :name, :hours, :phone_num, :address, :postal_code, :location,
         presence: true
 end

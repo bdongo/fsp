@@ -5,15 +5,31 @@ import { getCurrentUser, showCurrentUser } from '../../store/session'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useEffect } from 'react'
 import NavBar from '../NavBar'
-import { indexBusiness } from '../../store/businessPages'
+import { getAllBusinesses, indexBusiness } from '../../store/businessPages'
 
 const LandingPage = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(getCurrentUser)
+    const businesses = useSelector(getAllBusinesses)
 
+    const shuffleBusinesses = (array) => {
+        const shuffledArray = [...array]; // Create a copy of the input array
+
+        for (let i = shuffledArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+        }
+
+        return shuffledArray;
+    };
+
+    const display = Array.from(new Set(shuffleBusinesses(businesses))).slice(0, 9)
+    console.log(businesses)
+    console.log(display, "display ARR")
+    
     useEffect(()=> {
         dispatch(indexBusiness())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>
@@ -22,6 +38,23 @@ const LandingPage = () => {
             </div>
 
             <div id="image-container">
+            </div>
+            <div>
+                <div>
+                    <h2>Recommended Places</h2>
+                </div>
+                <ul>
+                    { display?.map(biz => 
+                        <li>
+                            <Link className="link" to={`/biz/${biz.id}`}>
+                                <div>
+                                    {biz.name}
+                                </div>
+                            </Link>
+                        </li>
+                    )}
+                </ul>
+            
             </div>
         </div>
     )

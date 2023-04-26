@@ -17,6 +17,10 @@ export const getBusiness = (id) => state => (
     state?.businessPages ? state.businessPages[id] : null
 )
 
+export const getAllBusinesses = (state) => (
+    state?.businessPages ? Object.values(state.businessPages) : []
+)
+
 export const showBusiness = (id) => async (dispatch)=> {
     const res = await csrfFetch(`/api/business_pages/${id}`)
 
@@ -45,7 +49,7 @@ const businessPagesReducer = (state = {}, action) => {
             newState[action.businessPage.id] = action.businessPage
             return newState;
         case RECEIVEALLBUSINESSES:
-            return  {...state, ...action.businessPages}
+            return  {...action.businessPages}
         default:
             return state;
     }

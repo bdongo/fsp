@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-ua = User.create(
+ua = User.create!(
         f_name: "John",
         l_name: "S",
         email:"j@j.com",
@@ -14,7 +14,7 @@ ua = User.create(
         password: "123456"
 )
 
-a = BusinessPage.create({
+a = BusinessPage.create!({
     name: "McDonald's",
     hours: { 
             mon: "6:30 AM -10 PM", 
@@ -35,7 +35,7 @@ a = BusinessPage.create({
     location: { lat: -121.949574, lng: 37.322948 }}
 )
 
-b = BusinessPage.create({
+b = BusinessPage.create!({
     name: "ABV",
     hours: { 
             mon: "4:00 PM - 2:00 AM (Next day)", 
@@ -56,7 +56,7 @@ b = BusinessPage.create({
 )
 # Cocktail Bars, American(New)
 
-c = BusinessPage.create({
+c = BusinessPage.create!({
     name: "Liholiho Yacht Club",
     hours: { 
             mon: "Closed", 
@@ -79,7 +79,7 @@ Grind - Talk Story - Get Jag",
 )
 # Cocktail Bars, American(New)
 
-d = BusinessPage.create({
+d = BusinessPage.create!({
     name: "Good Good Culture Club",
     hours: { 
             mon: "Closed", 
@@ -102,7 +102,7 @@ women-led. #getjag #didyoueatyet",
 )
 # Cocktail Bars, American(New)
 
-e = BusinessPage.create({
+e = BusinessPage.create!({
     name: "Brenda's French Soul Food",
     hours: { 
             mon: "8:00 AM - 8:00 PM", 
@@ -124,7 +124,7 @@ e = BusinessPage.create({
 )
 # Breakfast & Brunch, Southern, Cajun/Creole
 
-f = BusinessPage.create({
+f = BusinessPage.create!({
     name: "AFICI",
     hours: { 
             mon: "Closed", 
@@ -146,7 +146,7 @@ f = BusinessPage.create({
 )
 # American(Traditional)
 
-g = BusinessPage.create({
+g = BusinessPage.create!({
     name: "MoMo's",
     hours: { 
             mon: "11:30 AM - 9:30 PM", 
@@ -168,7 +168,7 @@ g = BusinessPage.create({
     location:  {lat: -122.389886, lng: 37.781598}}
 )
 
-h = BusinessPage.create({
+h = BusinessPage.create!({
     name: "Blind Butcher",
     hours: { 
             mon: "5:00 PM - 10:00 PM", 
@@ -193,7 +193,7 @@ h = BusinessPage.create({
 )
 # American(New), Wine Bars
 
-i = BusinessPage.create({
+i = BusinessPage.create!({
     name: "BrewVino, SF",
     hours: { 
             mon: "Closed", 
@@ -219,7 +219,7 @@ i = BusinessPage.create({
 )
 # Pizza, Wine Bars, American(Traditional)
 
-j = BusinessPage.create({
+j = BusinessPage.create!({
     name: "Mili Wine Bar",
     hours: { 
             mon: "4:30 PM - 10:00 PM", 
@@ -244,7 +244,7 @@ j = BusinessPage.create({
 )
 # Wine Bar
 
-j = BusinessPage.create({
+j = BusinessPage.create!({
     name: "Swirl on Castro",
     hours: { 
             mon: "11:00 AM - 9:00 PM", 
@@ -270,7 +270,7 @@ j = BusinessPage.create({
 )
 # Wine Bar, wine and spirits
 
-k = BusinessPage.create({
+k = BusinessPage.create!({
     name: "Unwine'd SF",
     hours: { 
             mon: "Closed", 
@@ -296,7 +296,7 @@ k = BusinessPage.create({
 
 # winebar
 
-l = BusinessPage.create({
+l = BusinessPage.create!({
     name: "Arcana",
     hours: { 
             mon: "Closed", 
@@ -322,7 +322,7 @@ l = BusinessPage.create({
 )
 # winebar
 
-m = BusinessPage.create({
+m = BusinessPage.create!({
     name: "The Laundromat",
     hours: { 
             mon: "Closed", 
@@ -347,7 +347,7 @@ m = BusinessPage.create({
 )
 # Pizza, Wine & Spirits
 
-n = BusinessPage.create({
+n = BusinessPage.create!({
     name: "InoVino",
     hours: { 
             mon: "Closed", 
@@ -373,7 +373,7 @@ n = BusinessPage.create({
 )
 # italian, wine bar
 
-o = BusinessPage.create({
+o = BusinessPage.create!({
     name: "Bodega",
     hours: { 
             mon: "Closed", 
@@ -399,7 +399,7 @@ o = BusinessPage.create({
 )
 # wine bar , america(new)
 
-p = BusinessPage.create({
+p = BusinessPage.create!({
     name: "The Social Study",
     hours: { 
             mon: "5:30 PM - 10:00 PM", 
@@ -426,7 +426,7 @@ and music. Happy hour specials M-F, 5-7PM!",
 )
 # Wine bars , cafes
 
-q = BusinessPage.create({
+q = BusinessPage.create!({
     name: "Birba",
     hours: { 
             mon: "3:00 PM - 9:00 PM", 
@@ -452,7 +452,7 @@ q = BusinessPage.create({
 )
 # wine bars, american(new)
 
-r = BusinessPage.create({
+BusinessPage.create!({
     name: "Millay",
     hours: { 
             mon: "4:00 PM - 10:00 PM", 
@@ -477,7 +477,7 @@ r = BusinessPage.create({
 )
 # wine bar
 
-s = BusinessPage.create({
+BusinessPage.create!({
     name: "Centro",
     hours: { 
             mon: "Closed", 
@@ -504,7 +504,7 @@ soon!",
 )
 # pizza
 
-t = BusinessPage.create({
+BusinessPage.create!({
     name: "Square Pie Guys",
     hours: { 
             mon: "11:30 AM - 9:00 PM", 
@@ -530,7 +530,7 @@ t = BusinessPage.create({
 )
 # pizza
 
-u = BusinessPage.create({
+BusinessPage.create!({
     name: "Golden Boy Pizza",
     hours: { 
             mon: "11:30 AM - 9:00 PM", 
@@ -556,7 +556,7 @@ u = BusinessPage.create({
 
 # Pizza
 
-v = BusinessPage.create({
+BusinessPage.create!({
     name: "Tony's Pizza Napoletana",
     hours: { 
             mon: "12:00 PM - 9:00 PM", 
@@ -582,7 +582,7 @@ v = BusinessPage.create({
 # pizza
 
 
-w = BusinessPage.create({
+BusinessPage.create!({
     name: "That's Amore Woodfire Pizza",
     hours: { 
             mon: "11:00 AM - 9:45 PM", 
