@@ -14,7 +14,7 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={LoginForm}/>
-        <Route path="/biz" component={Business} />
+        <Route path="/biz/:bizId" component={Business} />
         <Route path="/writeareview" component={Review}/>
         <Redirect to="/login" />
       </Switch>

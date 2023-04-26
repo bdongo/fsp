@@ -12,17 +12,18 @@ const NavBar = () => {
     const location = useLocation();
     const currentPath = location.pathname;
 
-    let navDisplay = true;
-    if (currentUser || currentPath === '/login' || currentPath === '/signup') {
-        navDisplay = false;
-    }
+    const showLoginSignupButton = currentPath === '/login' || currentPath === '/signup' || currentUser
 
-    const splashBar = currentPath === '/'
+    const needSearchBar = currentPath === '/' || currentPath.startsWith('/biz/')
+
+    const needGrayButton = currentPath === '/writeareview' || currentPath.startsWith('/biz/')
+
+    const home = currentPath === '/'
 
 
     return (
         <header id="header" 
-            className={navDisplay ? 'fixed-top' : 'border-bottom'}>
+            className={currentPath === '/' ? 'fixed-top' : 'border-bottom'}>
             <div className="logo-container">
                 <Link to="/">
                     <img class="logo" 
@@ -30,23 +31,30 @@ const NavBar = () => {
                 </Link>    
             </div>
            
-            {splashBar &&
+            {needSearchBar &&
                 <>
-                    <div>
+                <div >
                         <SearchBar />
-                    </div>
-
-                    <div>
-                        Yelp for Business
-                    </div>
-
-                    <div>
-                        <Link className="link" to="/writeareview">Write a Review</Link>
-                    </div>
+                </div>
+                <div >
+                    <Link className='nav-sub-header' to="/writeareview">Write a Review</Link>
+                </div>
                 </>
             }
 
-            {navDisplay &&
+            {needGrayButton &&
+            <>
+                <ul id='action-container'>
+                    <li>
+                        <Link to='/login'><button className="clear-button-outline nav-button">Log In</button></Link>
+                    </li>
+                    <li>
+                        <Link to='/signup'><button className='red-button nav-button'>Sign Up</button></Link>
+                    </li>
+                </ul>
+            </>
+            }
+            {home &&
             <>
                 <ul id='action-container'>
                     <li>
@@ -58,7 +66,7 @@ const NavBar = () => {
                 </ul>
             </>
             }
-            {navDisplay && <UserGreeting currentUser={currentUser} />}
+            {showLoginSignupButton && <UserGreeting currentUser={currentUser} />}
         </header>
     )
 }

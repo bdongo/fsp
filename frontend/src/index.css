@@ -1,7 +1,6 @@
 /* TODO Add site wide styles */
 @import "./reset.css";
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 body {
     font-family: 'Helvetica Neue',
         Helvetica,
@@ -9,6 +8,7 @@ body {
         sans-serif;
     color: #333;
     background-color: #fff;
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -17,7 +17,7 @@ h1, h2, h3 {
 
 h2 {
     font-size: 22px;
-    color: #d32323;
+    /* color: #d32323; */
 }
 
 .subtle {
@@ -87,5 +87,19 @@ h2 {
 }
 
 .clear-button:hover {
+    background-color: #ffffff6b;
+}
+
+.clear-button-outline {
+        font-weight: bold;
+        background-color: transparent;
+        color: #333;
+        border: 1px solid rgb(195, 195, 195);
+        border-radius: 3px;
+        transition: all 0.7s;
+        transition-property: background-color, background-position, background-size, border-color;
+}
+
+.clear-buttonioutline:hover {
     background-color: #ffffff6b;
 }
