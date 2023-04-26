@@ -40,7 +40,7 @@ const Business = () => {
 
     useEffect(() => {
         if (biz) {
-            document.title = `${biz.name} - Yelp"`;
+            document.title = `${biz.name} - Yelp`;
         }
     }, []);
 
