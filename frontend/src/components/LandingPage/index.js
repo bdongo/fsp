@@ -24,7 +24,8 @@ const LandingPage = () => {
     };
 
     const display = Array.from(new Set(shuffleBusinesses(businesses))).slice(0, 9)
-    
+    const showBusiness = businesses.length !== 0;
+
     useEffect(()=> {
         dispatch(indexBusiness())
     }, [dispatch])
@@ -37,6 +38,7 @@ const LandingPage = () => {
                 <NavBar></NavBar>
             </div>
             </div>
+           { showBusiness &&
             <div className='landing-container'>
                 <div>
                     <h2>Recommended Places</h2>
@@ -74,7 +76,9 @@ const LandingPage = () => {
                         </li>
                     )}
                 </ul>
-            </div>
+             </div>
+
+            }
             <div className='landing-container'>
                 <div>
                     <h2>Categories</h2>

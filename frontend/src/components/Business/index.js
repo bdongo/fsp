@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import './Business.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -49,7 +49,6 @@ const Business = () => {
            <div>
                 <NavBar></NavBar>
            </div>
-           <div id='business-container'>
                 <div id='photo-container'>
                     <div id="top-info">
                         <h1>{biz?.name}</h1>
@@ -79,6 +78,7 @@ const Business = () => {
                     </div>
                     
                 </div>
+           <div id='business-container'>
                 <div id='left-scroll'>
                     <div id="action-items">
                         <button className='red-button' bizId={bizId} >Write a Review</button>
@@ -94,8 +94,8 @@ const Business = () => {
 
                                 </map>
                             </div>
-                            <div>
-                                <ul>
+                            <div id='address-container'>
+                                <ul id='address'>
                                     <li>
                                         {biz?.address.street}
                                     </li>
@@ -106,50 +106,124 @@ const Business = () => {
                                         {biz?.postalCode}
                                     </li>
                                 </ul>
-                                <button>Get directions</button>
+                                <button className="clear-button-outline nav-button">Get directions</button>
                             </div>
                         </div>
                         <div id='location-middle'>
                             <ul>
                                 <li>
-                                    Mon {biz?.hours.mon}
+                                    Mon 
                                 </li>
                                 <li>
-                                    Tue {biz?.hours.tues}
+                                    Tue 
                                 </li>
                                 <li>
-                                    Wed {biz?.hours.weds}
+                                    Wed 
                                 </li>
                                 <li>
-                                    Thu {biz?.hours.thurs}
+                                    Thu 
                                 </li>
                                 <li>
-                                    Fri {biz?.hours.fri}
+                                    Fri 
                                 </li>
                                 <li>
-                                    Sat {biz?.hours.sat}
+                                    Sat 
                                 </li>
                                 <li>
-                                    Sun {biz?.hours.sun}
+                                    Sun 
                                 </li>
                             </ul>
+                            <ul>
+                                <li>
+                                    {biz?.hours.mon}
+                                </li>
+                                <li>
+                                    {biz?.hours.tues}
+                                </li>
+                                <li>
+                                    {biz?.hours.weds}
+                                </li>
+                                <li>
+                                    {biz?.hours.thurs}
+                                </li>
+                                <li>
+                                    {biz?.hours.fri}
+                                </li>
+                                <li>
+                                    {biz?.hours.sat}
+                                </li>
+                                <li>
+                                    {biz?.hours.sun}
+                                </li>
+                            </ul>
+                            <ul id='closed-open'>
+                                <li>
+                                    Closed now/Open
+                                </li>
+                                <li>
+                                    Closed now/Open
+                                </li>
+                                <li>
+                                    Closed now/Open
+                                </li>
+                                <li>
+                                    Closed now/Open
+                                </li>
+                                <li>
+                                    Closed now/Open
+                                </li>
+                                <li>
+                                    Closed now/Open
+                                </li>
+                                <li>
+                                    Closed now/Open
+                                </li>
+                            </ul>
+
                         </div>
-                        <div id='location-right'> 
-                            <div>Closed/open status</div>
+                       
+                    </div>
+                    { biz?.about &&
+                        <div id='about-container'>
+                            <h2>About the Business</h2>
+                            <p>{biz?.about}</p>
                         </div>
-                    </div>
-                    <div>
-                        <h2>About the Business</h2>
-                        <p>{biz?.about}</p>
-                    </div>
+                    }
                     <div id='review-container'>
-                        <div>
-                            rating visualizer
+                        <h2>Reviews</h2>
+                        <div id='rating-visualizer'>
+                            <div>
+                                <h2>Overall rating</h2>
+                                <div>
+                                    *****
+                                </div>
+                                <div>
+                                    
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    5 stars
+                                </li>
+                                <li>
+                                    4 stars
+                                </li>
+                                <li>
+                                    3 stars
+                                </li>
+                                <li>
+                                    2 stars
+                                </li>
+                                <li>
+                                    1 stars
+                                </li>
+                            </ul>
                         </div>
                         
                     </div>
                 </div>
-                <div id='right-scroll'>     
+                <div id='right-scroll'>   
+                    {biz?.phoneNum}
                 </div>
            </div>
         </div>
