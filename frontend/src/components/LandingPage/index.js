@@ -24,8 +24,6 @@ const LandingPage = () => {
     };
 
     const display = Array.from(new Set(shuffleBusinesses(businesses))).slice(0, 9)
-    console.log(businesses)
-    console.log(display, "display ARR")
     
     useEffect(()=> {
         dispatch(indexBusiness())
@@ -33,11 +31,11 @@ const LandingPage = () => {
 
     return (
         <div>
+
+            <div id="image-container">
             <div>
                 <NavBar></NavBar>
             </div>
-
-            <div id="image-container">
             </div>
             <div className='landing-container'>
                 <div>
@@ -90,6 +88,9 @@ const LandingPage = () => {
                     </li>
                     <li>
                         Pizza
+                    </li>
+                    <li>
+                        another one
                     </li>
                 </ul>
             </div>

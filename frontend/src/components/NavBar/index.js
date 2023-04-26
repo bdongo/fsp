@@ -33,17 +33,12 @@ const NavBar = () => {
            
             {needSearchBar &&
                 <>
-                    <div>
+                <div >
                         <SearchBar />
-                    </div>
-
-                    <div>
-                        Yelp for Business
-                    </div>
-
-                    <div>
-                        <Link className="link" to="/writeareview">Write a Review</Link>
-                    </div>
+                </div>
+                <div >
+                    <Link className='nav-sub-header' to="/writeareview">Write a Review</Link>
+                </div>
                 </>
             }
 

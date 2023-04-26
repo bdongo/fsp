@@ -6,7 +6,7 @@ const SearchBar = () => {
             <form>
                 <input placeholder='search bar' />
                 <div id='divider'/>
-                <input placeholder='location dummy' />
+                <input placeholder='San Francisco, CA' />
             </form>
             <button >Q</button>
         </div>

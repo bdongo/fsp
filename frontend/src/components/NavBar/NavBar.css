@@ -1,5 +1,6 @@
 #header {
-    width: 100vw;
+    /* width: 100vw; */
+    /* min-width: 700px; */
     height: 10vw;
     min-height: 70px;
     max-height: 95px;
@@ -7,12 +8,18 @@
     display: flex;
     justify-content: space-between;
     z-index: 10;
+    overflow: hidden;
 }
-
+.nav-sub-header {
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    /* border: 1px solid purple; */
+}
 .fixed-top{
-    position: fixed;
+    position: relative;
     top: 0;
-
 }
 
 .border-bottom{
@@ -25,11 +32,12 @@
     max-height: 95px;
     display: flex;
     align-items: center;
+    margin-left: 40px;
 }
 
 .logo {
     height: auto;
-    width: 87px;
+    width: 85px;
     padding: 17px;
 }
 
@@ -45,9 +53,10 @@
 
 #action-container{
     display: flex;
-    width: 188px;
+    width: 188px; 
     justify-content: space-between;
     margin-right: 40px;
+    /* border: 1px solid blue; */
 }
 
 /* .red-nav-button {
