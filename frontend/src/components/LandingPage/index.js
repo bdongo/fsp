@@ -30,6 +30,10 @@ const LandingPage = () => {
         dispatch(indexBusiness())
     }, [dispatch])
 
+    useEffect(() => {
+        document.title = `Yelp`;
+    }, []);
+
     return (
         <div>
 

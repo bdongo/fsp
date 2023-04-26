@@ -31,7 +31,7 @@ const Review = () => {
     return (
         <>
         <NavBar></NavBar>
-        {biz?.name}
+            <h1>{biz?.name}</h1>
         </>
     )
 }
