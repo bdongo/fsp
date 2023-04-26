@@ -4,21 +4,21 @@ import classicLogo from '../../assets/classic-logo.png';
 import dLogo from '../../assets/white-logo.png'
 import { getCurrentUser } from '../../store/session'
 import { useSelector } from 'react-redux'
-import UserGreeting from '../UserGreeting'
 import SearchBar from '../SearchBar';
+import Profile from '../Profile';
 
 const NavBar = () => {
     const currentUser = useSelector(getCurrentUser)
     const location = useLocation();
     const currentPath = location.pathname;
+    
+    const showProfile = currentUser
 
-    const showLoginSignupButton = currentPath === '/login' || currentPath === '/signup' || currentUser
-
-    const needSearchBar = currentPath === '/' || currentPath.startsWith('/biz/')
+    const needSearchBar = currentPath === '/' || currentPath.startsWith('/biz/');
 
     const needGrayButton = currentPath === '/writeareview' || currentPath.startsWith('/biz/')
 
-    const home = currentPath === '/'
+    const home = currentPath === '/' || !currentUser
 
 
     return (
@@ -42,7 +42,7 @@ const NavBar = () => {
                 </>
             }
 
-            {needGrayButton &&
+            {!currentUser && needGrayButton &&
             <>
                 <ul id='action-container'>
                     <li>
@@ -54,7 +54,7 @@ const NavBar = () => {
                 </ul>
             </>
             }
-            {home &&
+            {!currentUser && home &&
             <>
                 <ul id='action-container'>
                     <li>
@@ -66,7 +66,7 @@ const NavBar = () => {
                 </ul>
             </>
             }
-            {showLoginSignupButton && <UserGreeting currentUser={currentUser} />}
+            {showProfile && <Profile currentUser={currentUser} />}
         </header>
     )
 }

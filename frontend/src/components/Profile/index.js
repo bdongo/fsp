@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
-import { getCurrentUser, logout, showCurrentUser } from "../store/session"
-import { useEffect } from "react"
-import { getUser } from "../store/users";
+import profilePic from "../../assets/user.png"
+import { logout } from "../../store/session";
 
-const UserGreeting = ({currentUser}) => {
+const Profile = ({currentUser}) => {
     const dispatch = useDispatch();
 
     if (currentUser === null) {
@@ -16,7 +15,11 @@ const UserGreeting = ({currentUser}) => {
     
     return (
         <>
-            <h2>{currentUser.fName}</h2>
+            
+            <span class="name-text" title={`${currentUser.fName} ${currentUser.lName}`} >
+                <img src={profilePic} />
+            </span>
+
             
             <button onClick={() => dispatch(logout())} >Log Out</button>
         </>
@@ -24,4 +27,4 @@ const UserGreeting = ({currentUser}) => {
 
 }
 
-export default UserGreeting
+export default Profile;

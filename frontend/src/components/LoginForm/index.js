@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { demoLogin, getCurrentUser, login, logout, showCurrentUser } from "../../store/session";
 import { useState } from "react";
-import UserGreeting from "../UserGreeting";
 import { useEffect } from "react";
 import './LoginForm.css'
 import { Redirect, useHistory, Link, useLocation } from "react-router-dom";

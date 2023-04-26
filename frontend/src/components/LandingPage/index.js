@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux'
-import UserGreeting from '../UserGreeting'
 import './LandingPage.css'
 import { getCurrentUser, showCurrentUser } from '../../store/session'
 import { Link } from 'react-router-dom/cjs/react-router-dom'

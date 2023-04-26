@@ -1,0 +1,26 @@
+/* .name-text {
+    position: relative;
+    display: inline-block;
+} */
+
+.name-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the text bubble */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.name-text:hover {
+    opacity: 1;
+    visibility: visible;
+}
