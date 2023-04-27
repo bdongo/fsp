@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import NavBar from '../NavBar';
 import './Review.css';
 import { useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min';
@@ -12,9 +12,7 @@ const Review = () => {
     const params = new URLSearchParams(location.search);
     const bizId = parseInt(params.get('bizId'));
     const biz = useSelector(getBusiness(bizId));
-    console.log(biz , "biz")
-    console.log(bizId, "bizId")
-    console.log(params, "params")
+    const [body, setBody] = useState('')
 
     useEffect(() => {
         dispatch(showBusiness(bizId));
@@ -31,7 +29,16 @@ const Review = () => {
     return (
         <>
         <NavBar></NavBar>
+        <div className='review-container'>
             <h1>{biz?.name}</h1>
+            <form>
+                <input type='text' 
+                    placeholder='review goes here'
+                    value={body}
+                    onChange={(e)=> setBody(e.target.value)}
+                />
+            </form>
+        </div>
         </>
     )
 }
