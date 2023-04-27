@@ -6,7 +6,7 @@ import { getCurrentUser } from '../../store/session'
 import { useSelector } from 'react-redux'
 import SearchBar from '../SearchBar';
 import Profile from '../Profile';
-import AuthButtons from '../../AuthButtons';
+import AuthButtons from '../AuthButtons';
 
 const NavBar = () => {
     const currentUser = useSelector(getCurrentUser)
