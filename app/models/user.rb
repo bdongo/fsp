@@ -46,6 +46,15 @@ class User < ApplicationRecord
         self.session_token
     end
 
+    has_many :reviews,
+    foreign_key: :author_id,
+    class_name: :Review,
+    dependent: :destroy
+
+    has_many :reviewed_businesses,
+    through: :reviews,
+    source: :business
+
     private
     def generate_unique_session_token 
         token = SecureRandom.urlsafe_base64

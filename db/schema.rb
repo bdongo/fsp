@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_25_164021) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_27_030116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_164021) do
     t.json "location", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "business_id", null: false
+    t.integer "rating", null: false
+    t.integer "pricing", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id", "business_id"], name: "index_reviews_on_author_id_and_business_id", unique: true
+    t.index ["author_id"], name: "index_reviews_on_author_id"
+    t.index ["business_id"], name: "index_reviews_on_business_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_164021) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "reviews", "business_pages", column: "business_id"
+  add_foreign_key "reviews", "users", column: "author_id"
 end

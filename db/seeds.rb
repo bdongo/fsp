@@ -17,6 +17,35 @@ ua = User.create!(
         password: "123456"
 )
 
+# Generate random first and last names
+first_names = ["Emma", "Olivia", "Ava", "Isabella", "Sophia", "Mia", "Charlotte", "Amelia", "Harper", "Evelyn", "Abigail", "Emily", "Elizabeth", "Mila", "Ella", "Avery", "Sofia", "Camila", "Aria", "Scarlett", "Sarah"]
+last_names = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson", "Chen", "Lee", "Liu", "Wang", "Zhang", "Yang", "Qian", "Hu", "Guo", "Xie", "Lin", "Zheng", "Cheng", "Jiang"]
+
+
+60.times do
+  # Generate a unique username
+  username = Faker::Internet.username(specifier: 5..10, separators: %w())
+
+  # Generate a random first and last name
+  f_name = first_names.sample
+  l_name = last_names.sample
+
+  # Generate a random email address
+  email = Faker::Internet.email(name: "#{f_name} #{l_name}", separators: '.')
+
+  # Generate a random password with at least 6 characters
+  password = Faker::Internet.password(min_length: 6)
+
+  User.create!(
+    f_name: f_name,
+    l_name: l_name,
+    email: email,
+    username: username,
+    password: password,
+  )
+end
+
+
 a = BusinessPage.create!({
     name: "McDonald's",
     hours: { 
@@ -608,3 +637,35 @@ BusinessPage.create!({
   lng: -122.457026
 }}
 )
+
+
+# Get an array of user IDs to use for the reviews
+user_ids = User.pluck(:id)
+
+# Get an array of business IDs to use for the reviews
+business_ids = BusinessPage.pluck(:id)
+
+# Create 50 reviews
+70.times do
+  # Get a random user ID to use for the review
+  author_id = user_ids.sample
+
+  # Get a random business ID to use for the review
+  business_id = business_ids.sample
+
+  # Generate a random rating and pricing
+  rating = rand(0..5)
+  pricing = rand(0..5)
+
+  # Generate a random body for the review
+  body = Faker::Lorem.paragraph(sentence_count: rand(2..6))
+
+  # Create the review record linked to the business page
+  business_page = BusinessPage.find(business_id)
+  business_page.reviews.create!(
+    author_id: author_id,
+    rating: rating,
+    pricing: pricing,
+    body: body
+  )
+end
