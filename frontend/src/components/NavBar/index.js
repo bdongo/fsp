@@ -6,6 +6,7 @@ import { getCurrentUser } from '../../store/session'
 import { useSelector } from 'react-redux'
 import SearchBar from '../SearchBar';
 import Profile from '../Profile';
+import AuthButtons from '../../AuthButtons';
 
 const NavBar = () => {
     const currentUser = useSelector(getCurrentUser)
@@ -42,29 +43,8 @@ const NavBar = () => {
                 </>
             }
 
-            {!currentUser && needGrayButton &&
-            <>
-                <ul id='action-container'>
-                    <li>
-                        <Link to='/login'><button className="clear-button-outline nav-button">Log In</button></Link>
-                    </li>
-                    <li>
-                        <Link to='/signup'><button className='red-button nav-button'>Sign Up</button></Link>
-                    </li>
-                </ul>
-            </>
-            }
-            {!currentUser && home &&
-            <>
-                <ul id='action-container'>
-                    <li>
-                        <Link to='/login'><button className="clear-button nav-button">Log In</button></Link>
-                    </li>
-                    <li>
-                        <Link to='/signup'><button className='red-button nav-button'>Sign Up</button></Link>
-                    </li>
-                </ul>
-            </>
+            { !currentUser && 
+                <AuthButtons/>
             }
             {showProfile && <Profile currentUser={currentUser} />}
         </header>
