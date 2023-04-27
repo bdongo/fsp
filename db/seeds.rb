@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require "open-uri"
+
+
 User.delete_all
 BusinessPage.delete_all
 Review.delete_all
@@ -66,6 +70,18 @@ a = BusinessPage.create!({
     postal_code: "95129",
     location: { lat: -121.949574, lng: 37.322948 }}
 )
+photoa1 = URI.open("s3://ylp-seeds/mcdonald.jpeg")
+a.attach(
+  io: photoa1,
+  filename: "mcdonald.jpeg"
+)
+photoa2 = URI.open("s3://ylp-seeds/mcdonald1.jpeg")
+a.attach(
+  io: photoa2,
+  filename: "mcdonald1.jpeg"
+)
+
+
 
 b = BusinessPage.create!({
     name: "ABV",
@@ -88,6 +104,28 @@ b = BusinessPage.create!({
     location: { lat: 37.765551, lng: -122.422962 }}
 )
 # Cocktail Bars, American(New)
+
+photob1 = URI.open("s3://ylp-seeds/abv.jpeg")
+b.attach(
+  io: photob1,
+  filename: "abv.jpeg"
+)
+photob2 = URI.open("s3://ylp-seeds/abv2.jpeg")
+b.attach(
+  io: photob2,
+  filename: "abv2.jpeg"
+)
+photob3 = URI.open("s3://ylp-seeds/abv3.jpeg")
+b.attach(
+  io: photob3,
+  filename: "abv3.jpeg"
+)
+photob4 = URI.open("s3://ylp-seeds/abv4.jpeg")
+b.attach(
+  io: photob4,
+  filename: "abv4.jpeg"
+)
+
 
 c = BusinessPage.create!({
     name: "Liholiho Yacht Club",
@@ -112,6 +150,30 @@ Grind - Talk Story - Get Jag",
     location: { lat: -122.414087, lng: 37.788653 }}
 )
 # Cocktail Bars, American(New)
+photoc1 = URI.open("s3://ylp-seeds/liho.png")
+c.attach(
+  io: photoc1,
+  filename: "liho.png"
+)
+
+photoc2 = URI.open("s3://ylp-seeds/liho1.jpeg")
+c.attach(
+  io: photoc2,
+  filename: "liho1.jpeg"
+)
+
+photoc3 = URI.open("s3://ylp-seeds/liho2.jpeg")
+c.attach(
+  io: photoc3,
+  filename: "liho2.jpeg"
+)
+
+photoc4 = URI.open("s3://ylp-seeds/liho3.jpeg")
+c.attach(
+  io: photoc4,
+  filename: "liho3.jpeg"
+)
+
 
 d = BusinessPage.create!({
     name: "Good Good Culture Club",
@@ -137,6 +199,32 @@ women-led. #getjag #didyoueatyet",
 )
 # Cocktail Bars, American(New)
 
+photod1 = URI.open("s3://ylp-seeds/good.jpeg")
+d.attach(
+  io: photod1,
+  filename: "good.jpeg"
+)
+photod2 = URI.open("s3://ylp-seeds/good1.jpeg")
+d.attach(
+  io: photod2,
+  filename: "good1.jpeg"
+)
+photod3 = URI.open("s3://ylp-seeds/good2.jpeg")
+d.attach(
+  io: photod3,
+  filename: "good2.jpeg"
+)
+photod4 = URI.open("s3://ylp-seeds/good3.jpeg")
+d.attach(
+  io: photod4,
+  filename: "good3.jpeg"
+)
+photod5 = URI.open("s3://ylp-seeds/good4.jpeg")
+d.attach(
+  io: photod5,
+  filename: "good4.jpeg"
+)
+
 e = BusinessPage.create!({
     name: "Brenda's French Soul Food",
     hours: { 
@@ -148,6 +236,7 @@ e = BusinessPage.create!({
             sat: "8:00 AM - 8:00 PM",
             sun: "8:00 AM - 8:00 PM"
         },
+    website: "http://frenchsoulfood.com",
     phone_num: "(415) 345-8100",
     pricing: 2,
     address: { 
@@ -159,6 +248,27 @@ e = BusinessPage.create!({
     location: { lat: -122.418939, lng: 37.784266 }}
 )
 # Breakfast & Brunch, Southern, Cajun/Creole
+photoe1 = URI.open("s3://ylp-seeds/brendas 3.jpeg")
+e.attach(
+  io: photoe1,
+  filename: "brendas 3.jpeg"
+)
+photoe2 = URI.open("s3://ylp-seeds/brendas.jpeg")
+e.attach(
+  io: photoe2,
+  filename: "brendas.jpeg"
+)
+photoe3 = URI.open("s3://ylp-seeds/brendas1.jpeg")
+e.attach(
+  io: photoe3,
+  filename: "brendas1.jpeg"
+)
+photoe4 = URI.open("s3://ylp-seeds/brendas4.jpeg")
+e.attach(
+  io: photoe4,
+  filename: "brendas4.jpeg"
+)
+
 
 f = BusinessPage.create!({
     name: "AFICI",
@@ -182,6 +292,31 @@ f = BusinessPage.create!({
     location:  {lat: -122.395116, lng: 37.785086}}
 )
 # American(Traditional)
+photof1 = URI.open("s3://ylp-seeds/afici.jpeg")
+f.attach(
+  io: photof1,
+  filename: "afici.jpeg"
+)
+photof2 = URI.open("s3://ylp-seeds/afici1.jpeg")
+f.attach(
+  io: photof2,
+  filename: "afici1.jpeg"
+)
+photof3 = URI.open("s3://ylp-seeds/afici2.jpeg")
+f.attach(
+  io: photof3,
+  filename: "afici2.jpeg"
+)
+photof4 = URI.open("s3://ylp-seeds/afici3.jpeg")
+f.attach(
+  io: photof4,
+  filename: "afici3.jpeg"
+)
+photof5 = URI.open("s3://ylp-seeds/afici4.jpeg")
+f.attach(
+  io: photof5,
+  filename: "afici4.jpeg"
+)
 
 g = BusinessPage.create!({
     name: "MoMo's",
@@ -204,6 +339,31 @@ g = BusinessPage.create!({
             },
     postal_code: "94107",
     location:  {lat: -122.389886, lng: 37.781598}}
+)
+photog1 = URI.open("s3://ylp-seeds/momo.jpeg")
+g.attach(
+  io: photog1,
+  filename: "momo.jpeg"
+)
+photog2 = URI.open("s3://ylp-seeds/momo1.jpeg")
+g.attach(
+  io: photog2,
+  filename: "momo1.jpeg"
+)
+photog3 = URI.open("s3://ylp-seeds/momo2.jpeg")
+g.attach(
+  io: photog3,
+  filename: "momo2.jpeg"
+)
+photog4 = URI.open("s3://ylp-seeds/momo3.jpeg")
+g.attach(
+  io: photog4,
+  filename: "momo3.jpeg"
+)
+photog5 = URI.open("s3://ylp-seeds/momo4.jpeg")
+g.attach(
+  io: photog5,
+  filename: "momo4.jpeg"
 )
 
 h = BusinessPage.create!({
@@ -232,6 +392,32 @@ h = BusinessPage.create!({
 )
 # American(New), Wine Bars
 
+photoh1 = URI.open("s3://ylp-seeds/blind.jpeg")
+h.attach(
+  io: photoh1,
+  filename: "blind.jpeg"
+)
+photoh2 = URI.open("s3://ylp-seeds/blind1.jpeg")
+h.attach(
+  io: photoh2,
+  filename: "blind1.jpeg"
+)
+photoh3 = URI.open("s3://ylp-seeds/blind2.jpeg")
+h.attach(
+  io: photoh3,
+  filename: "blind2.jpeg"
+)
+photoh4 = URI.open("s3://ylp-seeds/blind3.jpeg")
+h.attach(
+  io: photoh4,
+  filename: "blind3.jpeg"
+)
+photoh5 = URI.open("s3://ylp-seeds/blind4.jpeg")
+h.attach(
+  io: photoh5,
+  filename: "blind4.jpeg"
+)
+
 i = BusinessPage.create!({
     name: "BrewVino, SF",
     hours: { 
@@ -258,6 +444,31 @@ i = BusinessPage.create!({
 }}
 )
 # Pizza, Wine Bars, American(Traditional)
+photoi1 = URI.open("s3://ylp-seeds/brewvino.jpeg")
+i.attach(
+  io: photoi1,
+  filename: "brewvino.jpeg"
+)
+photoi2 = URI.open("s3://ylp-seeds/brewvino1.jpeg")
+i.attach(
+  io: photoi2,
+  filename: "brewvino1.jpeg"
+)
+photoi3 = URI.open("s3://ylp-seeds/brewvino2.jpeg")
+i.attach(
+  io: photoi3,
+  filename: "brewvino2.jpeg"
+)
+photoi4 = URI.open("s3://ylp-seeds/brewvino3.jpeg")
+i.attach(
+  io: photoi4,
+  filename: "brewvino3.jpeg"
+)
+photoi5 = URI.open("s3://ylp-seeds/brewvino4.jpeg")
+i.attach(
+  io: photoi5,
+  filename: "brewvino4.jpeg"
+)
 
 j = BusinessPage.create!({
     name: "Mili Wine Bar",
@@ -284,8 +495,33 @@ j = BusinessPage.create!({
 }}
 )
 # Wine Bar
+photoj1 = URI.open("s3://ylp-seeds/milli.jpeg")
+j.attach(
+  io: photoj1,
+  filename: "milli.jpeg"
+)
+photoj2 = URI.open("s3://ylp-seeds/milli1.jpeg")
+j.attach(
+  io: photoj2,
+  filename: "milli1.jpeg"
+)
+photoj3 = URI.open("s3://ylp-seeds/milli2.jpeg")
+j.attach(
+  io: photoj3,
+  filename: "milli2.jpeg"
+)
+photoj4 = URI.open("s3://ylp-seeds/milli3.jpeg")
+j.attach(
+  io: photoj4,
+  filename: "milli3.jpeg"
+)
+photoj5 = URI.open("s3://ylp-seeds/milli4.jpeg")
+j.attach(
+  io: photoj5,
+  filename: "milli3.jpeg"
+)
 
-j = BusinessPage.create!({
+k = BusinessPage.create!({
     name: "Swirl on Castro",
     hours: { 
             mon: "11:00 AM - 9:00 PM", 
@@ -311,8 +547,28 @@ j = BusinessPage.create!({
 }}
 )
 # Wine Bar, wine and spirits
+photok1 = URI.open("s3://ylp-seeds/swirl.jpeg")
+k.attach(
+  io: photok1,
+  filename: "swirl.jpeg"
+)
+photok2 = URI.open("s3://ylp-seeds/swirl2.jpeg")
+k.attach(
+  io: photok2,
+  filename: "swirl2.jpeg"
+)
+photok3 = URI.open("s3://ylp-seeds/swirl3.jpeg")
+k.attach(
+  io: photok3,
+  filename: "swirl3.jpeg"
+)
+photok4 = URI.open("s3://ylp-seeds/swirl4.jpeg")
+k.attach(
+  io: photok4,
+  filename: "swirl4.jpeg"
+)
 
-k = BusinessPage.create!({
+l = BusinessPage.create!({
     name: "Unwine'd SF",
     hours: { 
             mon: "Closed", 
@@ -336,10 +592,35 @@ k = BusinessPage.create!({
   lng: -122.468648
 }}
 )
-
 # winebar
+photol1 = URI.open("s3://ylp-seeds/unwin.jpeg")
+l.attach(
+  io: photol1,
+  filename: "unwin.jpeg"
+)
+photol2 = URI.open("s3://ylp-seeds/unwin1.jpeg")
+l.attach(
+  io: photol2,
+  filename: "unwin1.jpeg"
+)
+photol3 = URI.open("s3://ylp-seeds/unwin3.jpeg")
+l.attach(
+  io: photol3,
+  filename: "unwin3.jpeg"
+)
+photol4 = URI.open("s3://ylp-seeds/unwin4.jpeg")
+l.attach(
+  io: photol4,
+  filename: "unwin4.jpeg"
+)
+photol5 = URI.open("s3://ylp-seeds/unwine2.jpeg")
+l.attach(
+  io: photol5,
+  filename: "unwine2.jpeg"
+)
 
-l = BusinessPage.create!({
+
+m = BusinessPage.create!({
     name: "Arcana",
     hours: { 
             mon: "Closed", 
@@ -365,8 +646,38 @@ l = BusinessPage.create!({
 }}
 )
 # winebar
+photom1 = URI.open("s3://ylp-seeds/ar2.jpeg")
+m.attach(
+  io: photom1,
+  filename: "ar2.jpeg"
+)
+photom2 = URI.open("s3://ylp-seeds/arc1.jpeg")
+m.attach(
+  io: photom2,
+  filename: "arc1.jpeg"
+)
+photom3 = URI.open("s3://ylp-seeds/arc3.jpeg")
+m.attach(
+  io: photom3,
+  filename: "arc3.jpeg"
+)
+photom4 = URI.open("s3://ylp-seeds/arc3.jpeg")
+m.attach(
+  io: photom4,
+  filename: "arc3.jpeg"
+)
+photom5 = URI.open("s3://ylp-seeds/arc4.jpeg")
+m.attach(
+  io: photom5,
+  filename: "arc4.jpeg"
+)
+photom6 = URI.open("s3://ylp-seeds/arc5.jpeg")
+m.attach(
+  io: photom6,
+  filename: "arc5.jpeg"
+)
 
-m = BusinessPage.create!({
+n = BusinessPage.create!({
     name: "The Laundromat",
     hours: { 
             mon: "Closed", 
@@ -391,8 +702,33 @@ m = BusinessPage.create!({
 }}
 )
 # Pizza, Wine & Spirits
+photon1 = URI.open("s3://ylp-seeds/laund.jpeg")
+n.attach(
+  io: photon1,
+  filename: "laund.jpeg"
+)
+photon2 = URI.open("s3://ylp-seeds/laund1.jpeg")
+n.attach(
+  io: photon2,
+  filename: "laund1.jpeg"
+)
+photon3 = URI.open("s3://ylp-seeds/laund2.jpeg")
+n.attach(
+  io: photon3,
+  filename: "laund2.jpeg"
+)
+photon4 = URI.open("s3://ylp-seeds/laund3.jpeg")
+n.attach(
+  io: photon4,
+  filename: "laund3.jpeg"
+)
+photon5 = URI.open("s3://ylp-seeds/laund4.jpeg")
+n.attach(
+  io: photon5,
+  filename: "laund4.jpeg"
+)
 
-n = BusinessPage.create!({
+o = BusinessPage.create!({
     name: "InoVino",
     hours: { 
             mon: "Closed", 
@@ -418,8 +754,33 @@ n = BusinessPage.create!({
 }}
 )
 # italian, wine bar
+photoo1 = URI.open("s3://ylp-seeds/ino.jpeg")
+o.attach(
+  io: photoo1,
+  filename: "ino.jpeg"
+)
+photoo2 = URI.open("s3://ylp-seeds/ino1.jpeg")
+o.attach(
+  io: photoo2,
+  filename: "ino1.jpeg"
+)
+photoo3 = URI.open("s3://ylp-seeds/ino2.jpeg")
+o.attach(
+  io: photoo3,
+  filename: "ino2.jpeg"
+)
+photoo4 = URI.open("s3://ylp-seeds/ino3.jpeg")
+o.attach(
+  io: photoo4,
+  filename: "ino3.jpeg"
+)
+photoo5 = URI.open("s3://ylp-seeds/ino4.jpeg")
+o.attach(
+  io: photoo5,
+  filename: "ino4.jpeg"
+)
 
-o = BusinessPage.create!({
+p = BusinessPage.create!({
     name: "Bodega",
     hours: { 
             mon: "Closed", 
@@ -445,8 +806,33 @@ o = BusinessPage.create!({
 }}
 )
 # wine bar , america(new)
+photop1 = URI.open("s3://ylp-seeds/bodega.jpeg")
+p.attach(
+  io: photop1,
+  filename: "bodega.jpeg"
+)
+photop2 = URI.open("s3://ylp-seeds/bodega1.jpeg")
+p.attach(
+  io: photop2,
+  filename: "bodega1.jpeg"
+)
+photop3 = URI.open("s3://ylp-seeds/bodega2.jpeg")
+p.attach(
+  io: photop3,
+  filename: "bodega2.jpeg"
+)
+photop4 = URI.open("s3://ylp-seeds/bodega3.jpeg")
+p.attach(
+  io: photop4,
+  filename: "bodega3.jpeg"
+)
+photop5 = URI.open("s3://ylp-seeds/bodega4.jpeg")
+p.attach(
+  io: photop5,
+  filename: "bodega4.jpeg"
+)
 
-p = BusinessPage.create!({
+q = BusinessPage.create!({
     name: "The Social Study",
     hours: { 
             mon: "5:30 PM - 10:00 PM", 
@@ -473,8 +859,33 @@ and music. Happy hour specials M-F, 5-7PM!",
 }}
 )
 # Wine bars , cafes
+photoq1 = URI.open("s3://ylp-seeds/soc.jpeg")
+q.attach(
+  io: photoq1,
+  filename: "soc.jpeg"
+)
+photoq2 = URI.open("s3://ylp-seeds/soc1.jpeg")
+q.attach(
+  io: photoq2,
+  filename: "soc1.jpeg"
+)
+photoq3 = URI.open("s3://ylp-seeds/soc2.jpeg")
+q.attach(
+  io: photoq3,
+  filename: "soc2.jpeg"
+)
+photoq4 = URI.open("s3://ylp-seeds/soc3.jpeg")
+q.attach(
+  io: photoq4,
+  filename: "soc3.jpeg"
+)
+photoq5 = URI.open("s3://ylp-seeds/soc4.jpeg")
+q.attach(
+  io: photoq5,
+  filename: "soc4.jpeg"
+)
 
-q = BusinessPage.create!({
+r = BusinessPage.create!({
     name: "Birba",
     hours: { 
             mon: "3:00 PM - 9:00 PM", 
@@ -500,8 +911,33 @@ q = BusinessPage.create!({
 }}
 )
 # wine bars, american(new)
+photor1 = URI.open("s3://ylp-seeds/birb.jpeg")
+r.attach(
+  io: photor1,
+  filename: "birb.jpeg"
+)
+photor2 = URI.open("s3://ylp-seeds/birb1.jpeg")
+r.attach(
+  io: photor2,
+  filename: "birb1.jpeg"
+)
+photor3 = URI.open("s3://ylp-seeds/birb2.jpeg")
+r.attach(
+  io: photor3,
+  filename: "birb2.jpeg"
+)
+photor4 = URI.open("s3://ylp-seeds/birb3.jpeg")
+r.attach(
+  io: photor4,
+  filename: "birb3.jpeg"
+)
+photor5 = URI.open("s3://ylp-seeds/birb4.jpeg")
+r.attach(
+  io: photor5,
+  filename: "birb4.jpeg"
+)
 
-BusinessPage.create!({
+s =BusinessPage.create!({
     name: "Millay",
     hours: { 
             mon: "4:00 PM - 10:00 PM", 
@@ -526,8 +962,33 @@ BusinessPage.create!({
 }}
 )
 # wine bar
+photos1 = URI.open("s3://ylp-seeds/millay.jpeg")
+s.attach(
+  io: photos1,
+  filename: "millay.jpeg"
+)
+photos2 = URI.open("s3://ylp-seeds/mill.jpeg")
+s.attach(
+  io: photos2,
+  filename: "mill.jpeg"
+)
+photos3 = URI.open("s3://ylp-seeds/mill1.jpeg")
+s.attach(
+  io: photos3,
+  filename: "mill1.jpeg"
+)
+photos4 = URI.open("s3://ylp-seeds/mill2.jpeg")
+s.attach(
+  io: photos4,
+  filename: "mill2.jpeg"
+)
+photos5 = URI.open("s3://ylp-seeds/mill3.jpeg")
+s.attach(
+  io: photos5,
+  filename: "mill3.jpeg"
+)
 
-BusinessPage.create!({
+t = BusinessPage.create!({
     name: "Centro",
     hours: { 
             mon: "Closed", 
@@ -554,8 +1015,33 @@ soon!",
 }}
 )
 # pizza
+photot1 = URI.open("s3://ylp-seeds/centro.jpeg")
+t.attach(
+  io: photot1,
+  filename: "centro.jpeg"
+)
+photot2 = URI.open("s3://ylp-seeds/centro1.jpeg")
+t.attach(
+  io: photot2,
+  filename: "centro1.jpeg"
+)
+photot3 = URI.open("s3://ylp-seeds/centro2.jpeg")
+t.attach(
+  io: photot3,
+  filename: "centro2.jpeg"
+)
+photot4 = URI.open("s3://ylp-seeds/centro3.jpeg")
+t.attach(
+  io: photot4,
+  filename: "centro3.jpeg"
+)
+photot5 = URI.open("s3://ylp-seeds/centro4.jpeg")
+t.attach(
+  io: photot5,
+  filename: "centro4.jpeg"
+)
 
-BusinessPage.create!({
+u = BusinessPage.create!({
     name: "Square Pie Guys",
     hours: { 
             mon: "11:30 AM - 9:00 PM", 
@@ -581,8 +1067,38 @@ BusinessPage.create!({
 }}
 )
 # pizza
+photou1 = URI.open("s3://ylp-seeds/square1.jpeg")
+u.attach(
+  io: photou1,
+  filename: "square1.jpeg"
+)
+photou2 = URI.open("s3://ylp-seeds/square2.jpeg")
+u.attach(
+  io: photou2,
+  filename: "square2.jpeg"
+)
+photou3 = URI.open("s3://ylp-seeds/square3.jpeg")
+u.attach(
+  io: photou3,
+  filename: "square3.jpeg"
+)
+photou4 = URI.open("s3://ylp-seeds/square4.jpeg")
+u.attach(
+  io: photou4,
+  filename: "square4.jpeg"
+)
+photou5 = URI.open("s3://ylp-seeds/swuare.jpeg")
+u.attach(
+  io: photou5,
+  filename: "swuare.jpeg"
+)
+photou6 = URI.open("s3://ylp-seeds/swuare1.jpeg")
+u.attach(
+  io: photou6,
+  filename: "swuare1.jpeg"
+)
 
-BusinessPage.create!({
+v = BusinessPage.create!({
     name: "Golden Boy Pizza",
     hours: { 
             mon: "11:30 AM - 9:00 PM", 
@@ -609,7 +1125,7 @@ BusinessPage.create!({
 
 # Pizza
 
-BusinessPage.create!({
+w = BusinessPage.create!({
     name: "Tony's Pizza Napoletana",
     hours: { 
             mon: "12:00 PM - 9:00 PM", 
@@ -636,7 +1152,7 @@ BusinessPage.create!({
 # pizza
 
 
-BusinessPage.create!({
+ x = BusinessPage.create!({
     name: "That's Amore Woodfire Pizza",
     hours: { 
             mon: "11:00 AM - 9:45 PM", 

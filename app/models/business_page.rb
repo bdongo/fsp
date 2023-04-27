@@ -17,6 +17,8 @@ class BusinessPage < ApplicationRecord
     validates :name, :hours, :phone_num, :address, :postal_code, :location,
         presence: true
 
+    has_many_attached :photos
+
     has_many :reviews,
         foreign_key: :business_id,
         class_name: :Review,
