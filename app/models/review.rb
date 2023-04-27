@@ -12,8 +12,9 @@
 #  updated_at  :datetime         not null
 #
 class Review < ApplicationRecord
-    validates :author_id, :business_id, :rating, :pricing, :body,
+    validates :author_id, :business_id, :rating, :body,
         presence: true
+    validates :author_id, uniqueness: { scope: :business_id }
     
     belongs_to :business,
         foreign_key: :business_id,

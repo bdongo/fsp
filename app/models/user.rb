@@ -25,9 +25,11 @@ class User < ApplicationRecord
     validates :password, 
         length: { in: 6..200 }, 
         allow_nil: true
-    validates :session_token, :f_name, :l_name,
+    validates :session_token,
         presence:true,
         uniqueness: true
+    validates :f_name, :l_name,
+        presence: true
     before_validation :ensure_session_token
 
     def self.find_by_credentials(username, password)
@@ -44,6 +46,10 @@ class User < ApplicationRecord
         self.session_token = generate_unique_session_token
         self.save
         self.session_token
+    end
+
+    def has_reviewed?(business)
+        reviews.exists?(business_id: business.id)
     end
 
     has_many :reviews,

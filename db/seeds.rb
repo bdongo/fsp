@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 User.delete_all
 BusinessPage.delete_all
+Review.delete_all
 
 
 ua = User.create!(
@@ -21,19 +22,17 @@ ua = User.create!(
 first_names = ["Emma", "Olivia", "Ava", "Isabella", "Sophia", "Mia", "Charlotte", "Amelia", "Harper", "Evelyn", "Abigail", "Emily", "Elizabeth", "Mila", "Ella", "Avery", "Sofia", "Camila", "Aria", "Scarlett", "Sarah"]
 last_names = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson", "Chen", "Lee", "Liu", "Wang", "Zhang", "Yang", "Qian", "Hu", "Guo", "Xie", "Lin", "Zheng", "Cheng", "Jiang"]
 
-
 60.times do
-  # Generate a unique username
   username = Faker::Internet.username(specifier: 5..10, separators: %w())
+  while User.exists?(username: username)
+    username = Faker::Internet.username(specifier: 5..10, separators: %w())
+  end
 
-  # Generate a random first and last name
   f_name = first_names.sample
   l_name = last_names.sample
 
-  # Generate a random email address
   email = Faker::Internet.email(name: "#{f_name} #{l_name}", separators: '.')
 
-  # Generate a random password with at least 6 characters
   password = Faker::Internet.password(min_length: 6)
 
   User.create!(
@@ -63,6 +62,7 @@ a = BusinessPage.create!({
             city: "San Jose",
             state: "CA"
             },
+    pricing: 1,
     postal_code: "95129",
     location: { lat: -121.949574, lng: 37.322948 }}
 )
@@ -78,6 +78,7 @@ b = BusinessPage.create!({
             sat: "4:00 PM - 2:00 AM (Next day)",
             sun: "4:00 PM - 2:00 AM (Next day)"},
     phone_num: "(415) 294-1871",
+    pricing: 2,
     address: { 
             street: "3174 16th St",
             city: "San Francisco",
@@ -99,6 +100,7 @@ c = BusinessPage.create!({
             sat: "5:00 PM - 9:00 PM",
             sun: "Closed"},
     phone_num: "http://lycsf.com/",
+    pricing: 3,
     about: "Heritage driven food. Cooking and hospitality are the catalyst to gather and enjoy the moment.
 Grind - Talk Story - Get Jag",
     address: { 
@@ -122,6 +124,7 @@ d = BusinessPage.create!({
             sat: "5:00 PM - 9:00 PM",
             sun: "Closed"},
     phone_num: "http://lycsf.com/",
+    pricing: 3,
     about: "We are a restaurant that deeply belives in celebrating heritage-driven food. We are AAPI-owned and
 women-led. #getjag #didyoueatyet",
     address: { 
@@ -146,6 +149,7 @@ e = BusinessPage.create!({
             sun: "8:00 AM - 8:00 PM"
         },
     phone_num: "(415) 345-8100",
+    pricing: 2,
     address: { 
             street: "652 Polk St",
             city: "San Francisco",
@@ -167,6 +171,7 @@ f = BusinessPage.create!({
             sat: "5:00 PM - 9:00 PM",
             sun: "Closed"
         },
+    pricing: 3,
     phone_num: "(415) 537-1111",
     address: { 
             street: "680 Folsom St",
@@ -191,6 +196,7 @@ g = BusinessPage.create!({
         },
         about: "Our restaurant is located on the beautifully redeveloped South of Market waterfront and sits directly across the street from AT&T Park, home of the San Francisco Giants. We are one of San Francisco's premiere dining destinations with delicious food, attentive service and a dining room that is world class. Our outdoor dining decks are a San Francisco favorite.",
     phone_num: "(415) 227-8660",
+    pricing: 3,
     address: { 
             street: "760 2nd St",
             city: "San Francisco",
@@ -212,6 +218,7 @@ h = BusinessPage.create!({
             sun: "11:00 AM - 11:00 PM"
         },
         phone_num: "(415) 529-2478",
+    pricing: 3,
     address: { 
             street: "4058 18th St",
             city: "San Francisco",
@@ -237,6 +244,7 @@ i = BusinessPage.create!({
             sun: "Closed"
         },
         phone_num: "(415) 834-5363",
+        pricing: 3,
         about: "HAPPY HOUR has officially begun at BrewVino, SF! Join us for $5 pints, $10 glasses of wine and yummy snacks from 3:00pm - 5:00pm Monday - Friday​",
     address: { 
             street: "2706 24th St",
@@ -263,6 +271,7 @@ j = BusinessPage.create!({
             sun: "Closed"
         },
         phone_num: "http://miliwinebar.com",
+        pricing: 3,
     address: { 
             street: "110 Folsom St",
             city: "San Francisco",
@@ -288,6 +297,7 @@ j = BusinessPage.create!({
             sun: "11:00 AM - 9:00 PM"
         },
         phone_num: "(415) 864-2262",
+        pricing: 3,
         about: "With 300 selections of wine, the team at Swirl have assembled a strong edit of international, eclectic wines that spotlight lesser-known grapes and regions from sustainable, family owned wineries. The lineup features selections from California, Spain, Argentina, France and Italy. Swirl on Castro features a great selection of Belgian style beers, as well as a strong selection of artisan spirits from around the world. The wine tasting bar is open nightly, with a selection of 20 wines by the taste.",
     address: { 
             street: "572 Castro St",
@@ -314,6 +324,7 @@ k = BusinessPage.create!({
             sun: "4:00 PM - 10:00 PM"
         },
     phone_num: "(415) 702-6202",
+    pricing: 3,
     address: { 
             street: "9 W Portal Ave",
             city: "San Francisco",
@@ -340,6 +351,7 @@ l = BusinessPage.create!({
             sun: "12:00 PM - 9:00 PM"
         },
     phone_num: "(415) 795-3842",
+    pricing: 2,
     address: { 
             street: "2512 Mission St",
             city: "San Francisco",
@@ -366,6 +378,7 @@ m = BusinessPage.create!({
             sun: "9:00 AM - 2:00 PM\n5:00 PM - 8:00 PM"
         },
     phone_num: "(415) 379-4340",
+    pricing: 3,
     address: { 
             street: "3725 Balboa St",
             city: "San Francisco",
@@ -391,6 +404,7 @@ n = BusinessPage.create!({
             sun: "3:00 PM - 9:00 PM"
         },
     phone_num: "(415) 681-3770",
+    pricing: 3,
     address: { 
             street: "108B Carl St",
             city: "San Francisco",
@@ -417,6 +431,7 @@ o = BusinessPage.create!({
             sun: "4:00 PM - 11:00 PM"
         },
     phone_num: "(415) 634-7002",
+    pricing: 3,
     address: { 
             street: "700 Columbus Ave",
             city: "San Francisco",
@@ -443,6 +458,7 @@ p = BusinessPage.create!({
             sun: "1:00 PM - 10:00 PM"
         },
     phone_num: "(415) 292-7417",
+    pricing: 3,
     address: { 
             street: "1795 Geary Blvd",
             city: "San Francisco",
@@ -470,6 +486,7 @@ q = BusinessPage.create!({
             sun: "1:00 PM - 8:00 PM"
         },
     phone_num: "(415) 549-7612",
+    pricing: 3,
     address: { 
             street: "458 Grove St",
             city: "San Francisco",
@@ -496,6 +513,7 @@ BusinessPage.create!({
             sun: "2:00 PM - 8:00 PM"
         },
     phone_num: "https://www.millaysf.com",
+    pricing: 3,
     address: { 
             street: "691 14th St",
             city: "San Francisco",
@@ -521,6 +539,7 @@ BusinessPage.create!({
             sun: "11:30 AM - 2:00 PM\n:00 PM - 9:00 PM"
         },
     phone_num: "(650) 513-6387",
+    pricing: 2,
     address: { 
             street: "1326 Broadway",
             city: "Burlingame",
@@ -548,6 +567,7 @@ BusinessPage.create!({
             sun: "11:30 AM - 9:00 PM"
         },
     phone_num: "(415) 872-9290",
+    pricing: 1,
     address: { 
             street: "1077 Mission St",
             city: "San Francisco",
@@ -574,6 +594,7 @@ BusinessPage.create!({
             sun: "11:30 AM - 9:00 PM"
         },
     phone_num: "(415) 982-9738",
+    pricing: 2,
     address: { 
             street: "542 Green St",
             city: "San Francisco",
@@ -600,6 +621,7 @@ BusinessPage.create!({
             sun: "12:00 PM - 10:00 PM"
         },
     phone_num: "(415) 835-9888",
+    pricing: 3,
     address: { 
             street: "1570 Stockton St",
             city: "San Francisco",
@@ -626,6 +648,7 @@ BusinessPage.create!({
             sun: "11:00 AM - 9:45 PM"
         },
     phone_num: "(628) 529-0008",
+    pricing: 2,
     address: { 
             street: "1901 Ocean Ave",
             city: "San Francisco",
@@ -638,34 +661,90 @@ BusinessPage.create!({
 }}
 )
 
+Review.create!(
+  author_id: User.all.sample.id,
+  business_id: BusinessPage.all.sample.id,
+  rating: 4,
+  body: "I had a really great experience at this business. The staff were very friendly and helpful, and the products they sell are of excellent quality. I would definitely recommend this business to anyone looking for a great shopping experience!"
+)
 
-# Get an array of user IDs to use for the reviews
-user_ids = User.pluck(:id)
+Review.create!(
+  author_id: User.all.sample.id,
+  business_id: BusinessPage.all.sample.id,
+  rating: 2,
+  body: "I was really disappointed with my experience at this business. The staff were unfriendly and unhelpful, and the products they sell are of very poor quality. I would not recommend this business to anyone looking for a good shopping experience."
+)
 
-# Get an array of business IDs to use for the reviews
-business_ids = BusinessPage.pluck(:id)
+Review.create!(
+  author_id: User.all.sample.id,
+  business_id: BusinessPage.all.sample.id,
+  rating: 5,
+  body: "I had an absolutely amazing experience at this business! The staff were incredibly knowledgeable and helpful, and the products they sell are truly exceptional. I cannot recommend this business highly enough!"
+)
 
-# Create 50 reviews
-70.times do
-  # Get a random user ID to use for the review
-  author_id = user_ids.sample
+Review.create!(
+  author_id: User.all.sample.id,
+  business_id: BusinessPage.all.sample.id,
+  rating: 3,
+  body: "My experience at this business was pretty average. The staff were friendly enough, but not particularly knowledgeable, and the products they sell are decent but not exceptional. If you're in the area and need something from this type of business, it's not a bad option, but I wouldn't go out of my way to shop here."
+)
 
-  # Get a random business ID to use for the review
-  business_id = business_ids.sample
+negative_reviews = [
+  "Terrible experience! The food was horrible and the service was awful. Do not recommend!",
+  "What a disappointing experience. The food was bad and the service was poor. Would not recommend.",
+  "I had an awful time here. The food was terrible and the service was disappointing.",
+  "The food was bad and the service was terrible. Would not recommend this place.",
+  "This was a terrible experience. The food was awful and the service was bad. Do not recommend."
+]
 
-  # Generate a random rating and pricing
-  rating = rand(0..5)
-  pricing = rand(0..5)
+positive_reviews = [
+  "I had an incredible experience at this place. The service was impeccable, and the food was absolutely amazing!",
+  "The staff here were so friendly and welcoming! I felt right at home as soon as I walked in.",
+  "I cannot recommend this place enough! Everything from the decor to the food was top-notch.",
+  "What a hidden gem! I stumbled upon this place by accident and am so glad I did. The food was delicious, and the atmosphere was so cozy and inviting.",
+  "This is hands down the best restaurant I've been to in ages. The menu is inventive, and the execution is flawless.",
+  "I had an amazing time here. The drinks were great, the food was delicious, and the staff were incredibly attentive.",
+  "I was blown away by the quality of the food here. Every dish was a work of art, and they tasted even better than they looked.",
+  "What a fantastic experience! The food was exceptional, and the staff went above and beyond to make sure we were taken care of.",
+  "I cannot speak highly enough of this place. The atmosphere is cozy and inviting, and the food is simply outstanding.",
+  "This place is a true gem! The staff were incredibly friendly and knowledgeable, and the food was absolutely delicious.",
+  "I had an incredible dining experience here. The food was simply divine, and the staff were so accommodating and friendly.",
+  "I came here with high expectations, and they were exceeded in every way possible. The food was exceptional, and the service was top-notch.",
+  "What an amazing meal! I loved every dish I tried, and the staff were so friendly and welcoming.",
+  "I cannot recommend this place enough! The food was some of the best I've ever had, and the staff were so attentive and accommodating.",
+  "This place is simply outstanding. The food is delicious, and the staff are incredibly knowledgeable and helpful.",
+  "I had such a great time here. The atmosphere was cozy and inviting, and the food was absolutely delicious.",
+  "The food here is out of this world! I loved every dish I tried, and the staff were so friendly and knowledgeable.",
+  "What a fantastic dining experience! The food was incredible, and the staff were so friendly and attentive.",
+  "I cannot say enough good things about this place. The food is exceptional, and the staff are so accommodating and friendly.",
+  "This place is an absolute must-visit! The food is incredible, and the staff are so friendly and welcoming."
+]
 
-  # Generate a random body for the review
-  body = Faker::Lorem.paragraph(sentence_count: rand(2..6))
+average_reviews = [
+  "The food was decent, but nothing special.",
+  "I had an okay experience here. Not bad, but not great either.",
+  "Service was satisfactory, but nothing to write home about.",
+  "The atmosphere was average and didn't leave much of an impression.",
+  "My experience was pretty mediocre overall.",
+  "Food was decent, but the service could have been better.",
+  "Service was average, but the food was underwhelming.",
+  "I would say it was just an average experience. Nothing too exciting.",
+  "It was an average restaurant with average food and service.",
+  "Overall, my experience was just okay.",
+  "It wasn't terrible, but it wasn't amazing either. Just average.",
+  "It was an unsatisfactory experience. I expected more.",
+  "The food was lackluster and didn't have much flavor.",
+  "Service was slow and not very attentive.",
+  "The atmosphere was nothing special and could use some improvement.",
+  "It was an average experience. Not bad, but not great either.",
+  "I would say it was a satisfactory experience overall.",
+  "I had a decent time, but it wasn't anything special.",
+  "It was an underwhelming experience. I expected more.",
+  "It was a lackluster experience that didn't leave much of an impression.",
+  "The food was mediocre and nothing stood out.",
+  "Service was average and didn't go above and beyond.",
+  "It was an okay experience, but I probably wouldn't go back.",
+  "The restaurant had an average atmosphere and wasn't very exciting.",
+  "It was a satisfactory experience, but nothing too memorable."
+]
 
-  # Create the review record linked to the business page
-  business_page = BusinessPage.find(business_id)
-  business_page.reviews.create!(
-    author_id: author_id,
-    rating: rating,
-    pricing: pricing,
-    body: body
-  )
-end
