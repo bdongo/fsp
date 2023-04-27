@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import './Business.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getBusiness, showBusiness } from '../../store/businessPages';
 import NavBar from '../NavBar';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
@@ -23,6 +23,8 @@ const Business = () => {
         }
     }, [biz]);
 
+    console.log(biz?.photos)
+
     const handleReviewClick = (e) => {
         // e.preventDefault;
         const targetUrl = `/writeareview?bizId=${bizId}`;
@@ -30,12 +32,34 @@ const Business = () => {
         window.location.href = targetUrl;
     }
 
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const scrollContainerRef = useRef(null);
+
+    const handleScroll = (scrollOffset) => {
+        console.log("scroll!")
+        const newScrollPosition = scrollPosition + scrollOffset;
+        setScrollPosition(newScrollPosition);
+        scrollContainerRef.current.scrollLeft = newScrollPosition;
+    }
+
     return (
         <div>
            <div>
                 <NavBar></NavBar>
            </div>
-                <div id='photo-container'>
+            <div id='photo-container'>
+                <div id='scroll-buttons' >
+                    <button className="scroll-left" onClick={() => handleScroll(-350)}>Left</button>
+                    <button className="scroll-right" onClick={() => handleScroll(350)}>Right</button>
+                </div>
+                <div id='scroll-container' ref={scrollContainerRef}>
+                        {biz?.photos?.map((photo) => (
+                            <img src={photo} />
+                        ))}
+                        {biz?.photos?.map((photo) => (
+                            <img src={photo} />
+                        ))}
+                 </div>
                     <div id="top-info">
                         <h1>{biz?.name}</h1>
                         <div>*****</div>
@@ -62,7 +86,7 @@ const Business = () => {
                             
                         </ul>
                     </div>
-                    
+                   
                 </div>
            <div id='business-container'>
                 <div id='left-scroll'>
