@@ -1,6 +1,7 @@
 .name-text {
     position: relative;
     display: inline-block;
+    margin-right: 60px;
 }
 
 .name-text-tooltip {
@@ -18,9 +19,9 @@
     position: absolute;
     z-index: 1;
     bottom: 100%;
-    top: 135%;
+    top: 115%;
     left: 50%;
-    margin-left: -51px;
+    margin-left: -70px;
 }
 
 .name-text:hover .name-text-tooltip {
@@ -32,13 +33,38 @@
     content: "";
     position: absolute;
     bottom: 100%;
-    left: 50%;
+    left: 70%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent #555 transparent;
 }
 
+.name-text-tooltip.clicked {
+    display: none;
+}
+
 .name-text > img {
     height: 35px;
+}
+
+.dropdown {
+    min-width: 160px;
+    height: 20px;
+    padding: 10px;
+    background-color: #fff;;
+    color: #555;
+    text-align: center;
+    border-radius: 3px;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    top: 115%;
+    left: 20%;
+    margin-left: -140px;
+}
+.dropdown > a {
+    font-weight: bold;
+    cursor: pointer;
 }
