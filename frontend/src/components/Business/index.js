@@ -2,15 +2,22 @@ import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import './Business.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
-import { getBusiness, showBusiness } from '../../store/businessPages';
+import { getBusiness, showBusiness, showState } from '../../store/businessPages';
 import NavBar from '../NavBar';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
+import BusinessReviews from '../BusinessReviews';
+import { getReviews } from '../../store/reviews';
 
 const Business = () => {
     const dispatch = useDispatch();
-    const location = useLocation()
+    const location = useLocation();
     const {bizId} = useParams();
-    const biz = useSelector(getBusiness(bizId))
+    const biz = useSelector(getBusiness(bizId));
+    const reviews = useSelector(getReviews)
+    const state = useSelector(showState);
+    const [currentUser, users, _, __] = state
+    
+    const showReviews = reviews.length !== 0
 
     useEffect(() => {
         // dispatch get business
@@ -231,10 +238,14 @@ const Business = () => {
                         </div>
                         
                     </div>
+                    {showReviews &&
+                        <BusinessReviews reviews={reviews} users={users} />
+                    }
                 </div>
                 <div id='right-scroll'>   
                     {biz?.phoneNum}
                 </div>
+
            </div>
         </div>
     )

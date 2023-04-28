@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import './ReviewLanding.css';
 
 const ReviewLanding = ({reviewDisplay, state}) => {
-    const [currentUser, users, businesses, reviews] = state
+    const [_, users, businesses, __] = state
     return (
         <div className='landing-review-container'>
             <div>

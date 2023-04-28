@@ -1,0 +1,8 @@
+.businessreview-container {
+    margin-left: 50px;
+    margin-bottom: 100px;
+}
+.businessreview-container > li {
+    margin-bottom: 50px;
+
+}
