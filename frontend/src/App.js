@@ -4,12 +4,14 @@ import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import Review from "./components/Review";
 import Business from "./components/Business";
+import NavBar from "./components/NavBar";
 
 
 function App() {
   return (
     <>
       {/* <h1>Hello from App</h1> */}
+      {/* <NavBar/> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/login" component={LoginForm} />

@@ -19,6 +19,10 @@ const Business = () => {
     
     const showReviews = reviews.length !== 0
 
+    useEffect(()=> {
+        window.scrollTo(0, 0);
+    }, [])
+
     useEffect(() => {
         // dispatch get business
         dispatch(showBusiness(bizId))

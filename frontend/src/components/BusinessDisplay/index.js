@@ -7,16 +7,19 @@ const BusinessDisplay = ({businessDisplay}) => {
 
     return (
         <>
-            <div className='landing-container'>
+            <div className='landing-business-container'>
                 <div>
                     <h2>Recommended Places</h2>
                 </div>
                 <ul>
                     {businessDisplay?.slice(0, 3).map((biz, idx) =>
                         <li key={idx}>
-                            <Link className="link" to={`/biz/${biz.id}`}>
+                            <Link className="display-link link" to={`/biz/${biz.id}`}>
                                 <div>
-                                    {biz.name}
+                                    <div className='picture-icon'>
+                                        <img src={biz.photos[0]} />
+                                    </div>
+                                    <h3 className='icon-title'> {biz.name} </h3>
                                 </div>
                             </Link>
                         </li>
@@ -25,9 +28,12 @@ const BusinessDisplay = ({businessDisplay}) => {
                 <ul>
                     {businessDisplay?.slice(3, 6).map((biz, idx) =>
                         <li key={idx}>
-                            <Link className="link" to={`/biz/${biz.id}`}>
+                            <Link className="display-link link" to={`/biz/${biz.id}`}>
                                 <div>
-                                    {biz.name}
+                                    <div className='picture-icon'>
+                                        <img src={biz.photos[0]} />
+                                    </div>
+                                    <h3 className='icon-title'> {biz.name} </h3>
                                 </div>
                             </Link>
                         </li>
@@ -36,9 +42,12 @@ const BusinessDisplay = ({businessDisplay}) => {
                 <ul>
                     {businessDisplay?.slice(6, 9).map((biz,idx) =>
                         <li key={idx}>
-                            <Link className="link" to={`/biz/${biz.id}`}>
+                            <Link className="display-link link" to={`/biz/${biz.id}`}>
                                 <div>
-                                    {biz.name}
+                                    <div className='picture-icon'>
+                                        <img src={biz.photos[0]} />
+                                    </div>
+                                    <h3 className='icon-title'> {biz.name} </h3>
                                 </div>
                             </Link>
                         </li>
