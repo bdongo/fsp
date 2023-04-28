@@ -1,6 +1,8 @@
 .businessreview-container {
     margin-left: 50px;
     margin-bottom: 100px;
+    display: flex;
+    flex-direction: column-reverse;
 }
 .businessreview-container > li {
     margin-bottom: 50px;

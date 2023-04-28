@@ -16,12 +16,7 @@ const NavBar = () => {
     const showProfile = currentUser
 
     const needSearchBar = currentPath === '/' || currentPath.startsWith('/biz/');
-
-    const needGrayButton = currentPath === '/writeareview' || currentPath.startsWith('/biz/')
-
-    const home = currentPath === '/' || !currentUser
-
-
+    
     return (
         <header id="header" 
             className={currentPath === '/' ? 'fixed-top' : 'border-bottom'}>

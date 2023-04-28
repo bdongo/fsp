@@ -4,18 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { getBusiness, showBusiness, showState } from '../../store/businessPages';
 import NavBar from '../NavBar';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 import BusinessReviews from '../BusinessReviews';
 import { getReviews } from '../../store/reviews';
+import { getCurrentUser } from '../../store/session';
 
 const Business = () => {
     const dispatch = useDispatch();
-    const location = useLocation();
     const {bizId} = useParams();
     const biz = useSelector(getBusiness(bizId));
-    const reviews = useSelector(getReviews)
+    const reviews = useSelector(getReviews);
     const state = useSelector(showState);
-    const [currentUser, users, _, __] = state
+    const currentUser = useSelector(getCurrentUser);
+    const [_, users, __, ___] = state
     
     const showReviews = reviews.length !== 0
 
@@ -30,8 +30,6 @@ const Business = () => {
         }
     }, [biz]);
 
-    console.log(biz?.photos)
-
     const handleReviewClick = (e) => {
         // e.preventDefault;
         const targetUrl = `/writeareview?bizId=${bizId}`;
@@ -43,7 +41,6 @@ const Business = () => {
     const scrollContainerRef = useRef(null);
 
     const handleScroll = (scrollOffset) => {
-        console.log("scroll!")
         const newScrollPosition = scrollPosition + scrollOffset;
         setScrollPosition(newScrollPosition);
         scrollContainerRef.current.scrollLeft = newScrollPosition;
@@ -239,7 +236,7 @@ const Business = () => {
                         
                     </div>
                     {showReviews &&
-                        <BusinessReviews reviews={reviews} users={users} />
+                        <BusinessReviews currentUser={currentUser} reviews={reviews} users={users} />
                     }
                 </div>
                 <div id='right-scroll'>   

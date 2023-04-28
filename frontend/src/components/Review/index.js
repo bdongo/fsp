@@ -8,7 +8,6 @@ import { createReview } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
 
 const Review = () => {
-    // const {bizId} = useParams();
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
@@ -19,12 +18,15 @@ const Review = () => {
     const [errors, setErrors] = useState([]);
     const [body, setBody] = useState('')
     const [businessId, setBusinessId] = useState('');
-    const [authorId, setAuthorId] = useState("");
+    const [authorId, setAuthorId] = useState('');
+    const [rating, setRating] = useState(null)
+    
 
     useEffect(() => {
         if (bizId) {
             dispatch(showBusiness(bizId));
             setBusinessId(bizId)
+            setAuthorId(currentUser?.id)
         }
     }, [dispatch, bizId]);
 
@@ -38,11 +40,24 @@ const Review = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        if (currentUser) {
-            setAuthorId(currentUser.id)
-            dispatch(createReview({ body, businessId, authorId }))
+
+
+
+
+
+
+
+        if (!currentUser) {
+            console.log("sign in!")
+
+        } else if (!rating) {
+            setErrors(["To submit your review, please select a star rating for this business."]);
+        } else if (!body) {
+            setErrors(["To submit your review, please explain your rating to others."]);
+        } else {
+            dispatch(createReview({ body, businessId, authorId, rating }))
                 .then(() => {
-                    history.pushState(`/biz/${businessId}`)
+                    history.push(`/biz/${businessId}`)
                 })
                 .catch(async (res) => {
                     let data;
@@ -56,10 +71,12 @@ const Review = () => {
                     else if (data) setErrors([data]);
                     else setErrors([res.statusText]);
                 });
-        } else {
-            console.log("sign in!")
         }   
     }
+    const copywrite = [
+        "To submit your review, please select a star rating for this business.",
+        "To submit your review, please explain your rating to others."
+    ]
 
     return (
         <>
@@ -67,7 +84,38 @@ const Review = () => {
         <div className='review-container'>
             <h1>{biz?.name}</h1>
             <form id='review'>
-                <input type='text' 
+                <input 
+                    type='radio'
+                    value={1}
+                    onClick={(e) => setRating(parseInt(e.target.value))}
+                    checked={rating === 1}
+                />
+                <input
+                    type='radio'
+                    value={2}
+                    onClick={(e) => setRating(parseInt(e.target.value))}
+                    checked={rating === 2}
+                />
+                <input 
+                    type='radio'
+                    value={3}
+                    onClick={(e) => setRating(parseInt(e.target.value))}
+                    checked={rating === 3}
+                />
+                <input
+                    type='radio'
+                    value={4}
+                    onClick={(e) => setRating(parseInt(e.target.value))}
+                    checked={rating === 4}
+                />
+                <input
+                    type='radio'
+                    value={5}
+                    onClick={(e) => setRating(parseInt(e.target.value))}
+                    checked={rating === 5}
+                />
+
+                <input type='text-box' 
                     placeholder='review goes here'
                     value={body}
                     onChange={(e)=> setBody(e.target.value)}

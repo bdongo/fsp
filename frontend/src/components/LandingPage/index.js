@@ -17,7 +17,6 @@ const LandingPage = () => {
     const currentUser = useSelector(getCurrentUser);
     const businesses = useSelector(getAllBusinesses);
     const state = useSelector(showState);
-    console.log(state)
 
     const shuffleDisplay = (array) => {
         const shuffledArray = [...array]; // Create a copy of the input array

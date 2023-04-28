@@ -12,8 +12,8 @@ const BusinessDisplay = ({businessDisplay}) => {
                     <h2>Recommended Places</h2>
                 </div>
                 <ul>
-                    {businessDisplay?.slice(0, 3).map(biz =>
-                        <li>
+                    {businessDisplay?.slice(0, 3).map((biz, idx) =>
+                        <li key={idx}>
                             <Link className="link" to={`/biz/${biz.id}`}>
                                 <div>
                                     {biz.name}
@@ -23,8 +23,8 @@ const BusinessDisplay = ({businessDisplay}) => {
                     )}
                 </ul>
                 <ul>
-                    {businessDisplay?.slice(3, 6).map(biz =>
-                        <li>
+                    {businessDisplay?.slice(3, 6).map((biz, idx) =>
+                        <li key={idx}>
                             <Link className="link" to={`/biz/${biz.id}`}>
                                 <div>
                                     {biz.name}
@@ -34,8 +34,8 @@ const BusinessDisplay = ({businessDisplay}) => {
                     )}
                 </ul>
                 <ul>
-                    {businessDisplay?.slice(6, 9).map(biz =>
-                        <li>
+                    {businessDisplay?.slice(6, 9).map((biz,idx) =>
+                        <li key={idx}>
                             <Link className="link" to={`/biz/${biz.id}`}>
                                 <div>
                                     {biz.name}

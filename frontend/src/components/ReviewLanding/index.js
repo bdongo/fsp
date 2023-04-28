@@ -9,8 +9,8 @@ const ReviewLanding = ({reviewDisplay, state}) => {
                 <h2>Recent Activity</h2>
             </div>
             <ul>
-                {reviewDisplay?.slice(0, 3).map(review =>
-                    <li>
+                {reviewDisplay?.slice(0, 3).map((review, idx) =>
+                    <li key={idx}> 
                         <h2>{users[review.authorId].fName} {users[review.authorId].lName}</h2>
                         <Link className="link" to={`/biz/${review.businessId}`}>
                             <div>
@@ -23,8 +23,8 @@ const ReviewLanding = ({reviewDisplay, state}) => {
                 )}
             </ul>
             <ul>
-                {reviewDisplay?.slice(3, 6).map(review =>
-                    <li>
+                {reviewDisplay?.slice(3, 6).map((review, idx) =>
+                    <li key={idx}>
                         <h2>{users[review.authorId].fName} {users[review.authorId].lName}</h2>
                         <Link className="link" to={`/biz/${review.businessId}`}>
                             <div>
@@ -37,8 +37,8 @@ const ReviewLanding = ({reviewDisplay, state}) => {
                 )}
             </ul>
             <ul>
-                {reviewDisplay?.slice(6, 9).map(review =>
-                    <li>
+                {reviewDisplay?.slice(6, 9).map((review, idx) =>
+                    <li key={idx}>
                         <h2>{users[review.authorId].fName} {users[review.authorId].lName}</h2>
                         <Link className="link" to={`/biz/${review.businessId}`}>
                             <div>

@@ -17,3 +17,11 @@
     /* margin-left: 50px; */
     border: 1px solid blue;
 }
+#review > input{
+    /* height: 300px;
+    width: 500px; */
+    padding-right: 300px;
+    padding-bottom: 200px;
+    /* margin-left: 50px; */
+    border: 1px solid red;
+}

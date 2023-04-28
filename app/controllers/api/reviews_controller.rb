@@ -18,8 +18,7 @@ class Api::ReviewsController < ApplicationController
     def destroy
         id = params[:id]
         @review = Review.find_by(id: id)
-        if review
-            review.destroy
+        if @review&.destroy
             render json: { errors: ['successful'] }
         else
             render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
