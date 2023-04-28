@@ -3,9 +3,9 @@ import csrfFetch from "./csrf";
 export const RECEIVEBUSINESS = 'businessPages/RECEIVEBUSINESS';
 export const RECEIVEALLBUSINESSES = 'businessPages/RECEIVEALLBUSINESSES';
 
-export const receiveBusiness = (businessPage) => ({
+export const receiveBusiness = (payload) => ({
     type: RECEIVEBUSINESS,
-    businessPage
+    payload
 })
 
 export const receiveAllBusiness = (businessPages) => ({
@@ -46,7 +46,7 @@ const businessPagesReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVEBUSINESS:
-            newState[action.businessPage.id] = action.businessPage
+            newState[action.payload.business.id] = action.payload.business
             return newState;
         case RECEIVEALLBUSINESSES:
             return  {...action.businessPages}

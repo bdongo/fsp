@@ -10,6 +10,7 @@
     /* display: flex;
     flex-wrap: nowrap;
     overflow-x: auto; */
+   
 }
 
 #scroll-container {
@@ -20,13 +21,16 @@
     overflow-x: auto;
     white-space: nowrap;
     transition: all 0.5s ease-out;
+    align-items: center;
+    
 }
 #scroll-buttons {
     position: absolute;
     top: 40%;
-    width: 100vw;
+    width: calc(100vw - 15px);
     display: flex;
     justify-content: space-between;
+    margin-right: 15px;
 }
 #scroll-container >img {
     height: 600px;
@@ -37,13 +41,13 @@
     position: absolute;
     left: 59px;
     top: 340px;
-    text-shadow: 0px 0px 5px 5px rgba(167, 167, 167, 0.2);
     z-index: 10;
 }
 
 #top-info > h1 {
     font-size: 48px;
     font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 0px 0px 10px rgba(167, 167, 167, 0.2);
     font-weight: 700;
     color: #fff;
 }

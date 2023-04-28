@@ -110,7 +110,7 @@ b = BusinessPage.create!({
 b_arr = ["https://ylp-seeds.s3.us-west-1.amazonaws.com/abv.jpeg",
    "https://ylp-seeds.s3.us-west-1.amazonaws.com/abv2.jpeg",
    "https://ylp-seeds.s3.us-west-1.amazonaws.com/abv3.jpeg",
-   "https://ylp-seeds.s3.us-west-1.amazonaws.com/abv4.jpeg",
+   "https://ylp-seeds.s3.us-west-1.amazonaws.com/abv4.jpeg"
   ]
 
 attach_photos(b, b_arr)
@@ -204,7 +204,14 @@ e = BusinessPage.create!({
     location: { lat: -122.418939, lng: 37.784266 }}
 )
 # Breakfast & Brunch, Southern, Cajun/Creole
+e_arr = [
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/brendas+3.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/brendas.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/brendas1.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/brendas4.jpeg"
+]
 
+attach_photos(e, e_arr)
 
 
 f = BusinessPage.create!({
@@ -230,6 +237,16 @@ f = BusinessPage.create!({
 )
 # American(Traditional)
 
+f_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/afici.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/afici1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/afici2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/afici3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/afici4.jpeg"
+]
+
+attach_photos(f, f_arr)
+
 
 g = BusinessPage.create!({
     name: "MoMo's",
@@ -253,7 +270,14 @@ g = BusinessPage.create!({
     postal_code: "94107",
     location:  {lat: -122.389886, lng: 37.781598}}
 )
+g_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/momo1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/momo2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/momo3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/momo4.jpeg"
+]
 
+attach_photos(g, g_arr)
 
 h = BusinessPage.create!({
     name: "Blind Butcher",
@@ -280,6 +304,16 @@ h = BusinessPage.create!({
 }}
 )
 # American(New), Wine Bars
+
+h_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/blind.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/blind1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/blind2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/blind3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/blind4.jpeg"
+]
+
+attach_photos(h, h_arr)
 
 
 
@@ -309,7 +343,15 @@ i = BusinessPage.create!({
 }}
 )
 # Pizza, Wine Bars, American(Traditional)
+i_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/brewvino.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/brewvino1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/brewvino2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/brewvino3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/brewvino4.jpeg"
+]
 
+attach_photos(i, i_arr)
 
 j = BusinessPage.create!({
     name: "Mili Wine Bar",
@@ -336,7 +378,15 @@ j = BusinessPage.create!({
 }}
 )
 # Wine Bar
+j_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/milli.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/milli1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/milli2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/milli3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/milli4.jpeg"
+]
 
+attach_photos(j, j_arr)
 
 k = BusinessPage.create!({
     name: "Swirl on Castro",
@@ -364,7 +414,14 @@ k = BusinessPage.create!({
 }}
 )
 # Wine Bar, wine and spirits
+k_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/swirl.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/swirl2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/swirl3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/swirl4.jpeg"
+]
 
+attach_photos(k, k_arr)
 
 l = BusinessPage.create!({
     name: "Unwine'd SF",
@@ -391,6 +448,15 @@ l = BusinessPage.create!({
 }}
 )
 # winebar
+l_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/unwin.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/unwin1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/unwin3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/unwin4.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/unwine2.jpeg"
+]
+
+attach_photos(l, l_arr)
 
 
 
@@ -420,6 +486,15 @@ m = BusinessPage.create!({
 }}
 )
 # winebar
+m_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/ar2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/arc1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/arc3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/arc4.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/arc5.jpeg"
+]
+
+attach_photos(m, m_arr)
 
 
 n = BusinessPage.create!({
@@ -448,6 +523,16 @@ n = BusinessPage.create!({
 )
 # Pizza, Wine & Spirits
 
+n_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/laund.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/laund1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/laund2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/laund3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/laund4.jpeg"
+]
+
+attach_photos(n, n_arr)
+
 
 o = BusinessPage.create!({
     name: "InoVino",
@@ -475,6 +560,15 @@ o = BusinessPage.create!({
 }}
 )
 # italian, wine bar
+o_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/ino.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/ino1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/ino2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/ino3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/ino4.jpeg"
+]
+
+attach_photos(o, o_arr)
 
 
 p = BusinessPage.create!({
@@ -504,6 +598,16 @@ p = BusinessPage.create!({
 )
 # wine bar , america(new)
 
+p_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/bodega.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/bodega1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/bodega2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/bodega3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/bodega4.jpeg"
+]
+
+attach_photos(p, p_arr)
+
 
 q = BusinessPage.create!({
     name: "The Social Study",
@@ -532,6 +636,15 @@ and music. Happy hour specials M-F, 5-7PM!",
 }}
 )
 # Wine bars , cafes
+q_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/soc.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/soc1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/soc2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/soc3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/soc4.jpeg"
+]
+
+attach_photos(q, q_arr)
 
 
 r = BusinessPage.create!({
@@ -561,6 +674,16 @@ r = BusinessPage.create!({
 )
 # wine bars, american(new)
 
+r_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/birb.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/birb1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/birb2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/birb3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/birb4.jpeg"
+]
+
+attach_photos(r, r_arr)
+
 
 s =BusinessPage.create!({
     name: "Millay",
@@ -587,6 +710,15 @@ s =BusinessPage.create!({
 }}
 )
 # wine bar
+s_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/mill.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/mill1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/mill2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/mill3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/millay.jpeg"
+]
+
+attach_photos(s, s_arr)
 
 
 t = BusinessPage.create!({
@@ -616,6 +748,15 @@ soon!",
 }}
 )
 # pizza
+t_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/centro.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/centro1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/centro2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/centro3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/centro4.jpeg"
+]
+
+attach_photos(t, t_arr)
 
 
 u = BusinessPage.create!({
@@ -644,6 +785,16 @@ u = BusinessPage.create!({
 }}
 )
 # pizza
+u_arr = [
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/square1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/square2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/square3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/square4.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/swuare.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/swuare1.jpeg"
+]
+
+attach_photos(u, u_arr)
 
 
 v = BusinessPage.create!({
@@ -673,6 +824,11 @@ v = BusinessPage.create!({
 
 # Pizza
 v_arr = [
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/golden.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/golden1.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/golden2.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/golden3.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/golden4.jpeg"
 ]
  attach_photos(v, v_arr)
 
@@ -702,7 +858,11 @@ w = BusinessPage.create!({
 )
 # pizza
 w_arr = [
-
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/tony.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/tony1.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/tony2.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/tony3.jpeg",
+"https://ylp-seeds.s3.us-west-1.amazonaws.com/tony4.jpeg"
 ]
 attach_photos(w, w_arr)
 
@@ -732,6 +892,11 @@ attach_photos(w, w_arr)
 }}
 )
 x_arr = [
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/amore.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/amore1.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/amore2.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/amore3.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/amore4.jpeg"
 ]  
 attach_photos(x, x_arr)
 

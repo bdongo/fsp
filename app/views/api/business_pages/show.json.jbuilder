@@ -1,11 +1,24 @@
 
-json.extract! @biz, :id, :name, :hours, :about, :phone_num, :address, :postal_code, :location
-json.photos @biz.photos.map { |file| url_for(file) }
+# json.extract! @biz, :id, :name, :hours, :about, :phone_num, :address, :postal_code, :location
+# json.photos @biz.photos.map { |file| url_for(file) }
 
-json.array! @biz.reviews do |review|
-  json.extract! review, :id, :business_id, :author_id, :body
+json.business do
+  json.extract! @biz, :id, :name, :hours, :about, :phone_num, :address, :postal_code, :location
+  json.photos @biz.photos.map { |file| url_for(file) }
 end
 
-json.array! @biz.reviewers do |reviewer|
-  json.extract! reviewer, :id, :username, :f_name, :l_name, :email
+json.reviews do
+  @biz.reviews.each do |review|
+     json.set! review.id do
+        json.extract! review, :id, :business_id, :author_id, :body
+    end
+  end
+end
+
+json.reviewers do
+  @biz.reviewers.each do |reviewer|
+     json.set! reviewer.id do
+        json.extract! reviewer, :id, :username, :f_name, :l_name, :email
+    end
+  end
 end

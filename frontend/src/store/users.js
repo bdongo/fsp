@@ -1,3 +1,4 @@
+import { RECEIVEBUSINESS } from "./businessPages";
 import { CURRENT_USER, currentUser } from "./session";
 
 export const getUser = (userId) => (state) => (
@@ -11,6 +12,8 @@ const usersReducer = (state = {}, action) => {
         // case CURRENT_USER:
         //     newState[action.user.id] = action.user
         //     return newState;
+        case RECEIVEBUSINESS:
+            return {...action.payload.reviewers}
         default: 
         return state;
     }

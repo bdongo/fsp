@@ -1,3 +1,4 @@
+import { RECEIVEBUSINESS } from "./businessPages";
 import csrfFetch from "./csrf";
 
 
@@ -64,6 +65,8 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 const reviewReducer = (state = {}, action) => {
     const newState = {...state}
     switch (action.type){
+        case RECEIVEBUSINESS:
+            return {...action.payload.reviews};
         case ADDREVIEW:
 
         case REMOVEREVIEW:
