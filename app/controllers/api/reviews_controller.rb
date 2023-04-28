@@ -1,4 +1,5 @@
 class Api::ReviewsController < ApplicationController
+    before_action :require_login, only: [:update, :destroy]
 
     def index
         @reviews = Review.all
