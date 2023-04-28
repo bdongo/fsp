@@ -5,13 +5,18 @@ import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useEffect } from 'react'
 import NavBar from '../NavBar'
 import { getAllBusinesses, indexBusiness } from '../../store/businessPages'
+import { getUsers } from '../../store/users'
+import { getReviews } from '../../store/reviews'
+import BusinessDisplay from '../BusinessDisplay'
 
 const LandingPage = () => {
     const dispatch = useDispatch();
+    const users = useSelector(getUsers)
+    const reviews = useSelector(getReviews)
     const currentUser = useSelector(getCurrentUser)
     const businesses = useSelector(getAllBusinesses)
 
-    const shuffleBusinesses = (array) => {
+    const shuffleDisplay = (array) => {
         const shuffledArray = [...array]; // Create a copy of the input array
 
         for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -22,8 +27,10 @@ const LandingPage = () => {
         return shuffledArray;
     };
 
-    const display = Array.from(new Set(shuffleBusinesses(businesses))).slice(0, 9)
+    const businessDisplay = Array.from(new Set(shuffleDisplay(businesses))).slice(0, 9)
     const showBusiness = businesses.length !== 0;
+    const reviewDisplay = Array.from(new Set(shuffleDisplay(reviews))).slice(0, 9)
+    const showReviews = reviews.length !== 0;
 
     useEffect(()=> {
         dispatch(indexBusiness())
@@ -41,13 +48,13 @@ const LandingPage = () => {
                 <NavBar></NavBar>
             </div>
             </div>
-           { showBusiness &&
-            <div className='landing-container'>
+           {showReviews &&
+            <div className='landing-review-container'>
                 <div>
-                    <h2>Recommended Places</h2>
+                    <h2>Recent Activity</h2>
                 </div>
                 <ul>
-                    { display?.slice(0,3).map(biz => 
+                    {reviewDisplay?.slice(0,3).map(biz => 
                         <li>
                             <Link className="link" to={`/biz/${biz.id}`}>
                                 <div>
@@ -58,7 +65,7 @@ const LandingPage = () => {
                     )}
                 </ul>
                 <ul>
-                    {display?.slice(3,6).map(biz =>
+                    {reviewDisplay?.slice(3,6).map(biz =>
                         <li>
                             <Link className="link" to={`/biz/${biz.id}`}>
                                 <div>
@@ -69,7 +76,7 @@ const LandingPage = () => {
                     )}
                 </ul>
                 <ul>
-                    {display?.slice(6,9).map(biz =>
+                    {reviewDisplay?.slice(6,9).map(biz =>
                         <li>
                             <Link className="link" to={`/biz/${biz.id}`}>
                                 <div>
@@ -80,7 +87,9 @@ const LandingPage = () => {
                     )}
                 </ul>
              </div>
-
+            }
+            { showBusiness && 
+                <BusinessDisplay businessDisplay={businessDisplay}/>
             }
             <div className='landing-container'>
                 <div>

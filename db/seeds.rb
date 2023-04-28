@@ -987,3 +987,13 @@ average_reviews = [
   "It was a satisfactory experience, but nothing too memorable."
 ]
 
+def shuffle_arr(array)
+  shuffled_array = array.dup
+
+  (array.length - 1).downto(1) do |i|
+    j = rand(i + 1)
+    shuffled_array[i], shuffled_array[j] = shuffled_array[j], shuffled_array[i]
+  end
+
+  shuffled_array
+end

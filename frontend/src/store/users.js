@@ -5,6 +5,10 @@ export const getUser = (userId) => (state) => (
     state?.users ? state.users[userId] : null
 )
 
+export const getUsers = (state) => (
+    state?.users ? Object.values(state.users) : []
+)
+
 const usersReducer = (state = {}, action) => {
     const newState = {...state}
 

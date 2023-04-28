@@ -21,6 +21,10 @@ export const removeReview = (reviewId) => ({
     reviewId
 })
 
+export const getReviews = (state) => (
+    state?.reviews ? Object.values(state.reviews) : []
+)
+
 export const createReview = (review) => async (dispatch) => {
     const res = await csrfFetch('/api/reviews', {
         method: 'POST',
