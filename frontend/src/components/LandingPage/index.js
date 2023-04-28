@@ -8,6 +8,7 @@ import { getAllBusinesses, indexBusiness } from '../../store/businessPages'
 import { getUsers } from '../../store/users'
 import { getReviews } from '../../store/reviews'
 import BusinessDisplay from '../BusinessDisplay'
+import ReviewLanding from '../ReviewLanding'
 
 const LandingPage = () => {
     const dispatch = useDispatch();
@@ -49,44 +50,7 @@ const LandingPage = () => {
             </div>
             </div>
            {showReviews &&
-            <div className='landing-review-container'>
-                <div>
-                    <h2>Recent Activity</h2>
-                </div>
-                <ul>
-                    {reviewDisplay?.slice(0,3).map(biz => 
-                        <li>
-                            <Link className="link" to={`/biz/${biz.id}`}>
-                                <div>
-                                    {biz.name}
-                                </div>
-                            </Link>
-                        </li>
-                    )}
-                </ul>
-                <ul>
-                    {reviewDisplay?.slice(3,6).map(biz =>
-                        <li>
-                            <Link className="link" to={`/biz/${biz.id}`}>
-                                <div>
-                                    {biz.name}
-                                </div>
-                            </Link>
-                        </li>
-                    )}
-                </ul>
-                <ul>
-                    {reviewDisplay?.slice(6,9).map(biz =>
-                        <li>
-                            <Link className="link" to={`/biz/${biz.id}`}>
-                                <div>
-                                    {biz.name}
-                                </div>
-                            </Link>
-                        </li>
-                    )}
-                </ul>
-             </div>
+                <ReviewLanding reviewDisplay={reviewDisplay}/>
             }
             { showBusiness && 
                 <BusinessDisplay businessDisplay={businessDisplay}/>
