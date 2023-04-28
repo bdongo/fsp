@@ -21,6 +21,10 @@ export const getAllBusinesses = (state) => (
     state?.businessPages ? Object.values(state.businessPages) : []
 )
 
+export const showState = (state) => (
+    state ? Object.values(state) : []
+)
+
 export const showBusiness = (id) => async (dispatch)=> {
     const res = await csrfFetch(`/api/business_pages/${id}`)
 

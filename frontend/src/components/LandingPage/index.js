@@ -4,7 +4,7 @@ import { getCurrentUser, showCurrentUser } from '../../store/session'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useEffect } from 'react'
 import NavBar from '../NavBar'
-import { getAllBusinesses, indexBusiness } from '../../store/businessPages'
+import { getAllBusinesses, indexBusiness, showState } from '../../store/businessPages'
 import { getUsers } from '../../store/users'
 import { getReviews } from '../../store/reviews'
 import BusinessDisplay from '../BusinessDisplay'
@@ -12,10 +12,12 @@ import ReviewLanding from '../ReviewLanding'
 
 const LandingPage = () => {
     const dispatch = useDispatch();
-    const users = useSelector(getUsers)
-    const reviews = useSelector(getReviews)
-    const currentUser = useSelector(getCurrentUser)
-    const businesses = useSelector(getAllBusinesses)
+    const users = useSelector(getUsers);
+    const reviews = useSelector(getReviews);
+    const currentUser = useSelector(getCurrentUser);
+    const businesses = useSelector(getAllBusinesses);
+    const state = useSelector(showState);
+    console.log(state)
 
     const shuffleDisplay = (array) => {
         const shuffledArray = [...array]; // Create a copy of the input array
@@ -30,7 +32,7 @@ const LandingPage = () => {
 
     const businessDisplay = Array.from(new Set(shuffleDisplay(businesses))).slice(0, 9)
     const showBusiness = businesses.length !== 0;
-    const reviewDisplay = Array.from(new Set(shuffleDisplay(reviews))).slice(0, 9)
+    const reviewDisplay = Array.from(new Set(shuffleDisplay(reviews)))
     const showReviews = reviews.length !== 0;
 
     useEffect(()=> {
@@ -50,7 +52,7 @@ const LandingPage = () => {
             </div>
             </div>
            {showReviews &&
-                <ReviewLanding reviewDisplay={reviewDisplay}/>
+                <ReviewLanding reviewDisplay={reviewDisplay} state={state}/>
             }
             { showBusiness && 
                 <BusinessDisplay businessDisplay={businessDisplay}/>

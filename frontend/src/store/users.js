@@ -17,7 +17,7 @@ const usersReducer = (state = {}, action) => {
         //     newState[action.user.id] = action.user
         //     return newState;
         case RECEIVEALLBUSINESSES:
-            return { ...action.payload.reviewers }
+            return { ...action.payload.users }
         case RECEIVEBUSINESS:
             return {...action.payload.reviewers}
         default: 
