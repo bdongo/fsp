@@ -26,7 +26,7 @@ export const createReview = (review) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(review)
+        body: JSON.stringify({ review: { review } })
     })
     if (res.ok) {
         const newReview = await res.json();
