@@ -8,9 +8,9 @@ export const receiveBusiness = (payload) => ({
     payload
 })
 
-export const receiveAllBusiness = (businessPages) => ({
+export const receiveAllBusiness = (payload) => ({
     type: RECEIVEALLBUSINESSES,
-    businessPages
+    payload
 })
 
 export const getBusiness = (id) => state => (
@@ -49,7 +49,7 @@ const businessPagesReducer = (state = {}, action) => {
             newState[action.payload.business.id] = action.payload.business
             return newState;
         case RECEIVEALLBUSINESSES:
-            return  {...action.businessPages}
+            return  {...action.payload.businesses}
         default:
             return state;
     }

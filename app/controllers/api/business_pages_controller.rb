@@ -11,6 +11,8 @@ class Api::BusinessPagesController < ApplicationController
 
     def index 
         @bizs = BusinessPage.all
+        @users = User.all
+        @reviews = Review.all
         render :index
     end
 end
