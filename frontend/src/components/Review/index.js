@@ -21,6 +21,7 @@ const Review = () => {
     const [businessId, setBusinessId] = useState('');
     const [authorId, setAuthorId] = useState('');
     const [rating, setRating] = useState(null)
+    const [showLoginModal, setShowLoginModal] = useState(false);
     
 
     useEffect(() => {
@@ -41,20 +42,13 @@ const Review = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-
-
-
-
-
-
-
-        if (!currentUser) {
-            console.log("sign in!")
-
-        } else if (!rating) {
+        
+        if (!rating) {
             setErrors(["To submit your review, please select a star rating for this business."]);
         } else if (!body) {
             setErrors(["To submit your review, please explain your rating to others."]);
+        }   else if (!currentUser) {
+                setShowLoginModal(true);
         } else {
             dispatch(createReview({ body, businessId, authorId, rating }))
                 .then(() => {
@@ -81,7 +75,9 @@ const Review = () => {
 
     return (
         <>
-        <LoginModal/>
+        {showLoginModal &&
+            <LoginModal setShowLoginModal={setShowLoginModal}/>
+        }
         <NavBar></NavBar>
         <div className='review-container'>
             <h1>{biz?.name}</h1>
