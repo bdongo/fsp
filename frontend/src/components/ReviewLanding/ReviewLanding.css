@@ -37,3 +37,27 @@
     height: 400px;
     margin: 15px;
 }
+.landing-review-container>ul> li> p {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.landing-review-container> ul > li > a > div > h3 {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.review-blurb {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 20px;
+}
+
+.landing-review-container>ul>li>h3{
+    /* background-color: black; */
+    font-size: 20px;
+    color: #333;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-left: 15px;
+    margin-top: 25px;
+}

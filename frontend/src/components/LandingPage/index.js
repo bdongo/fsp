@@ -62,16 +62,24 @@ const LandingPage = () => {
                 </div>
                 <ul>
                     <li>
-                        American(New)
+                        <h2 className='icon-title'>
+                            American(New)
+                        </h2>
                     </li>
                     <li>
-                        Wine Bar
+                        <h2 className='icon-title'>
+                            Wine Bar
+                        </h2> 
                     </li>
                     <li>
-                        Pizza
+                        <h2 className='icon-title'>
+                            Pizza
+                        </h2> 
                     </li>
                     <li>
-                        another one
+                        <h2 className='icon-title'>
+                            Another one
+                        </h2> 
                     </li>
                 </ul>
             </div>
