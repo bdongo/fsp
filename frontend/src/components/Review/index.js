@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBusiness, showBusiness } from '../../store/businessPages';
 import { createReview } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
+import LoginModal from '../LoginModal';
 
 const Review = () => {
     const dispatch = useDispatch();
@@ -80,6 +81,7 @@ const Review = () => {
 
     return (
         <>
+        <LoginModal/>
         <NavBar></NavBar>
         <div className='review-container'>
             <h1>{biz?.name}</h1>
