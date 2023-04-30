@@ -18,11 +18,11 @@ const BusinessReviews = ({reviews, users, currentUser}) => {
                     <h2>{users[review.authorId].fName} {users[review.authorId].lName}</h2>
                     <p>rating: {review.rating} </p>
                     <p>{review.body}</p>
-                    {currentUser.id === review.authorId &&
+                    {currentUser?.id === review.authorId &&
                         <button
                             onClick={() => {
                                 
-                                return handleDelete(review.id)}}
+                                return handleDelete(review?.id)}}
                         >Delete review</button>
                     }
                 </li>

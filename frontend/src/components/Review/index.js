@@ -28,7 +28,6 @@ const Review = () => {
         if (bizId) {
             dispatch(showBusiness(bizId));
             setBusinessId(bizId)
-            setAuthorId(currentUser?.id)
         }
     }, [dispatch, bizId]);
 
@@ -39,6 +38,12 @@ const Review = () => {
             document.title = `Write a Review`;
         }
     }, [biz]);
+
+    useEffect(()=> {
+        if (currentUser) {
+            setAuthorId(currentUser?.id)
+        }
+    }, [currentUser])
 
     const submitHandler = (e) => {
         e.preventDefault();
