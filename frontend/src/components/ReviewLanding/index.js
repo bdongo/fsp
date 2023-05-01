@@ -20,6 +20,19 @@ const ReviewLanding = ({reviewDisplay, state}) => {
         result += "..."
         return result
     }
+    const handleRating = (rating) => {
+        if (rating === 1) {
+            return 'one-star-big big-rating';
+        } else if (rating === 2) {
+            return 'two-stars-big big-rating';
+        } else if (rating === 3) {
+            return 'three-stars-big big-rating';
+        } else if (rating === 4) {
+            return 'four-stars-big big-rating';
+        } else if (rating === 5) {
+            return 'five-stars-big big-rating';
+        }
+    }
 
     return (
         <div className='landing-review-container'>
@@ -40,6 +53,7 @@ const ReviewLanding = ({reviewDisplay, state}) => {
                         </Link>
                         
                         <p className='review-blurb'>{teaserText(review.body)}</p>
+                        <div className={handleRating(review.rating)}/>
                     </li>
                 )}
             </ul>
@@ -57,6 +71,7 @@ const ReviewLanding = ({reviewDisplay, state}) => {
                         </Link>
 
                         <p className='review-blurb'>{teaserText(review.body)}</p>
+                        <div className={handleRating(review.rating)} />
                     </li>
                 )}
             </ul>
@@ -74,6 +89,7 @@ const ReviewLanding = ({reviewDisplay, state}) => {
                         </Link>
 
                         <p className='review-blurb'>{teaserText(review.body)}</p>
+                        <div className={handleRating(review.rating)} />
                     </li>
                 )}
             </ul>

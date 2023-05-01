@@ -47,6 +47,10 @@
     margin-top: 15px;
     margin-left: 15px;
 }
+.landing-review-container>ul>li>div {
+    margin-top: 15px;
+    margin-left: 10px;
+}
 
 .review-blurb {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;

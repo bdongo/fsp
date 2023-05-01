@@ -27,3 +27,7 @@
 #star-container {
     display: flex;
 }
+
+#star-container > div {
+    margin-right: 5px;
+}
