@@ -48,7 +48,19 @@ const Review = () => {
     }, [currentUser])
 
     useEffect(()=> {
-
+        if (hoverRating === 1) {
+            setHoverStar('yellow-star star-rating')
+        } else if (hoverRating === 2) {
+            setHoverStar('yellow-orange-star star-rating')
+        } else if (hoverRating === 3) {
+            setHoverStar('orange-star star-rating')
+        } else if (hoverRating === 4) {
+            setHoverStar('red-orange-star star-rating')
+        } else if (hoverRating === 5) {
+            setHoverStar('red-star star-rating')
+        } else {
+            setHoverStar('blank-star star-rating')
+        }
     }, [hoverRating])
 
     const submitHandler = (e) => {
@@ -79,30 +91,9 @@ const Review = () => {
                 });
         }   
     }
-    const copywrite = [
-        "To submit your review, please select a star rating for this business.",
-        "To submit your review, please explain your rating to others."
-    ]
-
-    const handleHover = async (num) => {
-        await setHoverRating(num);
-        if (hoverRating === 1) {
-            setHoverStar('yellow-star star-rating')
-        } else if (hoverRating === 2) {
-            setHoverStar('yellow-orange-star star-rating')
-        } else if (hoverRating === 3) {
-            setHoverStar('orange-star star-rating')
-        } else if (hoverRating === 4) {
-            setHoverStar('red-orange-star star-rating')
-        } else if (hoverRating === 5) {
-            setHoverStar('red-star star-rating')
-        } else {
-            setHoverStar('blank-star star-rating')
-        }
-
-    }
 
     console.log(hoverRating,"hover rating")
+    console.log(hoverStar, "hoverstar")
 
     return (
         <>
@@ -117,7 +108,7 @@ const Review = () => {
                     <div
                         id='star1'
                         onClick={() => setRating(1)}
-                        onMouseEnter={()=>handleHover(1)}
+                        onMouseEnter={() => setHoverRating(1)}
                         onMouseLeave={()=>setHoverRating(rating)}
                     >
                         <i className={hoverRating >= 1 ? hoverStar : 'blank-star star-rating'} />
@@ -126,7 +117,7 @@ const Review = () => {
                     <div
                         id='star2'
                         onClick={() => setRating(2)}
-                        onMouseEnter={() => handleHover(2)}
+                        onMouseEnter={() => setHoverRating(2)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
                         <i className={hoverRating >= 2 ? hoverStar : 'blank-star star-rating'} />
@@ -135,7 +126,7 @@ const Review = () => {
                     <div
                         id='star3'
                         onClick={() => setRating(3)}
-                        onMouseEnter={() => handleHover(3)}
+                        onMouseEnter={() => setHoverRating(3)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
                         <i className={hoverRating >= 3 ? hoverStar : 'blank-star star-rating'} />
@@ -144,7 +135,7 @@ const Review = () => {
                     <div
                         id='star4'
                         onClick={() => setRating(4)}
-                        onMouseEnter={() => handleHover(4)}
+                        onMouseEnter={() => setHoverRating(4)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
                         <i className={hoverRating >= 4 ? hoverStar : 'blank-star star-rating'} />
@@ -153,58 +144,12 @@ const Review = () => {
                     <div
                         id='star5'
                         onClick={() => setRating(5)}
-                        onMouseEnter={() => handleHover(5)}
+                        onMouseEnter={() => setHoverRating(5)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
                         <i className={hoverRating === 5 ? hoverStar : 'blank-star star-rating'} />
                     </div>
                 </div>
-                    {/* <div id='star-container'>
-                        <div
-                            id='star1'
-                            onClick={() => setRating(1)}
-                            onMouseEnter={() => handleHover(1)}
-                            onMouseLeave={() => setHoverRating(rating)}
-                        >
-                            <i className='yellow-star star-rating' />
-                        </div>
-
-                        <div
-                            id='star2'
-                            onClick={() => setRating(2)}
-                            onMouseEnter={() => handleHover(2)}
-                            onMouseLeave={() => setHoverRating(rating)}
-                        >
-                            <i className='yellow-orange-star star-rating' />
-                        </div>
-
-                        <div
-                            id='star3'
-                            onClick={() => setRating(3)}
-                            onMouseEnter={() => handleHover(3)}
-                            onMouseLeave={() => setHoverRating(rating)}
-                        >
-                            <i className='orange-star star-rating' />
-                        </div>
-
-                        <div
-                            id='star4'
-                            onClick={() => setRating(4)}
-                            onMouseEnter={() => handleHover(4)}
-                            onMouseLeave={() => setHoverRating(rating)}
-                        >
-                            <i className='red-orange-star star-rating' />
-                        </div>
-
-                        <div
-                            id='star5'
-                            onClick={() => setRating(5)}
-                            onMouseEnter={() => handleHover(5)}
-                            onMouseLeave={() => setHoverRating(rating)}
-                        >
-                            <i className='red-star star-rating' />
-                        </div>
-                    </div> */}
 
                 <textarea
                     className='textbox'

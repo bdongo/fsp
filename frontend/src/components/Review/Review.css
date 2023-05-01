@@ -22,6 +22,7 @@
     height: 300px;
     width: 500px;
     overflow-wrap: break-word;
+    border: 1px dotted blue;
 
 }
 #star-container {
@@ -29,5 +30,6 @@
 }
 
 #star-container > div {
-    margin-right: 5px;
+    /* margin-right: 5px; */
+    padding-right: 3px;
 }
