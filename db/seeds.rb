@@ -8,6 +8,10 @@
 
 require "open-uri"
 
+
+puts "destroying tables"
+
+ActiveStorage::Attachments.all.each { |attachment| attachment.purge}
 Review.delete_all
 User.delete_all
 BusinessPage.delete_all
