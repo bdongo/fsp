@@ -24,6 +24,7 @@ const Review = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [hoverStar, setHoverStar] = useState('blank-star star-rating')
     const [hoverRating, setHoverRating] = useState(0);
+    const [desc, setDesc] = useState('Select your rating')
     
 
     useEffect(() => {
@@ -50,16 +51,22 @@ const Review = () => {
     useEffect(()=> {
         if (hoverRating === 1) {
             setHoverStar('yellow-star star-rating')
+            setDesc('Not good')
         } else if (hoverRating === 2) {
             setHoverStar('yellow-orange-star star-rating')
+            setDesc("Could've been better")
         } else if (hoverRating === 3) {
             setHoverStar('orange-star star-rating')
+            setDesc("OK")
         } else if (hoverRating === 4) {
             setHoverStar('red-orange-star star-rating')
+            setDesc("Good")
         } else if (hoverRating === 5) {
             setHoverStar('red-star star-rating')
+            setDesc("Great")
         } else {
             setHoverStar('blank-star star-rating')
+            setDesc('Select your rating')
         }
     }, [hoverRating])
 
@@ -149,6 +156,8 @@ const Review = () => {
                     >
                         <i className={hoverRating === 5 ? hoverStar : 'blank-star star-rating'} />
                     </div>
+
+                    <div>{desc}</div>
                 </div>
 
                 <textarea
@@ -159,6 +168,10 @@ const Review = () => {
                     onChange={(e)=> setBody(e.target.value)}
                 />
 
+                <ul className="error-container">
+                    {errors.map(error => <li key={error}>{error}</li>)}
+                </ul>
+
             </div>
             <button 
                 className='red-button button'
@@ -166,9 +179,6 @@ const Review = () => {
             >
                 Post Review
             </button>
-            <ul className="error-container">
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
         </div>
         </>
     )
