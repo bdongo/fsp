@@ -12,6 +12,7 @@ import ReviewLanding from '../ReviewLanding'
 import slide1 from '../../assets/liho1.jpeg'
 import slide2 from '../../assets/tony.jpeg'
 import slide3 from '../../assets/unwin4.jpeg'
+import { useState } from 'react'
 
 const LandingPage = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,8 @@ const LandingPage = () => {
     const currentUser = useSelector(getCurrentUser);
     const businesses = useSelector(getAllBusinesses);
     const state = useSelector(showState);
+    const [slideImage, setSlideImage] = useState(0);
+    const [slideTransition, setSlideTransition] = useState(false);
 
     const shuffleDisplay = (array) => {
         const shuffledArray = [...array]; // Create a copy of the input array
@@ -45,11 +48,28 @@ const LandingPage = () => {
         document.title = `Yelp`;
     }, []);
 
+    const slides = [slide1, slide2, slide3]
+
+    useEffect(()=> {
+        const slideShow = setInterval(() => {
+            setSlideTransition(true);
+
+            setTimeout(() => {
+                setSlideImage((slideImage + 1) % slides.length);
+                setSlideTransition(false);
+            }, 250)
+        }, 7000)
+        return () => clearInterval(slideShow)
+    }, [slideImage])
+
     return (
         <div>
 
             <div id="image-container">
-            <img src={slide1}/>
+            <img 
+                src={slides[slideImage]}
+                className={`slideshow-image ${slideTransition ? 'hidden' : ''}`}
+            />
             </div>
            {showReviews &&
                 <ReviewLanding reviewDisplay={reviewDisplay} state={state}/>
