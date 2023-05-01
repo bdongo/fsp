@@ -87,9 +87,6 @@ const Business = () => {
 
     return (
         <div>
-           <div>
-                <NavBar></NavBar>
-           </div>
             <div id='photo-container'>
                 <div id='scroll-buttons' >
                     <button className="scroll-left" onClick={() => handleScroll(-350)}>Left</button>

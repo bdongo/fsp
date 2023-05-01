@@ -9,6 +9,9 @@ import { getUsers } from '../../store/users'
 import { getReviews } from '../../store/reviews'
 import BusinessDisplay from '../BusinessDisplay'
 import ReviewLanding from '../ReviewLanding'
+import slide1 from '../../assets/liho1.jpeg'
+import slide2 from '../../assets/tony.jpeg'
+import slide3 from '../../assets/unwin4.jpeg'
 
 const LandingPage = () => {
     const dispatch = useDispatch();
@@ -29,7 +32,7 @@ const LandingPage = () => {
         return shuffledArray;
     };
 
-    const businessDisplay = Array.from(new Set(shuffleDisplay(businesses))).slice(0, 9)
+    const businessDisplay = Array.from(new Set(shuffleDisplay(businesses)))
     const showBusiness = businesses.length !== 0;
     const reviewDisplay = Array.from(new Set(shuffleDisplay(reviews)))
     const showReviews = reviews.length !== 0;
@@ -46,9 +49,7 @@ const LandingPage = () => {
         <div>
 
             <div id="image-container">
-            <div>
-                <NavBar></NavBar>
-            </div>
+            <img src={slide1}/>
             </div>
            {showReviews &&
                 <ReviewLanding reviewDisplay={reviewDisplay} state={state}/>

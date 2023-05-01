@@ -6,6 +6,14 @@
     background-color: gray;
     z-index: 5;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    transition: all 0.7s;
+    transition-property: background-color, background-position, background-size, border-color;
+}
+#image-container > img {
+    width: 100%;
+
 }
 
 .landing-container {

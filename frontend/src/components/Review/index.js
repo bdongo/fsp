@@ -107,7 +107,6 @@ const Review = () => {
         {showLoginModal &&
             <LoginModal setShowLoginModal={setShowLoginModal}/>
         }
-        <NavBar></NavBar>
         <div className='review-container'>
             <h1>{biz?.name}</h1>
             <div id='review'>

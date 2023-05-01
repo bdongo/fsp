@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       {/* <h1>Hello from App</h1> */}
-      {/* <NavBar/> */}
+      <NavBar/>
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/login" component={LoginForm} />

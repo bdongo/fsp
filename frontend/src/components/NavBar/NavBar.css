@@ -1,5 +1,5 @@
 #header {
-    /* width: 100vw; */
+    width: 100vw;
     /* min-width: 700px; */
     height: 10vw;
     min-height: 70px;
@@ -17,8 +17,9 @@
     /* border: 1px solid purple; */
 }
 .fixed-top{
-    position: relative;
+    position: absolute;
     top: 0;
+    left: 0;
 }
 
 .border-bottom{
