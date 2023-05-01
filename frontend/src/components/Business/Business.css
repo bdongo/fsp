@@ -130,6 +130,10 @@
     width: 100%;
     border: 1px solid grey;
 }
+#location-left>#map > div {
+    height: 100%;
+    width: 100%;
+}
 
 #address-container {
     display: flex;

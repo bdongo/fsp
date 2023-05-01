@@ -7,6 +7,9 @@ import NavBar from '../NavBar';
 import BusinessReviews from '../BusinessReviews';
 import { getReviews } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
+import Map from '../Map';
+import { Wrapper } from "@googlemaps/react-wrapper";
+
 
 const Business = () => {
     const dispatch = useDispatch();
@@ -140,9 +143,10 @@ const Business = () => {
                         <div id='location-left'>
                             <h2>Location & Hours</h2>
                             <div id='map'>
-                                <map>
-
-                                </map>
+                                <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
+                                    <Map mapOptions={{ center: biz?.location }} />
+                                </Wrapper>
+                        
                             </div>
                             <div id='address-container'>
                                 <ul id='address'>
