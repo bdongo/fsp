@@ -109,3 +109,93 @@ h2 {
 button {
     cursor: pointer;
 }
+
+.big-rating {
+    background-image: url('./assets/stars.png');
+    background-repeat: no-repeat;
+    /* background-size: contain; */
+    width: 178px;
+    /* Adjust the width and height to match the size of the star image */
+    height: 32px;
+    display: inline-block;
+}
+
+.zero-stars-big {
+    background-position: 0 0;
+    /* Set the position to show only the top row of stars */
+}
+
+.one-half-stars-big {
+    background-position: 0 -32px;
+    /* Set the position to show only the top row of stars */
+}
+
+.one-star-big {
+    background-position: 0 -64px;
+    /* Set the position to show only the top row of stars */
+}
+
+.two-half-stars-big {
+    background-position: 0 -96px;
+    /* Set the position to show only the top row of stars */
+}
+
+.two-stars-big {
+    background-position: 0 -128px;
+    /* Set the position to show only the top row of stars */
+}
+
+.three-half-stars-big {
+    background-position: 0 -160px;
+    /* Set the position to show only the top row of stars */
+}
+
+.three-stars-big {
+    background-position: 0 -192px;
+    /* Set the position to show only the top row of stars */
+}
+
+.four-half-stars-big {
+    background-position: 0 -224px;
+    /* Set the position to show only the top row of stars */
+}
+
+.four-stars-big {
+    background-position: 0 -256px;
+    /* Set the position to show only the top row of stars */
+}
+
+.five-stars-big {
+    background-position: 0 -288px;
+    /* Set the position to show only the top row of stars */
+}
+
+.star-rating {
+    background-image: url('./assets/stars.png');
+    background-repeat: no-repeat;
+    /* background-size: contain; */
+    width: 32.5px;
+    /* Adjust the width and height to match the size of the star image */
+    height: 32px;
+    display: inline-block;
+}
+
+.red-stars {
+    background-position: 0 -288px;
+    /* Set the position to show only the top row of stars */
+}
+
+.orange-star {
+    background-position: 0 -256px;
+    /* Set the position to show only the top row of stars */
+}
+
+.yellow-orange-stars {
+    background-position: 0 -128px;
+    /* Set the position to show only the top row of stars */
+}
+
+.yellow-stars {
+    background-position: 0 -32px;
+    /* Set the position to show only the top row of stars */
+}
