@@ -15,7 +15,7 @@
     height: 300px;
     width: 500px;
     /* margin-left: 50px; */
-    /* border: 1px solid blue; */
+    border: 1px dotted blue;
 }
 
 #review > .textbox {
@@ -24,11 +24,6 @@
     overflow-wrap: break-word;
 
 }
-#review > input{
-    /* height: 300px;
-    /* width: 500px; */
-    /* padding-right: 300px;
-    padding-bottom: 200px; */
-    /* margin-left: 50px; */
-    border: 1px solid red;
+#star-container {
+    display: flex;
 }

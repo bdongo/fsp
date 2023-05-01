@@ -180,22 +180,31 @@ button {
     display: inline-block;
 }
 
-.red-stars {
+.red-star {
     background-position: 0 -288px;
     /* Set the position to show only the top row of stars */
 }
 
-.orange-star {
+.red-orange-star {
     background-position: 0 -256px;
     /* Set the position to show only the top row of stars */
 }
 
-.yellow-orange-stars {
+.orange-star {
+    background-position: 0 -192px;
+    /* Set the position to show only the top row of stars */
+}
+
+.yellow-orange-star {
     background-position: 0 -128px;
     /* Set the position to show only the top row of stars */
 }
 
-.yellow-stars {
+.yellow-star {
     background-position: 0 -32px;
     /* Set the position to show only the top row of stars */
+}
+
+.blank-star {
+    background-position: 0 0;
 }
