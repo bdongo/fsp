@@ -4,7 +4,8 @@
 set -o errexit
 
 npm run build
-bundle exec rake assets:clean
 bundle install
+bundle exec rake assets:precompile
+bundle exec rake assets:clean
 rails db:migrate
 rails db:seed
