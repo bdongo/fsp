@@ -57,7 +57,7 @@ const LandingPage = () => {
             setTimeout(() => {
                 setSlideImage((slideImage + 1) % slides.length);
                 setSlideTransition(false);
-            }, 250)
+            }, 275)
         }, 7000)
         return () => clearInterval(slideShow)
     }, [slideImage])
