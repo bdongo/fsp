@@ -118,6 +118,10 @@ button {
     /* Adjust the width and height to match the size of the star image */
     height: 32px;
     display: inline-block;
+    
+}
+.medium-rating {
+    transform: scale(0.65);
 }
 
 .zero-stars-big {
