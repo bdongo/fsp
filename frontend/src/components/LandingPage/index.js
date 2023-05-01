@@ -13,6 +13,7 @@ import slide1 from '../../assets/liho1.jpeg'
 import slide2 from '../../assets/tony.jpeg'
 import slide3 from '../../assets/unwin4.jpeg'
 import { useState } from 'react'
+import ImageSlides from '../ImageSlides'
 
 const LandingPage = () => {
     const dispatch = useDispatch();
@@ -66,10 +67,7 @@ const LandingPage = () => {
         <div>
 
             <div id="image-container">
-            <img 
-                src={slides[slideImage]}
-                className={`slideshow-image ${slideTransition ? 'hidden' : ''}`}
-            />
+                <ImageSlides/>
             </div>
            {showReviews &&
                 <ReviewLanding reviewDisplay={reviewDisplay} state={state}/>
