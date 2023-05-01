@@ -118,8 +118,10 @@ const Review = () => {
                     checked={rating === 5}
                 />
 
-                <input type='text-box' 
-                    placeholder='review goes here'
+                <textarea
+                    className='textbox'
+                    type='text-box' 
+                        placeholder= "I had an incredible experience at this place. The service was impeccable, and the food was absolutely amazing!"
                     value={body}
                     onChange={(e)=> setBody(e.target.value)}
                 />

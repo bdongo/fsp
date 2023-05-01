@@ -48,6 +48,8 @@ last_names = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller
   )
 end
 
+puts "users created"
+
 def attach_photos(biz, photo_url_arr) 
   photo_url_arr.each do |url|
     photo = URI.open(url)
@@ -59,6 +61,8 @@ def attach_photos(biz, photo_url_arr)
   end
 end
 
+puts "creating businesses"
+ 
 a = BusinessPage.create!({
     name: "McDonald's",
     hours: { 
@@ -900,6 +904,10 @@ x_arr = [
 ]  
 attach_photos(x, x_arr)
 
+puts "created businesses"
+
+puts "creating sample reviews"
+
 Review.create!(
   author_id: User.all.sample.id,
   business_id: BusinessPage.all.sample.id,
@@ -927,6 +935,8 @@ Review.create!(
   rating: 3,
   body: "My experience at this business was pretty average. The staff were friendly enough, but not particularly knowledgeable, and the products they sell are decent but not exceptional. If you're in the area and need something from this type of business, it's not a bad option, but I wouldn't go out of my way to shop here."
 )
+
+puts "done!"
 
 negative_reviews = [
   "Terrible experience! The food was horrible and the service was awful. Do not recommend!",

@@ -14,7 +14,9 @@
 class Review < ApplicationRecord
     validates :author_id, :business_id, :rating, :body,
         presence: true
-    validates :author_id, uniqueness: { scope: :business_id }
+    # validates :author_id, uniqueness: { scope: :business_id }, messages: ["You have already submitted a review for this business."]
+    validates :author_id, uniqueness: { scope: :business_id, message: "You have already submitted a review for this business." }
+
 
     has_many_attached :photos
     

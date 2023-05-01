@@ -84,7 +84,8 @@ time,
 mark,
 audio,
 input,
-video {
+video,
+textarea {
     margin: 0;
     padding: 0;
     border: 0;
