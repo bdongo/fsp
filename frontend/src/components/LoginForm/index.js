@@ -43,9 +43,6 @@ const LoginForm = () => {
 
     return (
         <div>
-            <div>
-                <NavBar/>
-            </div>
             <div id="form-container">
                 <div className="form">
                     <h2>{currentPath === '/login' ?

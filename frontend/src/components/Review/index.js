@@ -4,11 +4,11 @@ import './Review.css';
 import { useHistory, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBusiness, showBusiness } from '../../store/businessPages';
-import { createReview } from '../../store/reviews';
+import { createReview, updateReview } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
 import LoginModal from '../LoginModal';
 
-const Review = () => {
+const Review = ({bizInfo, reviewInfo, setShowEditModal}) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
@@ -25,7 +25,24 @@ const Review = () => {
     const [hoverStar, setHoverStar] = useState('blank-star star-rating')
     const [hoverRating, setHoverRating] = useState(0);
     const [desc, setDesc] = useState('Select your rating')
-    
+
+    useEffect(()=> {
+        if (bizInfo) {
+
+        }
+    }, [bizInfo])
+    console.log(reviewInfo, "in review")
+
+    useEffect(()=> {
+
+        if(reviewInfo) {
+            setBody(reviewInfo.body)
+            setRating(reviewInfo.rating)
+            setHoverRating(reviewInfo.rating)
+            setBusinessId(reviewInfo.businessId)
+        }
+
+    }, [reviewInfo])
 
     useEffect(() => {
         if (bizId) {
@@ -99,8 +116,32 @@ const Review = () => {
         }   
     }
 
-    console.log(hoverRating,"hover rating")
-    console.log(hoverStar, "hoverstar")
+    const updateHandler = (e) => {
+        e.preventDefault();
+
+        if (!rating) {
+            setErrors(["To submit your review, please select a star rating for this business."]);
+        } else if (!body) {
+            setErrors(["To submit your review, please explain your rating to others."]);
+        } else {
+            dispatch(updateReview({ id: reviewInfo.id, body, businessId, authorId, rating }))
+                .then(() => {
+                    setShowEditModal(false)
+                })
+                .catch(async (res) => {
+                    let data;
+                    try {
+                        // .clone() essentially allows you to read the response body twice
+                        data = await res.clone().json();
+                    } catch {
+                        data = await res.text(); // Will hit this case if, e.g., server is down
+                    }
+                    if (data?.errors) setErrors(data.errors);
+                    else if (data) setErrors([data]);
+                    else setErrors([res.statusText]);
+                });
+        }
+    }
 
     return (
         <>
@@ -108,7 +149,7 @@ const Review = () => {
             <LoginModal setShowLoginModal={setShowLoginModal}/>
         }
         <div className='review-container'>
-            <h1>{biz?.name}</h1>
+            <h1>{biz?.name || bizInfo?.name }</h1>
             <div id='review'>
                 <div id='star-container'>
                     <div
@@ -162,7 +203,7 @@ const Review = () => {
                 <textarea
                     className='textbox'
                     type='text-box' 
-                        placeholder= "I had an incredible experience at this place. The service was impeccable, and the food was absolutely amazing!"
+                    placeholder= "I had an incredible experience at this place. The service was impeccable, and the food was absolutely amazing!"
                     value={body}
                     onChange={(e)=> setBody(e.target.value)}
                 />
@@ -177,6 +218,13 @@ const Review = () => {
                 onClick={submitHandler}
             >
                 Post Review
+            </button>
+
+            <button
+                className='red-button button'
+                onClick={updateHandler}
+            >
+                Edit Review
             </button>
         </div>
         </>

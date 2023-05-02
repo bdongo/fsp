@@ -33,7 +33,7 @@ const Profile = ({currentUser}) => {
 
     return (
         <>
-            <div class="name-text" ref={dropDownRef} onClick={() => setOpen(!open)}>
+            <div className="name-text" ref={dropDownRef} onClick={() => setOpen(!open)}>
             <span className={open ? "name-text-tooltip clicked" : "name-text-tooltip"} >
                 {currentUser.fName} {currentUser.lName}
             </span>

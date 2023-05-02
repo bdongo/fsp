@@ -22,8 +22,7 @@ const LandingPage = () => {
     const currentUser = useSelector(getCurrentUser);
     const businesses = useSelector(getAllBusinesses);
     const state = useSelector(showState);
-    const [slideImage, setSlideImage] = useState(0);
-    const [slideTransition, setSlideTransition] = useState(false);
+
 
     const shuffleDisplay = (array) => {
         const shuffledArray = [...array]; // Create a copy of the input array
@@ -48,20 +47,6 @@ const LandingPage = () => {
     useEffect(() => {
         document.title = `Yelp`;
     }, []);
-
-    const slides = [slide1, slide2, slide3]
-
-    useEffect(()=> {
-        const slideShow = setInterval(() => {
-            setSlideTransition(true);
-
-            setTimeout(() => {
-                setSlideImage((slideImage + 1) % slides.length);
-                setSlideTransition(false);
-            }, 275)
-        }, 7000)
-        return () => clearInterval(slideShow)
-    }, [slideImage])
 
     return (
         <div>

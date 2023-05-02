@@ -9,6 +9,7 @@ import { getReviews } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
 import Map from '../Map';
 import { Wrapper } from "@googlemaps/react-wrapper";
+import EditModal from '../EditModal';
 
 
 const Business = () => {
@@ -20,13 +21,13 @@ const Business = () => {
     const currentUser = useSelector(getCurrentUser);
     const [_, users, __, ___] = state
     const [rating, setRating] = useState('zero-stars-big big-rating');
+    
 
     
     const showReviews = reviews.length !== 0
 
     useEffect(()=> {
         const ratingAverage = calculateRating()
-        console.log(ratingAverage)
         if (reviews.length === 0) {
             setRating('zero-stars-big big-rating');
         } else if (ratingAverage < 1.25 ) {
@@ -85,10 +86,14 @@ const Business = () => {
     const handleScroll = (scrollOffset) => {
         const newScrollPosition = scrollPosition + scrollOffset;
         setScrollPosition(newScrollPosition);
+        if (scrollPosition <= 0) {
+            setScrollPosition(0);
+        } 
         scrollContainerRef.current.scrollLeft = newScrollPosition;
     }
 
     return (
+        <>
         <div>
             <div id='photo-container'>
                 <div id='scroll-buttons' >
@@ -96,16 +101,16 @@ const Business = () => {
                     <button className="scroll-right" onClick={() => handleScroll(350)}>Right</button>
                 </div>
                 <div id='scroll-container' ref={scrollContainerRef}>
-                        {biz?.photos?.map((photo) => (
-                            <img src={photo} />
+                        {biz?.photos?.map((photo, idx) => (
+                            <img key={idx} src={photo} />
                         ))}
-                        {biz?.photos?.map((photo) => (
-                            <img src={photo} />
+                        {biz?.photos?.map((photo, idx) => (
+                            <img key={idx} src={photo} />
                         ))}
                  </div>
                     <div id="top-info">
                         <h1>{biz?.name}</h1>
-                        <div class={rating}></div>
+                        <div className={rating}></div>
                         <ul>
                             <li>
                                 Unclaimed
@@ -248,7 +253,7 @@ const Business = () => {
                         <div id='rating-visualizer'>
                             <div>
                                 <h2>Overall rating</h2>
-                                <div class={rating}></div>
+                                <div className={rating}></div>
                                 <div>
                                     
                                 </div>
@@ -274,7 +279,11 @@ const Business = () => {
                         
                     </div>
                     {showReviews &&
-                        <BusinessReviews currentUser={currentUser} reviews={reviews} users={users} />
+                        <BusinessReviews 
+                            currentUser={currentUser} 
+                            reviews={reviews} users={users} 
+                            biz={biz}
+                            />
                     }
                 </div>
                 <div id='right-scroll'>   
@@ -283,6 +292,7 @@ const Business = () => {
 
            </div>
         </div>
+     </>
     )
 }
 

@@ -22,7 +22,7 @@ const NavBar = () => {
             className={currentPath === '/' ? 'fixed-top' : 'border-bottom'}>
             <div className="logo-container">
                 <Link to="/">
-                    <img class="logo" 
+                    <img className="logo" 
                         src={currentPath === '/' ? dLogo : classicLogo } alt="logo" />
                 </Link>    
             </div>
