@@ -143,3 +143,9 @@ table {
 .link:visited {
     color: #0073bb;
 }
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}

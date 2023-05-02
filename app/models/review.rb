@@ -6,7 +6,6 @@
 #  author_id   :bigint           not null
 #  business_id :bigint           not null
 #  rating      :integer          not null
-#  pricing     :integer          not null
 #  body        :text             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

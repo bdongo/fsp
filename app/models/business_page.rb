@@ -12,6 +12,8 @@
 #  location    :json             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  pricing     :integer          not null
+#  website     :string
 #
 class BusinessPage < ApplicationRecord
     validates :name, :hours, :phone_num, :address, :postal_code, :location,
@@ -27,6 +29,15 @@ class BusinessPage < ApplicationRecord
     has_many :reviewers,
     through: :reviews,
     source: :author
+
+    has_many :business_tags,
+        foreign_key: :business_id,
+        class_name: :BusinessTag,
+        dependent: :destroy
+
+    has_many :tags,
+        through: :business_tags,
+        source: :tag
 
     
 end
