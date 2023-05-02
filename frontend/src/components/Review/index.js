@@ -25,6 +25,7 @@ const Review = ({bizInfo, reviewInfo, setShowEditModal}) => {
     const [hoverStar, setHoverStar] = useState('blank-star star-rating')
     const [hoverRating, setHoverRating] = useState(0);
     const [desc, setDesc] = useState('Select your rating')
+    const currentPath = location.pathname;
 
     useEffect(()=> {
         if (bizInfo) {
@@ -213,19 +214,22 @@ const Review = ({bizInfo, reviewInfo, setShowEditModal}) => {
                 </ul>
 
             </div>
+            {currentPath.startsWith('/writeareview') &&
             <button 
                 className='red-button button'
                 onClick={submitHandler}
             >
                 Post Review
             </button>
-
+            }
+            {currentPath.startsWith('/biz/') &&
             <button
                 className='red-button button'
                 onClick={updateHandler}
             >
                 Edit Review
             </button>
+            }
         </div>
         </>
     )

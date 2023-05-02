@@ -41,10 +41,6 @@ const BusinessReviews = ({reviews, users, currentUser, biz}) => {
         setShowEditModal(true)
     }
 
-    // useEffect(()=> {
-
-    // }, [showEditModal, reviewInfo])
-
     console.log(reviewInfo, "ri")
     console.log(showEditModal, "show?")
     
