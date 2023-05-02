@@ -28,8 +28,9 @@ class Api::ReviewsController < ApplicationController
     def show
         id = params[:id]
         @review = Review.find_by(id: id)
+        @biz = BusinessPage.find_by(id: @review.business_id)
         if @review
-            render json: { errors: ['successful'] }
+            render '/api/business_pages/show'
         else
             render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
         end
@@ -38,8 +39,9 @@ class Api::ReviewsController < ApplicationController
     def update 
         id = params[:id]
         @review = Review.find_by(id: id)
+        @biz = BusinessPage.find_by(id: @review.business_id)
         if @review&.update(review_params)
-            render json: { errors: ['successful'] }
+            render '/api/business_pages/show'
         else
             render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
         end
