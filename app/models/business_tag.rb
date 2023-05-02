@@ -1,0 +1,2 @@
+class BusinessTag < ApplicationRecord
+end

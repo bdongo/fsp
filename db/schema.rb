@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_27_205245) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_02_191540) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_205245) do
     t.string "website"
   end
 
+  create_table "business_tags", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "business_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_business_tags_on_business_id"
+    t.index ["tag_id"], name: "index_business_tags_on_tag_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.bigint "author_id", null: false
     t.bigint "business_id", null: false
@@ -66,6 +75,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_205245) do
     t.index ["author_id", "business_id"], name: "index_reviews_on_author_id_and_business_id", unique: true
     t.index ["author_id"], name: "index_reviews_on_author_id"
     t.index ["business_id"], name: "index_reviews_on_business_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_name"], name: "index_tags_on_tag_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,6 +100,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_205245) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "business_tags", "business_pages", column: "business_id"
+  add_foreign_key "business_tags", "tags"
   add_foreign_key "reviews", "business_pages", column: "business_id"
   add_foreign_key "reviews", "users", column: "author_id"
 end
