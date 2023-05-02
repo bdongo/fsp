@@ -32,7 +32,6 @@ const Review = ({bizInfo, reviewInfo, setShowEditModal}) => {
 
         }
     }, [bizInfo])
-    console.log(reviewInfo, "in review")
 
     useEffect(()=> {
 

@@ -3,8 +3,6 @@ import './EditModal.css';
 
 const EditModal = ({setShowEditModal, bizInfo, reviewInfo}) => {
 
-    console.log("im here")
-
     return (
         <div className='edit=modal-background'
         //  onClick={setShowEditModal(false)}

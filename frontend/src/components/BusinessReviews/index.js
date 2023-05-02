@@ -35,14 +35,9 @@ const BusinessReviews = ({reviews, users, currentUser, biz}) => {
     } 
 
     const handleShowEdit = (idx)=> {
-        
-        console.log(reviews[idx], "in show edit")
         setReviewInfo(reviews[idx])
         setShowEditModal(true)
     }
-
-    console.log(reviewInfo, "ri")
-    console.log(showEditModal, "show?")
     
     return (
         <ul className='businessreview-container'>
