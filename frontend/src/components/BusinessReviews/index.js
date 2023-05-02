@@ -36,11 +36,11 @@ const BusinessReviews = ({reviews, users, currentUser, biz}) => {
 
     const handleShowEdit = (idx)=> {
         setReviewInfo(reviews[idx])
-        setShowEditModal(true)
+        setShowEditModal(!showEditModal)
     }
     
     return (
-        <ul className='businessreview-container'>
+        <>
             {showEditModal &&
                 <EditModal 
                     setShowEditModal={setShowEditModal} 
@@ -48,8 +48,11 @@ const BusinessReviews = ({reviews, users, currentUser, biz}) => {
                     reviewInfo={reviewInfo}
                 />
             }
+        <ul className='businessreview-container'>
             {reviews?.map((review, idx) =>
-                <li key={idx}>
+                <li key={idx} 
+                    onClick={e => e.stopPropagation()}
+                >
                     <h2>{users[review.authorId].fName} {lastInitial(users[review.authorId].lName)}</h2>
 
                     <div className={handleRating(review.rating)} />
@@ -65,13 +68,11 @@ const BusinessReviews = ({reviews, users, currentUser, biz}) => {
                                 onClick={() => handleDelete(review?.id)}
                             >Delete review</button>
                         </>
-                        
-                       
-
                     }
                 </li>
             )}
         </ul>
+        </>
     )
 }
 

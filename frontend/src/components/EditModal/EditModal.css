@@ -5,7 +5,7 @@
     height: 100vh;
     width: 100vw;
     background-color: rgba(25, 25, 25, .5);
-    z-index: 3;
+    z-index: 5;
 }
 
 .edit-modal {
@@ -13,11 +13,47 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 4;
+  z-index: 6;
   height: 700px;
-  width: 800px;
+  width: 830px;
   background-color: #fff;
   border-radius: 6px;
   border: 1px solid rgb(195, 195, 195);
+}
+
+.close-button {
+  color: rgb(195, 195, 195);
+  font-size: 50px;
+  content: "\00d7";
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  transition: ease-out 0.3s;
+  cursor: pointer;
+  
+}
+
+.close-button:hover:before,
+.close-button:hover:after {
+  background-color: #333;
+}
+
+.close-button:before,
+.close-button:after {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 3px;
+  background-color: rgb(195, 195, 195);
+  border-radius: 4px;
+  transition: ease-out 0.3s;
+}
+
+.close-button:before {
+  transform: rotate(45deg);
+}
+
+.close-button:after {
+  transform: rotate(-45deg);
 }
 
