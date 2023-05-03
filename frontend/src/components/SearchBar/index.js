@@ -11,6 +11,7 @@ const SearchBar = () => {
     const [query ,setQuery ] = useState();
     const queryRef = useRef("");
     const [businesses, setBusinesses] = useState(null);
+    const [placeholder, setPlaceholder] = useState('Search for names or tags')
     const searchbarRef = useRef(null);
     const searchResultsRef = useRef(null);
     
@@ -39,10 +40,19 @@ const SearchBar = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const targetUrl = `/search?query=${query}`;
-        // navigate to the review page
-        window.location.href = targetUrl;
-    }
+        if (query) {
+            const targetUrl = `/search?query=${query}`;
+            // navigate to the review page
+            window.location.href = targetUrl;
+        } else {
+            setPlaceholder('Type something in to search first')
+            const delayPLaceholder = setTimeout(() => {
+                setPlaceholder('Search for names or tags')
+            }, 3000);
+
+            return () => clearTimeout(delayPLaceholder);
+        }
+        }
 
     const handleClickOutside = (e) => {
         if (
@@ -87,7 +97,7 @@ const SearchBar = () => {
             <form>
    
                 <input 
-                    placeholder='Search for names or tags'
+                    placeholder={placeholder}
                     onChange={(e) => handleTyping(e)}
                 />
                 <div id='divider'/>
@@ -96,7 +106,7 @@ const SearchBar = () => {
             <button 
                 className='search-button'
                 onClick={e => handleSubmit(e)}
-            >Q</button>
+            ></button>
         </div>   
     )
 }
