@@ -29,7 +29,7 @@ const NavBar = () => {
            
             {needSearchBar &&
                 <>
-                <div >
+                <div id='navbar-searchbar'>
                         <SearchBar />
                 </div>
                 <div >

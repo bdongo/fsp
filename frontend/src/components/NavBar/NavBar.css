@@ -22,6 +22,11 @@
     left: 0;
 }
 
+#navbar-searchbar {
+    width: 52vw;
+    height: 48px;
+}
+
 .border-bottom{
     border-bottom: 1px solid #ebebeb;
 }
