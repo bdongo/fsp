@@ -1,11 +1,10 @@
 import Review from '../Review';
 import './EditModal.css';
 
-const EditModal = ({setShowEditModal, bizInfo, reviewInfo}) => {
+const EditModal = ({setShowEditModal, reviewInfo}) => {
 
     return (
         <div className='edit-modal-background'
-        //  onClick={setShowEditModal(false)}
          >
             <div className='edit-modal' onClick={e => e.stopPropagation()}>
                 <div className='close-button'
@@ -13,7 +12,6 @@ const EditModal = ({setShowEditModal, bizInfo, reviewInfo}) => {
                 ></div>
                 <div id="form-modal-container">
                     <Review
-                        bizInfo={bizInfo}
                         reviewInfo={reviewInfo}
                         setShowEditModal={setShowEditModal}
                     />

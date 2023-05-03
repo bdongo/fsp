@@ -16,7 +16,7 @@
 #  website     :string
 #
 class BusinessPage < ApplicationRecord
-    validates :name, :hours, :phone_num, :address, :postal_code, :location,
+    validates :name, :hours, :phone_num, :address, :postal_code, :location, :pricing,
         presence: true
 
     has_many_attached :photos
@@ -42,7 +42,7 @@ class BusinessPage < ApplicationRecord
 
     def average_rating 
 
-        sum = 0
+        sum = 0.0
         self.reviews.each do |review|
             sum += review.rating
         end

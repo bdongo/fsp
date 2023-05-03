@@ -5,7 +5,7 @@ import { useState } from 'react';
 import EditModal from '../EditModal';
 import { useEffect } from 'react';
 
-const BusinessReviews = ({reviews, users, currentUser, biz}) => {
+const BusinessReviews = ({reviews, currentUser, biz}) => {
     const dispatch = useDispatch();
     const [reviewInfo, setReviewInfo] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
@@ -44,7 +44,6 @@ const BusinessReviews = ({reviews, users, currentUser, biz}) => {
             {showEditModal &&
                 <EditModal 
                     setShowEditModal={setShowEditModal} 
-                    bizInfo={biz} 
                     reviewInfo={reviewInfo}
                 />
             }
@@ -53,7 +52,7 @@ const BusinessReviews = ({reviews, users, currentUser, biz}) => {
                 <li key={idx} 
                     onClick={e => e.stopPropagation()}
                 >
-                    <h2>{users[review.authorId].fName} {lastInitial(users[review.authorId].lName)}</h2>
+                    <h2>{review.authorFName} {lastInitial(review.authorLName)}</h2>
 
                     <div className={handleRating(review.rating)} />
   

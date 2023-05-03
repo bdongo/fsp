@@ -8,7 +8,7 @@ import { createReview, updateReview } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
 import LoginModal from '../LoginModal';
 
-const Review = ({bizInfo, reviewInfo, setShowEditModal}) => {
+const Review = ({reviewInfo, setShowEditModal}) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
@@ -26,12 +26,6 @@ const Review = ({bizInfo, reviewInfo, setShowEditModal}) => {
     const [hoverRating, setHoverRating] = useState(0);
     const [desc, setDesc] = useState('Select your rating')
     const currentPath = location.pathname;
-
-    useEffect(()=> {
-        if (bizInfo) {
-
-        }
-    }, [bizInfo])
 
     useEffect(()=> {
 
@@ -149,7 +143,7 @@ const Review = ({bizInfo, reviewInfo, setShowEditModal}) => {
             <LoginModal setShowLoginModal={setShowLoginModal}/>
         }
         <div className='review-container'>
-            <h1>{biz?.name || bizInfo?.name }</h1>
+            <h1>{biz?.name || reviewInfo?.businessName }</h1>
             <div id='review'>
                 <div id='star-container'>
                     <div

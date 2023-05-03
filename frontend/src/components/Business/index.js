@@ -17,17 +17,23 @@ const Business = () => {
     const {bizId} = useParams();
     const biz = useSelector(getBusiness(bizId));
     const reviews = useSelector(getReviews);
-    const state = useSelector(showState);
     const currentUser = useSelector(getCurrentUser);
-    const [_, users, __, ___] = state
     const [rating, setRating] = useState('zero-stars-big big-rating');
     
 
     
     const showReviews = reviews.length !== 0
 
+    const pricingMap = {
+        1: '$',
+        2: '$$',
+        3: '$$$',
+        4: '$$$$'
+    };
+
     useEffect(()=> {
-        const ratingAverage = calculateRating()
+        // const ratingAverage = calculateRating()
+        const ratingAverage = biz?.averageRating
         if (reviews.length === 0) {
             setRating('zero-stars-big big-rating');
         } else if (ratingAverage < 1.25 ) {
@@ -47,7 +53,7 @@ const Business = () => {
         } else if (ratingAverage < 5 ){
             setRating('five-stars-big big-rating');
         }
-    }, [reviews])
+    }, [biz])
 
     const calculateRating = () => {
         let sum = 0;
@@ -116,10 +122,20 @@ const Business = () => {
                                 Unclaimed
                             </li>
                             <li>
-                                $$
+                                {pricingMap[biz?.pricing]}
                             </li>
                             <li>
-                                tags
+                                {biz?.tags?.map((tag, index) => {
+                                    if (biz.tags.length === 1) {
+                                        return tag;
+                                    } else {
+                                        if (index === 0) {
+                                            return tag;
+                                        } else {
+                                            return `, ${tag}`;
+                                        }
+                                    }
+                                })}
                             </li>
                         </ul>
                         <ul>
@@ -129,9 +145,6 @@ const Business = () => {
                             <li className='hours'>
                                 Hours updated 2 months ago
                             </li>
-                           
-                            <button>See Hours</button>
-                            
                         </ul>
                     </div>
                    
@@ -281,8 +294,7 @@ const Business = () => {
                     {showReviews &&
                         <BusinessReviews 
                             currentUser={currentUser} 
-                            reviews={reviews} users={users} 
-                            biz={biz}
+                            reviews={reviews} 
                             />
                     }
                 </div>
