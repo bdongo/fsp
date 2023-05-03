@@ -5,7 +5,7 @@ const AuthButtons = () => {
     const location = useLocation();
     const currentPath = location.pathname;
 
-    const needGrayButton = currentPath === '/writeareview' || currentPath.startsWith('/biz/')
+    const needGrayButton = currentPath === '/writeareview' || currentPath.startsWith('/biz/') || currentPath.startsWith('/search');
 
     const home = currentPath === '/'
 

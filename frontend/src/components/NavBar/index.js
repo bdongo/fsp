@@ -15,7 +15,9 @@ const NavBar = () => {
     
     const showProfile = currentUser
 
-    const needSearchBar = currentPath === '/' || currentPath.startsWith('/biz/');
+    const needSearchBar = currentPath === '/' || currentPath.startsWith('/biz/') || currentPath.startsWith('/search');
+
+    const needDarkText = currentPath.startsWith('/search')
     
     return (
         <header id="header" 
@@ -33,7 +35,8 @@ const NavBar = () => {
                         <SearchBar />
                 </div>
                 <div >
-                    <Link className='nav-sub-header' to="/writeareview">Write a Review</Link>
+                    <Link className={needDarkText ? 'nav-sub-header dark-text' : 'nav-sub-header'}
+                     to="/writeareview">Write a Review</Link>
                 </div>
                 </>
             }
