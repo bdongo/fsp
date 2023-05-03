@@ -39,4 +39,15 @@ class BusinessPage < ApplicationRecord
         through: :business_tags,
         source: :tag
 
+
+    def average_rating 
+
+        sum = 0
+        self.reviews.each do |review|
+            sum += review.rating
+        end
+        average = sum / self.reviews.length
+        average
+    end
+
 end
