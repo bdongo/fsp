@@ -17,6 +17,26 @@ const SearchPage = () => {
         dispatch(searchBusinesses(query))
     }, [query])
 
+    const handleRating = (ratingAverage) => {
+        if (ratingAverage < 1.25) {
+            return 'one-star-big big-rating';
+        } else if (ratingAverage < 1.875) {
+            return 'one-half-stars-big big-rating';
+        } else if (ratingAverage < 2.25) {
+            return 'two-stars-big big-rating';
+        } else if (ratingAverage < 2.875) {
+            return 'two-half-stars-big big-rating';
+        } else if (ratingAverage < 3.25) {
+            return 'three-stars-big big-rating';
+        } else if (ratingAverage < 3.875) {
+            return 'three-half-stars-big big-rating';
+        } else if (ratingAverage < 4.3) {
+            return 'four-stars-big big-rating';
+        } else if (ratingAverage < 5) {
+            return 'five-stars-big big-rating';
+        }
+    }
+
     const teaserText = (text) => {
 
         let result = text.split(' ')
@@ -43,7 +63,7 @@ const SearchPage = () => {
                                 <img src={business.photos[0]} />
                                 <div>
                                     <h2>{idx + 1}. {business.name}</h2>
-                                    <h2>*****</h2>
+                                    <div className={`${handleRating(business.averageRating)}`} />
                                     <p>{business.address.street}</p>
                                     
                                     <p>{business.about ? teaserText(business.about) : null} </p>
