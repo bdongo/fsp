@@ -45,6 +45,16 @@ export const indexBusiness = () => async (dispatch) => {
     }
 }
 
+export const searchBusinesses = (query) => async (dispatch) => {
+    const res = await csrfFetch(`/api/business_pages?query=${query}`)
+    console.log(query)
+    if (res.ok) {
+        const businessPages = await res.json()
+        dispatch(receiveAllBusiness(businessPages))
+        return res
+    }
+}
+
 const businessPagesReducer = (state = {}, action) => {
     const newState = {...state}
 

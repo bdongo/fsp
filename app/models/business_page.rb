@@ -27,8 +27,8 @@ class BusinessPage < ApplicationRecord
         dependent: :destroy
 
     has_many :reviewers,
-    through: :reviews,
-    source: :author
+        through: :reviews,
+        source: :author
 
     has_many :business_tags,
         foreign_key: :business_id,
@@ -39,5 +39,4 @@ class BusinessPage < ApplicationRecord
         through: :business_tags,
         source: :tag
 
-    
 end

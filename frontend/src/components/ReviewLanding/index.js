@@ -42,12 +42,12 @@ const ReviewLanding = ({reviewDisplay, state}) => {
             <ul>
                 {reviewDisplay?.slice(0, 3).map((review, idx) =>
                     <li key={idx}> 
-                        <h3>{users[review.authorId].fName} {lastInitial(users[review.authorId].lName)}</h3>
+                        <h3>{users[review.authorId]?.fName} {lastInitial(users[review.authorId]?.lName)}</h3>
                         <p>Wrote a review</p>
                         <Link className="link" to={`/biz/${review.businessId}`}>
                             <div>
                                 <h3>
-                                    {businesses[review.businessId].name}
+                                    {businesses[review.businessId]?.name}
                                 </h3>
                             </div>
                         </Link>
@@ -60,12 +60,12 @@ const ReviewLanding = ({reviewDisplay, state}) => {
             <ul>
                 {reviewDisplay?.slice(3, 6).map((review, idx) =>
                     <li key={idx}>
-                        <h3>{users[review.authorId].fName} {lastInitial(users[review.authorId].lName)}</h3>
+                        <h3>{users[review.authorId]?.fName} {lastInitial(users[review.authorId]?.lName)}</h3>
                         <p>Wrote a review</p>
                         <Link className="link" to={`/biz/${review.businessId}`}>
                             <div>
                                 <h3>
-                                    {businesses[review.businessId].name}
+                                    {businesses[review.businessId]?.name}
                                 </h3>
                             </div>
                         </Link>
@@ -78,12 +78,12 @@ const ReviewLanding = ({reviewDisplay, state}) => {
             <ul>
                 {reviewDisplay?.slice(6, 9).map((review, idx) =>
                     <li key={idx}>
-                        <h3>{users[review.authorId].fName} {lastInitial(users[review.authorId].lName)}</h3>
+                        <h3>{users[review.authorId]?.fName} {lastInitial(users[review.authorId]?.lName)}</h3>
                         <p>Wrote a review</p>
                         <Link className="link" to={`/biz/${review.businessId}`}>
                             <div>
                                 <h3>
-                                    {businesses[review.businessId].name}
+                                    {businesses[review.businessId]?.name}
                                 </h3>
                             </div>
                         </Link>

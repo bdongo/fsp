@@ -10,9 +10,21 @@ class Api::BusinessPagesController < ApplicationController
     end
 
     def index 
-        @bizs = BusinessPage.all
-        @users = User.all
-        @reviews = Review.all
-        render :index
+        query = params[:query]
+        
+        if query 
+            @bizs = BusinessPage.joins(:tags)
+                        .where("name ILIKE ? OR tags.tag_name ILIKE ?", "%#{query}%", "%#{query}%")
+            @users = User.all
+            @reviews = Review.all
+            render :index
+        else
+            @bizs = BusinessPage.all
+            @users = User.all
+            @reviews = Review.all
+            render :index
+        end
     end
+
+
 end
