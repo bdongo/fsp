@@ -11,10 +11,12 @@ require "open-uri"
 
 puts "destroying tables"
 
-
+BusinessTag.destroy_all
+Tag.destroy_all
 Review.destroy_all
 User.destroy_all
 BusinessPage.destroy_all
+
 
 
 
