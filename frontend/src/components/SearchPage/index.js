@@ -17,6 +17,14 @@ const SearchPage = () => {
         dispatch(searchBusinesses(query))
     }, [query])
 
+    useEffect(() => {
+        if (query) {
+            document.title = `Yelp - ${query}`
+        } else {
+            document.title = `Yelp - Search`;
+        }
+    }, [query]);
+
     useEffect(()=> {
 
     }, [businesses])
@@ -67,22 +75,25 @@ const SearchPage = () => {
         <div id='searchpage' >
             {businesses && 
                 <ul>
-                    <h2>All "{query}" results in San Francisco, California</h2>
+                    <h2 className='search-welcome'>All "{query}" results in San Francisco, California</h2>
                     {businesses?.map((business, idx) => ( 
                         <li key={idx}>
                             <Link className="search-page-item" to={`/biz/${business.id}`}>
                                 <img src={business.photos[0]} />
-                                <div>
+                                <div className='info-container'>
                                     <h2>{idx + 1}. {business.name}</h2>
                                     <div className={`${handleRating(business.averageRating)}`} />
-                                    <ul>
-                                        {business?.tags.map(tag =>
-                                            <Link to={`/search?query=${tag}`} >{tag}</Link>
+                                    <div className='row-three'>
+                                        {business?.tags.map((tag, idx) =>
+                                            <Link key={idx} 
+                                                className='item-tags' 
+                                                to={`/search?query=${tag}`}
+                                                >{tag}</Link>
                                         )}
-                                    </ul>
-                                    <div>
-                                        <p>{pricingMap[business?.pricing]}</p>
-                                        <p>{business.address.street}</p>
+                                        <ul>
+                                            <li>{pricingMap[business?.pricing]}</li>
+                                            <li>{business.address.street}</li>
+                                        </ul>
                                     </div>
                                     
                                     <p>{business.about ? teaserText(business.about) : null} </p>

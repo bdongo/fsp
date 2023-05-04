@@ -87,7 +87,7 @@ const LandingPage = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/search?query=fast">
+                        <Link to="/search?query=fast%20food">
                         <h2 className='icon-title'>
                             Fast Food
                         </h2> 
