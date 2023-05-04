@@ -1,0 +1,19 @@
+.tooltip-container {
+    height: 200px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tooltip-container>img {
+    width: 125px;
+    height: 125px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.tooltip-container > h1 {
+    font-size: 14px;
+}

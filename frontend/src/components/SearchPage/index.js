@@ -17,6 +17,10 @@ const SearchPage = () => {
         dispatch(searchBusinesses(query))
     }, [query])
 
+    useEffect(()=> {
+
+    }, [businesses])
+
     const handleRating = (ratingAverage) => {
         if (ratingAverage < 1.25) {
             return 'one-star-big big-rating';
@@ -51,6 +55,13 @@ const SearchPage = () => {
     useEffect(()=> {
         document.getElementById('header').classList.add("sticky")
     }, [])
+    
+    const pricingMap = {
+        1: '$',
+        2: '$$',
+        3: '$$$',
+        4: '$$$$'
+    };
 
     return(
         <div id='searchpage' >
@@ -64,7 +75,15 @@ const SearchPage = () => {
                                 <div>
                                     <h2>{idx + 1}. {business.name}</h2>
                                     <div className={`${handleRating(business.averageRating)}`} />
-                                    <p>{business.address.street}</p>
+                                    <ul>
+                                        {business?.tags.map(tag =>
+                                            <Link to={`/search?query=${tag}`} >{tag}</Link>
+                                        )}
+                                    </ul>
+                                    <div>
+                                        <p>{pricingMap[business?.pricing]}</p>
+                                        <p>{business.address.street}</p>
+                                    </div>
                                     
                                     <p>{business.about ? teaserText(business.about) : null} </p>
                                 </div>
@@ -74,12 +93,10 @@ const SearchPage = () => {
                 </ul>
             }
             <div id='search-map'>
-                <Wrapper>
-                    <Map mapOptions={{
-                        center: {
-                            lat: 37.773972,
-                            lng: -122.431297
-                        }}} />
+                <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
+                    <Map
+                        handleRating={handleRating}
+                        businesses={businesses} />
                 </Wrapper>
 
             </div>
