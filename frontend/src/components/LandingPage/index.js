@@ -66,28 +66,28 @@ const LandingPage = () => {
                 </div>
                 <ul>
                     <li>
-                        <Link to="/search?query=american(new)">
+                        <Link className="link icon-container" to="/search?query=american(new)">
                         <h2 className='icon-title'>
                             American(New)
                         </h2>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/search?query=wine">
+                        <Link className="link icon-container" to="/search?query=wine%20bar">
                         <h2 className='icon-title'>
                             Wine Bar
                         </h2> 
                         </Link>
                     </li>
                     <li>
-                        <Link to="/search?query=pizza">
+                        <Link className="link icon-container" to="/search?query=pizza">
                         <h2 className='icon-title'>
                             Pizza
                         </h2> 
                         </Link>
                     </li>
                     <li>
-                        <Link to="/search?query=fast%20food">
+                        <Link className="link icon-container" to="/search?query=fast%20food">
                         <h2 className='icon-title'>
                             Fast Food
                         </h2> 
