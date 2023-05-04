@@ -204,13 +204,15 @@
     align-items: center;
     border-bottom: 1px solid rgb(218, 218, 218);
 }
+#rating-visualizer >div > h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
 
 #rating-visualizer > div {
     width: 30%;
-    font-size: 100px;
-    font-weight: bold;
-    color: grey;
-    
 }
 
 #rating-visualizer > ul {
@@ -232,4 +234,71 @@
     border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
+}
+
+#rating-visualizer>ul>li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ratings-bar{
+    margin-top: 3px;
+    margin-left: 25px;
+    width: 450px;
+    height: 10px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+}
+
+.ratings-bar > div {
+        /* box-sizing: border-box; */
+    display: table-cell;
+    vertical-align: top;
+    margin-top: 3px;
+    margin-left: 25px;
+    /* width: 450px; */
+    /* width: 30%; */
+    height: 10px;
+    /* background-color: red; */
+    border-radius: 5px;
+}
+
+#five-bar {
+    background-color: rgb(251, 80, 60);
+    /* width: 150px; */
+ 
+}
+
+#four-bar {
+    background-color: rgb(255, 100, 61);
+}
+
+#three-bar {
+    background-color: rgb(255, 135, 66);
+}
+
+#two-bar {
+    background-color: rgb(255, 173, 72);
+}
+
+#one-bar {
+    background-color: rgb(255, 204, 75);
+}
+
+.button-left {
+    margin-left: 5px;
+    border: none;
+    background-color: #e0e0e046;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+}
+
+.button-right {
+    margin-right: 5px;
+    border: none;
+    background-color: #e0e0e046;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
 }

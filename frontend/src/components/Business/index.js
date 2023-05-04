@@ -98,13 +98,46 @@ const Business = () => {
         scrollContainerRef.current.scrollLeft = newScrollPosition;
     }
 
+    const openGoogleMaps = () => {
+        
+        var address = `${biz?.address.street} ${biz?.address.city}, ${biz?.address.state}, ${biz?.postalCode}`;
+
+        var url = "https://www.google.com/maps/search/" + encodeURIComponent(address);
+
+        window.open(url, '_blank');
+    }
+    useEffect(()=> {
+        const count = reviews.reduce((acc, { rating }) => {
+            acc[rating] = (acc[rating] || 0) + 1;
+            return acc;
+        }, {});
+        const largestNumber = Math.max(...Object.values(count));
+
+        const fiveStars = (count["5"] / largestNumber) * 450
+        document.getElementById("five-bar").style.width = `${fiveStars}px`;
+
+        const fourStars = (count["4"] / largestNumber) * 450
+        document.getElementById("four-bar").style.width = `${fourStars}px`;
+
+        const threeStars = (count["3"] / largestNumber) * 450
+        document.getElementById("three-bar").style.width = `${threeStars}px`;
+
+        const twoStars = (count["2"] / largestNumber) * 450
+        document.getElementById("two-bar").style.width = `${twoStars}px`;
+
+        const oneStars = (count["1"] / largestNumber) * 450
+        document.getElementById("one-bar").style.width = `${oneStars}px`;
+
+    }, [reviews])
+
+    
     return (
         <>
         <div>
             <div id='photo-container'>
                 <div id='scroll-buttons' >
-                    <button className="scroll-left" onClick={() => handleScroll(-350)}>Left</button>
-                    <button className="scroll-right" onClick={() => handleScroll(350)}>Right</button>
+                    <button className="button-left" onClick={() => handleScroll(-350)}>{"<"}</button>
+                    <button className="button-right" onClick={() => handleScroll(350)}>{">"}</button>
                 </div>
                 <div id='scroll-container' ref={scrollContainerRef}>
                         {biz?.photos?.map((photo, idx) => (
@@ -153,9 +186,7 @@ const Business = () => {
                 <div id='left-scroll'>
                     <div id="action-items">
                         <button className='red-button' onClick={handleReviewClick}>Write a Review</button>
-                        <button>Add photo</button>
-                        <button>Share</button>
-                        <button>Save</button>
+                        <button onClick={handleReviewClick}>Add photo</button>
                     </div>
                     <div id='location-hours'>
                         <div id='location-left'>
@@ -178,7 +209,9 @@ const Business = () => {
                                         {biz?.postalCode}
                                     </li>
                                 </ul>
-                                <button className="clear-button-outline nav-button">Get directions</button>
+                                <button className="clear-button-outline nav-button"
+                                    onClick={openGoogleMaps}
+                                >Get directions</button>
                             </div>
                         </div>
                         <div id='location-middle'>
@@ -228,7 +261,7 @@ const Business = () => {
                                     {biz?.hours.sun}
                                 </li>
                             </ul>
-                            <ul id='closed-open'>
+                            {/* <ul id='closed-open'>
                                 <li>
                                     Closed now/Open
                                 </li>
@@ -250,7 +283,7 @@ const Business = () => {
                                 <li>
                                     Closed now/Open
                                 </li>
-                            </ul>
+                            </ul> */}
 
                         </div>
                        
@@ -265,7 +298,7 @@ const Business = () => {
                         <h2>Reviews</h2>
                         <div id='rating-visualizer'>
                             <div>
-                                <h2>Overall rating</h2>
+                                <h4>Overall rating</h4>
                                 <div className={rating}></div>
                                 <div>
                                     
@@ -274,18 +307,33 @@ const Business = () => {
                             <ul>
                                 <li>
                                     5 stars
+                                    <div className='ratings-bar'>
+                                        <div id='five-bar'></div>
+                                    </div>
                                 </li>
                                 <li>
                                     4 stars
+                                    <div className='ratings-bar'>
+                                        <div id='four-bar'></div>
+                                    </div>
                                 </li>
                                 <li>
                                     3 stars
+                                    <div className='ratings-bar'>
+                                        <div id='three-bar'></div>
+                                    </div>
                                 </li>
                                 <li>
                                     2 stars
+                                    <div className='ratings-bar'>
+                                        <div id='two-bar'></div>
+                                    </div>
                                 </li>
                                 <li>
                                     1 stars
+                                    <div className='ratings-bar'>
+                                        <div id='one-bar'></div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>

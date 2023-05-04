@@ -1016,33 +1016,33 @@ puts "created businesses"
 
 puts "creating sample reviews"
 
-Review.create!(
-  author_id: User.all.sample.id,
-  business_id: BusinessPage.all.sample.id,
-  rating: 4,
-  body: "I had a really great experience at this business. The staff were very friendly and helpful, and the products they sell are of excellent quality. I would definitely recommend this business to anyone looking for a great shopping experience!"
-)
+# Review.create!(
+#   author_id: User.all.sample.id,
+#   business_id: BusinessPage.all.sample.id,
+#   rating: 4,
+#   body: "I had a really great experience at this business. The staff were very friendly and helpful, and the products they sell are of excellent quality. I would definitely recommend this business to anyone looking for a great shopping experience!"
+# )
 
-Review.create!(
-  author_id: User.all.sample.id,
-  business_id: BusinessPage.all.sample.id,
-  rating: 2,
-  body: "I was really disappointed with my experience at this business. The staff were unfriendly and unhelpful, and the products they sell are of very poor quality. I would not recommend this business to anyone looking for a good shopping experience."
-)
+# Review.create!(
+#   author_id: User.all.sample.id,
+#   business_id: BusinessPage.all.sample.id,
+#   rating: 2,
+#   body: "I was really disappointed with my experience at this business. The staff were unfriendly and unhelpful, and the products they sell are of very poor quality. I would not recommend this business to anyone looking for a good shopping experience."
+# )
 
-Review.create!(
-  author_id: User.all.sample.id,
-  business_id: BusinessPage.all.sample.id,
-  rating: 5,
-  body: "I had an absolutely amazing experience at this business! The staff were incredibly knowledgeable and helpful, and the products they sell are truly exceptional. I cannot recommend this business highly enough!"
-)
+# Review.create!(
+#   author_id: User.all.sample.id,
+#   business_id: BusinessPage.all.sample.id,
+#   rating: 5,
+#   body: "I had an absolutely amazing experience at this business! The staff were incredibly knowledgeable and helpful, and the products they sell are truly exceptional. I cannot recommend this business highly enough!"
+# )
 
-Review.create!(
-  author_id: User.all.sample.id,
-  business_id: BusinessPage.all.sample.id,
-  rating: 3,
-  body: "My experience at this business was pretty average. The staff were friendly enough, but not particularly knowledgeable, and the products they sell are decent but not exceptional. If you're in the area and need something from this type of business, it's not a bad option, but I wouldn't go out of my way to shop here."
-)
+# Review.create!(
+#   author_id: User.all.sample.id,
+#   business_id: BusinessPage.all.sample.id,
+#   rating: 3,
+#   body: "My experience at this business was pretty average. The staff were friendly enough, but not particularly knowledgeable, and the products they sell are decent but not exceptional. If you're in the area and need something from this type of business, it's not a bad option, but I wouldn't go out of my way to shop here."
+# )
 
 
 
