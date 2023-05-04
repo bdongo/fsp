@@ -28,7 +28,7 @@ const SearchBar = () => {
                     const businessPages = Object.values(data.businesses)
                     setBusinesses(businessPages)
                 }
-            }, 500);
+            }, 400);
 
             return () => clearTimeout(delaySearch);
         }
@@ -102,11 +102,12 @@ const SearchBar = () => {
                 />
                 <div id='divider'/>
                 <input placeholder='San Francisco, CA' readOnly/>
+                <button
+                    className='search-button'
+                    onClick={e => handleSubmit(e)}
+                ></button>
             </form>
-            <button 
-                className='search-button'
-                onClick={e => handleSubmit(e)}
-            ></button>
+           
         </div>   
     )
 }

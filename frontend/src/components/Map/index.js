@@ -13,6 +13,7 @@ const Map = ({
     const [map, setMap] = useState(null);
     const markers = useRef({})
     const mapRef = useRef(null);
+    const history = useHistory();
     
     useEffect(() => {
         if (!map) {
@@ -64,8 +65,29 @@ const Map = ({
                 });
 
                 marker.addListener('mouseover', () => infoWindow.open(map, marker))
-                marker.addListener('onClick', () => infoWindow.open(map, marker))
-                // marker.addListener('mouseout', () => infoWindow.close());
+                //  click to take to business page
+                marker.addListener('click', () => {
+                    history.push(`/biz/${business?.id}`);
+                })
+
+                marker.addListener('mouseout', () => {
+                    // set initial opacity
+                    let opacity = 1;
+
+                    // define function to reduce opacity gradually
+                    function fadeOut() {
+                        opacity -= 0.1;
+                        if (opacity > 0) {
+                            infoWindow.setOptions({ opacity: opacity });
+                            setTimeout(fadeOut, 50);
+                        } else {
+                            infoWindow.close();
+                        }
+                    }
+
+                    // start fading out
+                    setTimeout(fadeOut, 50);
+                });
 
 
                 // add event handlers to each marker
