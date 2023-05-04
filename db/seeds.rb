@@ -1370,17 +1370,6 @@ def create_average_reviews(business_id, reviews, n)
     end
 end
 
-def create_negative_reviews(business_ids, reviews, author_ids)
-  reviews.each do |review|
-      Review.create!(
-        author_id: author_ids.shuffle.rotate!.first,
-        body: review,
-        rating: rand(1..2),
-        business_id: business_ids.sample
-      )
-  end
-end
-
 
 def create_reviews(business_ids, positive_reviews, average_reviews, author_ids)
   business_ids.each_with_index do |business_id, idx|
@@ -1412,11 +1401,31 @@ def create_reviews(business_ids, positive_reviews, average_reviews, author_ids)
   end
 end
 
+def create_negative_reviews(businesses, reviews, author_ids)
+  reviews.each do |review|
+      author = author_ids.shuffle.rotate!.first
+      business = businesses.shuffle.rotate!.first
+      reviewerIds = business.reviewers.map {|reviewer| reviewer.id}
+      while reviewerIds.include?(author)
+        author = author_ids.shuffle.rotate!.first
+      end
+
+      Review.create!(
+        author_id: author,
+        body: review,
+        rating: rand(1..2),
+        business_id: business.id
+      )
+  end
+end
+
 
 puts "seeding random reviews"
 
 create_reviews(business_ids, positive_reviews, average_reviews, author_ids)
-create_negative_reviews(business_ids, negative_reviews, author_ids)
+businesses = BusinessPage.all
+puts "seeding negative_reviews"
+create_negative_reviews(businesses, negative_reviews, author_ids)
 
 
 puts "done!"
