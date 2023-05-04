@@ -10,16 +10,17 @@ const BusinessReviews = ({reviews, currentUser, biz}) => {
     const [reviewInfo, setReviewInfo] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
     const [error, setError] = useState();
-
+    const [clicks, setClicks] = useState(0);
+ 
     const handleDelete = (reviewId) => {
-        let clicks = 0;
+        // let clicks = 0;
         return () => {
-            clicks += 1
-            console.log(clicks)
-            if (clicks === 1) {
+            setClicks(clicks+1)
+            if (clicks === 0) {
                 setError("Are you sure you want to delete your review? Click again to confirm")
-            } if (clicks === 2) {
+            } if (clicks === 1) {
                 dispatch(deleteReview(reviewId))
+                setClicks(0)
             }
         }     
     }

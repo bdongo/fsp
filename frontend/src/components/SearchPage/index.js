@@ -13,6 +13,10 @@ const SearchPage = () => {
     const params = new URLSearchParams(location.search);
     const query = params.get('query');
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     useEffect(()=> {
         dispatch(searchBusinesses(query))
     }, [query])

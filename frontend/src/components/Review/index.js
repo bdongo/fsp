@@ -8,7 +8,7 @@ import { createReview, updateReview } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
 import LoginModal from '../LoginModal';
 
-const Review = ({reviewInfo, setShowEditModal}) => {
+const Review = ({reviewInfo, setShowEditModal, error}) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
@@ -204,6 +204,7 @@ const Review = ({reviewInfo, setShowEditModal}) => {
 
                 <ul className="error-container">
                     {errors.map(error => <li key={error}>{error}</li>)}
+                    {error}
                 </ul>
 
             </div>

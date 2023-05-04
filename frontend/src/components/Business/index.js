@@ -135,10 +135,10 @@ const Business = () => {
         <>
         <div>
             <div id='photo-container'>
-                <div id='scroll-buttons' >
+                {/* <div id='scroll-buttons' >
                     <button className="button-left" onClick={() => handleScroll(-350)}>{"<"}</button>
                     <button className="button-right" onClick={() => handleScroll(350)}>{">"}</button>
-                </div>
+                </div> */}
                 <div id='scroll-container' ref={scrollContainerRef}>
                         {biz?.photos?.map((photo, idx) => (
                             <img key={idx} src={photo} />
