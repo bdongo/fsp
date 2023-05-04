@@ -9,9 +9,19 @@ const BusinessReviews = ({reviews, currentUser, biz}) => {
     const dispatch = useDispatch();
     const [reviewInfo, setReviewInfo] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
+    const [error, setError] = useState();
 
     const handleDelete = (reviewId) => {
-        dispatch(deleteReview(reviewId));
+        let clicks = 0;
+        return () => {
+            clicks += 1
+            console.log(clicks)
+            if (clicks === 1) {
+                setError("Are you sure you want to delete your review? Click again to confirm")
+            } if (clicks === 2) {
+                dispatch(deleteReview(reviewId))
+            }
+        }     
     }
 
     const lastInitial = (lastName) => {
@@ -57,17 +67,21 @@ const BusinessReviews = ({reviews, currentUser, biz}) => {
                     <div className={handleRating(review.rating)} />
   
                     <p>{review.body}</p>
-                    {currentUser?.id === review.authorId &&
-                        <>
+                    <div className='bottom-buttons'>
+                        
+                        {currentUser?.id === review.authorId &&
+                            <>
+                            <p className='warning'>{error}</p>
                             <button
-                                onClick={()=>handleShowEdit(idx)}
-                            >Edit Review</button>
+                                    onClick={()=>handleShowEdit(idx)}
+                                >Edit</button>
 
-                            <button
-                                onClick={() => handleDelete(review?.id)}
-                            >Delete review</button>
-                        </>
-                    }
+                                |<button
+                                    onClick={handleDelete(review?.id)}
+                                >Delete</button>
+                            </>
+                        }
+                    </div>
                 </li>
             )}
         </ul>

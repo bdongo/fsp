@@ -147,7 +147,7 @@ const Business = () => {
                             <img key={idx} src={photo} />
                         ))}
                  </div>
-                    <div id="top-info">
+                    <div id="top-info"> 
                         <h1>{biz?.name}</h1>
                         <div className={rating}></div>
                         <ul>
