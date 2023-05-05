@@ -5,15 +5,15 @@ This is a full stack clone of popular food review and rating site, Yelp. Created
 
 ## Features
 
-*Highlighted are full user sign up and authorization. 
+* Highlighted are full user sign up and authorization. 
 
-*Business pages that can be viewed and reviewed by users. 
+* Business pages that can be viewed and reviewed by users. 
 
-*Search bar to find businesses according to tags or names. 
+* Search bar to find businesses according to tags or names. 
 
-*Google Maps API to see where the businesses are individually or as grouped in a search query.
+* Google Maps API to see where the businesses are individually or as grouped in a search query.
 
-*Clean visual interface to capture important information of reviews on idividually or averaged on the business pages.
+* Clean visual interface to capture important information of reviews on idividually or averaged on the business pages.
 
 
 [Original Site](https://www.yelp.com/)
