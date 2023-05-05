@@ -1,7 +1,7 @@
 # Yelp Clone <img src="frontend/public/images/icon.png" width="23" > 
- [Live Site](https://ylp.onrender.com/https://ylp.onrender.com/)
+ [Live Site](https://ylp.onrender.com/)
 
-This is a full stack clone of popular food review and rating site, Yelp. Created in a 2 week sprint using `React`, `React-Redux`, `Ruby on Rails` and `AWS`, this project replicates the features of Yelp. 
+This is a full stack clone of popular food review and rating site, Yelp. Created in a 2 week sprint using `React`, `React-Redux`, `Ruby on Rails`, `Google Maps JavaScript API` and `AWS`, this project replicates the features of Yelp. 
 
 ## Features
 
@@ -20,7 +20,11 @@ This is a full stack clone of popular food review and rating site, Yelp. Created
 
 ## Demo
 
+Star rating is responsive to hover and changes color and text. Rating is recorded on click without interupting the hover function but will snap back to clicked rating on mouse out.
+
 ![](https://media.giphy.com/media/bpbsW9ZlDuorgPq1qV/giphy.gif)
+
+If no user is signed in, pop up will show to sign in or transition into sign up module. Users can also opt into using the demo account.
 
 ![](https://media.giphy.com/media/1Let43yWcTCS81O0qI/giphy.gif)
 
@@ -43,7 +47,7 @@ def attach_photos(biz, photo_url_arr)
 end
 ```
 
-Searchbar hit the API BusinessController#index for active record queries, to keep code dry and multifunctional.
+The searchbar connects to the backend through API BusinessController#index for active record queries, to keep code dry and multifunctional.
 
 ```js
 frontend>src>store>businessPages.js
