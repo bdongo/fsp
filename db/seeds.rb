@@ -1438,7 +1438,7 @@ def create_negative_reviews(businesses, reviews, author_ids)
         username: "Negative",
         password: "123456"
       )
-      
+
   reviews.each do |review|
       # author = author_ids.shuffle.rotate!.first
       business = businesses.shuffle
@@ -1446,8 +1446,6 @@ def create_negative_reviews(businesses, reviews, author_ids)
       # while reviewerIds.include?(author)
       #   author = author_ids.shuffle.rotate!.first
       # end
-    
-
       Review.create!(
         author_id: un.id,
         body: review,
