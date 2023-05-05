@@ -1427,13 +1427,7 @@ businesses = BusinessPage.all
 puts "seeding negative_reviews"
 
 
-u_n = User.create!(
-        f_name: "Nancy",
-        l_name: "N",
-        email:"n@n.com",
-        username: "Negative",
-        password: "123456"
-)
+
 
 
 def create_negative_reviews(businesses, reviews, author_ids)
@@ -1444,8 +1438,16 @@ def create_negative_reviews(businesses, reviews, author_ids)
       # while reviewerIds.include?(author)
       #   author = author_ids.shuffle.rotate!.first
       # end
+      un = User.create!(
+        f_name: "Nancy",
+        l_name: "N",
+        email:"n@n.com",
+        username: "Negative",
+        password: "123456"
+      )
+      
       Review.create!(
-        author_id: u_n.id,
+        author_id: un.id,
         body: review,
         rating: rand(1..2),
         business_id: business.rotate!.first.id
