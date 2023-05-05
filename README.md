@@ -1,7 +1,7 @@
 # Yelp Clone <img src="frontend/public/images/icon.png" width="23" > 
  [Live Site](https://ylp.onrender.com/)
 
-This is a full stack clone of popular food review and rating site, Yelp. Created in a 2 week sprint using `React`, `React-Redux`, `Ruby on Rails`, `Google Maps JavaScript API` and `AWS`, this project replicates the features of Yelp. 
+This is a full stack clone of popular food review and rating site, Yelp. Created in a 2 week sprint using `React`, `React-Redux`, `Ruby on Rails`, `PostgresSQL`, `Google Maps JavaScript API` and `AWS`, this project replicates the features of Yelp. 
 
 ## Features
 
@@ -9,7 +9,7 @@ This is a full stack clone of popular food review and rating site, Yelp. Created
 
 * Business pages that can be viewed and reviewed by users. 
 
-* Search bar to find businesses according to tags or names. 
+* Search bar to find businesses according to tags or names using RESTful backend. 
 
 * Google Maps API to see where the businesses are individually or as grouped in a search query.
 
