@@ -28,6 +28,11 @@ If no user is signed in, pop up will show to sign in or transition into sign up 
 
 ![](https://media.giphy.com/media/1Let43yWcTCS81O0qI/giphy.gif)
 
+Search brings up results in a list. List items highlight when hovered over and can be clicked to redirect to the business show page. Business tags can be clicked to search the tags. Google Maps API is integrated and shows markers numbered the same as the business results.
+
+<img width="500" alt="Screen Shot 2023-05-05 at 9 11 15 AM" src="https://user-images.githubusercontent.com/121202044/236511636-113f0b62-331f-4b66-ac8b-79a3512a7a95.png">
+
+
 ## Overview
 
 Yelp's strength is their sheer amount of crowd sourced reviews for businesses. To create a site that could visually compare would need an equal robust seed file. To be efficient as well as scaliable, this function was created to attach photos to businesses.
