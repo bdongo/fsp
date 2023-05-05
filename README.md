@@ -1,7 +1,7 @@
 # Yelp Clone <img src="frontend/public/images/icon.png" width="23" > 
  [Live Site](https://ylp.onrender.com/https://ylp.onrender.com/)
 
-This is a full stack clone of popular food review and rating site, Yelp. Created in a 2 week sprint using React, React-Redux, Ruby on Rails and AWS, this project replicates the features of Yelp. 
+This is a full stack clone of popular food review and rating site, Yelp. Created in a 2 week sprint using `React`, `React-Redux`, `Ruby on Rails` and `AWS`, this project replicates the features of Yelp. 
 
 ## Features
 
