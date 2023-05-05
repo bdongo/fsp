@@ -5,8 +5,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Map = ({
     mapOptions = {},
-    businesses,
-    mapEventHandlers = {},
+    businesses = [],
     markerEventHandlers = {},
     handleRating
     }) => {
@@ -21,7 +20,7 @@ const Map = ({
                 center: {
                     lat: 37.773972,
                     lng: -122.431297
-                }, // San Francisco coordinates
+                },
                 zoom: 13,
                 clickableIcons: false,
                 ...mapOptions,

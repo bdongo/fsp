@@ -1425,6 +1425,34 @@ puts "seeding random reviews"
 create_reviews(business_ids, positive_reviews, average_reviews, author_ids)
 businesses = BusinessPage.all
 puts "seeding negative_reviews"
+
+
+u_n = User.create!(
+        f_name: "Nancy",
+        l_name: "N",
+        email:"n@n.com",
+        username: "Negative",
+        password: "123456"
+)
+
+
+def create_negative_reviews(businesses, reviews, author_ids)
+  reviews.each do |review|
+      # author = author_ids.shuffle.rotate!.first
+      business = businesses.shuffle
+      # reviewerIds = business.reviewers.map {|reviewer| reviewer.id}
+      # while reviewerIds.include?(author)
+      #   author = author_ids.shuffle.rotate!.first
+      # end
+      Review.create!(
+        author_id: u_n.id,
+        body: review,
+        rating: rand(1..2),
+        business_id: business.rotate!.first.id
+      )
+  end
+end
+
 create_negative_reviews(businesses, negative_reviews, author_ids)
 
 
