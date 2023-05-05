@@ -3,6 +3,7 @@ import slide1 from '../../assets/liho1.jpeg'
 import slide2 from '../../assets/tony.jpeg'
 import slide3 from '../../assets/unwin4.jpeg'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 const ImageSlides = () => {
     const [slideImage, setSlideImage] = useState(0);
@@ -68,26 +69,32 @@ const ImageSlides = () => {
                 <div className='loading-bar'>
                     <div id='bar bar-one'></div>
                     {slogan1 &&
-                    <div className='slogan-container'>
-                        <h2>Hungry?</h2>
-                        <button className='red-button'>American(New)</button>
-                    </div>}
+                    <Link className="link icon-container" to="/search?query=american(new)">
+                        <div className='slogan-container'>
+                            <h2>Hungry?</h2>
+                            <button className='red-button'>American(New)</button>
+                        </div>
+                    </Link>}
                 </div>
                 <div className='loading-bar'>
                     <div id='bar bar-two'> </div>
                    {slogan2 &&
-                    <div className='slogan-container'>
-                        <h2>Pizza?</h2>
-                        <button className='red-button'>Pizza</button>
-                    </div>}
+                    <Link className="link icon-container" to="/search?query=pizza">
+                        <div className='slogan-container'>
+                            <h2>Pizza?</h2>
+                            <button className='red-button'>Pizza</button>
+                        </div>
+                    </Link>}
                 </div>
                 <div className='loading-bar'>
                     <div id='bar bar-three'></div>
                     {slogan3 &&
-                    <div className='slogan-container'>
-                        <h2>Thirsty?</h2>
-                        <button className='red-button'>Wine Bars</button>
-                    </div>}
+                    <Link className="link icon-container" to="/search?query=wine%20bar">
+                        <div className='slogan-container'>
+                            <h2>Thirsty?</h2>
+                            <button className='red-button'>Wine Bars</button>
+                        </div>
+                    </Link>}
                 </div>
             </div>
             <img
