@@ -1431,14 +1431,7 @@ puts "seeding negative_reviews"
 
 
 def create_negative_reviews(businesses, reviews, author_ids)
-  reviews.each do |review|
-      # author = author_ids.shuffle.rotate!.first
-      business = businesses.shuffle
-      # reviewerIds = business.reviewers.map {|reviewer| reviewer.id}
-      # while reviewerIds.include?(author)
-      #   author = author_ids.shuffle.rotate!.first
-      # end
-      un = User.create!(
+    un = User.create!(
         f_name: "Nancy",
         l_name: "N",
         email:"n@n.com",
@@ -1446,6 +1439,15 @@ def create_negative_reviews(businesses, reviews, author_ids)
         password: "123456"
       )
       
+  reviews.each do |review|
+      # author = author_ids.shuffle.rotate!.first
+      business = businesses.shuffle
+      # reviewerIds = business.reviewers.map {|reviewer| reviewer.id}
+      # while reviewerIds.include?(author)
+      #   author = author_ids.shuffle.rotate!.first
+      # end
+    
+
       Review.create!(
         author_id: un.id,
         body: review,
