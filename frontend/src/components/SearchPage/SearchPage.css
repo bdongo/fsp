@@ -18,6 +18,7 @@
     position: fixed;
     top: 12vh;
     left: 60%;
+    margin-bottom: 120px;
 }
 .sticky {
     position: sticky;
@@ -33,6 +34,7 @@
 #searchpage > ul {
     width: 55%;
     margin-left: 55px;
+    min-height: 100vh;
     /* box-shadow: 5px 0 0 rgba(0, 0, 0, 0.2); */
 }
 

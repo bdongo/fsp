@@ -1,4 +1,5 @@
 footer {
+    position: block;
     width: 100vw;
     height: 120px;
     background-color: #f7f7f7;

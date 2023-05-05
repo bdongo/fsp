@@ -76,7 +76,7 @@ const SearchPage = () => {
     };
 
     return(
-        <div id='searchpage' >
+        <div id='searchpage' > 
             {businesses && 
                 <ul>
                     <h2 className='search-welcome'>All "{query}" results in San Francisco, California</h2>

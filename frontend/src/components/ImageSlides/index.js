@@ -51,7 +51,6 @@ const ImageSlides = () => {
     //         if (width === 110) {
     //             clearInterval(bar1Interval)
     //         }
-    //         console.log(width)
     //         setBar1(true)
     //     } else if (!bar2) {
 
