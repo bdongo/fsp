@@ -1,0 +1,23 @@
+.find-review-container {
+    /* margin-top: 4em; */
+    min-height: 80vh;
+    margin-left: 15px;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.find-review-container-text {
+    width: 75%;
+    /* margin-bottom: 30px; */
+}
+
+.find-review-container-text > h1 {
+        font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 50px;
+        margin-bottom: 30px;
+}

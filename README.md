@@ -108,3 +108,81 @@ const handleClose = () => {
     }
 }
 ```
+
+Constantly learning and optimizing for effeciency and legibility. A clunky if statement in an useEffect was transformed into two separate arrays that allowed for direct indexing based on the value of hoverRating. The original code involved multiple conditionals and multiple state variables to set the hoverStar and desc values, while the optimized version utilized arrays for efficient access. 
+
+New code:
+```js
+    const [hoverRating, setHoverRating] = useState(0);
+
+    const hoverStarArr = [
+        'blank-star star-rating',
+        'yellow-star star-rating',
+        'yellow-orange-star star-rating',
+        'orange-star star-rating',
+        'red-orange-star star-rating',
+        'red-star star-rating'
+    ]
+
+    const descArr = [
+        'Select your rating',
+        'Not good',
+        "Could've been better",
+        "OK",
+        "Good",
+        "Great"
+    ]
+
+    <div
+    id='star5'
+    onClick={() => setRating(5)}
+    onMouseEnter={() => setHoverRating(5)}
+    onMouseLeave={() => setHoverRating(rating)}
+    >
+        <i className={hoverRating === 5 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
+    </div>
+
+    <small>{descArr[hoverRating]}</small>
+```
+
+in comparison to the old code:
+```js
+    const [rating, setRating] = useState(null)
+    const [hoverStar, setHoverStar] = useState('blank-star star-rating')
+    const [hoverRating, setHoverRating] = useState(0);
+    const [desc, setDesc] = useState('Select your rating')
+
+    useEffect(()=> {
+        if (hoverRating === 1) {
+            setHoverStar('yellow-star star-rating')
+            setDesc('Not good')
+        } else if (hoverRating === 2) {
+            setHoverStar('yellow-orange-star star-rating')
+            setDesc("Could've been better")
+        } else if (hoverRating === 3) {
+            setHoverStar('orange-star star-rating')
+            setDesc("OK")
+        } else if (hoverRating === 4) {
+            setHoverStar('red-orange-star star-rating')
+            setDesc("Good")
+        } else if (hoverRating === 5) {
+            setHoverStar('red-star star-rating')
+            setDesc("Great")
+        } else {
+            setHoverStar('blank-star star-rating')
+            setDesc('Select your rating')
+        }
+    }, [hoverRating])
+
+    <div
+    id='star5'
+    onClick={() => setRating(5)}
+    onMouseEnter={() => setHoverRating(5)}
+    onMouseLeave={() => setHoverRating(rating)}
+    >
+        <i className={hoverRating === 5 ? hoverStar : 'blank-star star-rating'} />
+    </div>
+
+    <div>{desc}</div>
+```
+
