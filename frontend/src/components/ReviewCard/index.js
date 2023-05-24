@@ -45,7 +45,7 @@ const ReviewCard = ({business}) => {
                 <div id='star-container'>
                     <div
                         id='star1'
-                        onClick={() => setRating(1)}
+                        onClick={() => handleRatingClick(1)}
                         onMouseEnter={() => setHoverRating(1)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
@@ -54,7 +54,7 @@ const ReviewCard = ({business}) => {
 
                     <div
                         id='star2'
-                        onClick={() => setRating(2)}
+                        onClick={() => handleRatingClick(2)}
                         onMouseEnter={() => setHoverRating(2)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
@@ -63,7 +63,7 @@ const ReviewCard = ({business}) => {
 
                     <div
                         id='star3'
-                        onClick={() => setRating(3)}
+                        onClick={() => handleRatingClick(3)}
                         onMouseEnter={() => setHoverRating(3)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
@@ -72,7 +72,7 @@ const ReviewCard = ({business}) => {
 
                     <div
                         id='star4'
-                        onClick={() => setRating(4)}
+                        onClick={() => handleRatingClick(4)}
                         onMouseEnter={() => setHoverRating(4)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
@@ -81,7 +81,7 @@ const ReviewCard = ({business}) => {
 
                     <div
                         id='star5'
-                        onClick={() => setRating(5)}
+                        onClick={() => handleRatingClick(5)}
                         onMouseEnter={() => setHoverRating(5)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
