@@ -7,6 +7,8 @@ import { getBusiness, showBusiness } from '../../store/businessPages';
 import { createReview, updateReview } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
 import LoginModal from '../LoginModal';
+import SearchBar from '../SearchBar';
+import SuggestedReviews from '../SuggestedReviews';
 
 const Review = ({reviewInfo, setShowEditModal, error}) => {
     const dispatch = useDispatch();
@@ -135,6 +137,12 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                     else setErrors([res.statusText]);
                 });
         }
+    }
+
+    if (!bizId) {
+        return (
+            <SuggestedReviews/>
+        )
     }
 
     return (
