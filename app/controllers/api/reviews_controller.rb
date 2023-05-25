@@ -19,7 +19,8 @@ class Api::ReviewsController < ApplicationController
         id = params[:id]
         @review = Review.find_by(id: id)
         if @review&.destroy
-            render json: { errors: ['successful'] }
+            @biz = BusinessPage.find_by(id: @review.business_id)
+            render :delete
         else
             render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
         end
