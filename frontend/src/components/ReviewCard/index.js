@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import './ReviewCard.css';
 
 const ReviewCard = ({business}) => {
-    const [rating, setRating] = useState(null)
     const [hoverRating, setHoverRating] = useState(0);
 
 
@@ -41,13 +40,13 @@ const ReviewCard = ({business}) => {
             </div>
             <div className='review-card-info'>
                 <h2>{business.name}</h2>
-                <p>Do you recommend this business?</p>
-                <div id='star-container'>
+                <p className='review-card-small'>Do you recommend this business?</p>
+                <div className='review-card-star-container' onClick={e => e.stopPropagation()}>
                     <div
                         id='star1'
                         onClick={() => handleRatingClick(1)}
                         onMouseEnter={() => setHoverRating(1)}
-                        onMouseLeave={() => setHoverRating(rating)}
+                        onMouseLeave={() => setHoverRating(0)}
                     >
                         <i className={hoverRating >= 1 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
@@ -56,7 +55,7 @@ const ReviewCard = ({business}) => {
                         id='star2'
                         onClick={() => handleRatingClick(2)}
                         onMouseEnter={() => setHoverRating(2)}
-                        onMouseLeave={() => setHoverRating(rating)}
+                        onMouseLeave={() => setHoverRating(0)}
                     >
                         <i className={hoverRating >= 2 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
@@ -65,7 +64,7 @@ const ReviewCard = ({business}) => {
                         id='star3'
                         onClick={() => handleRatingClick(3)}
                         onMouseEnter={() => setHoverRating(3)}
-                        onMouseLeave={() => setHoverRating(rating)}
+                        onMouseLeave={() => setHoverRating(0)}
                     >
                         <i className={hoverRating >= 3 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
@@ -74,7 +73,7 @@ const ReviewCard = ({business}) => {
                         id='star4'
                         onClick={() => handleRatingClick(4)}
                         onMouseEnter={() => setHoverRating(4)}
-                        onMouseLeave={() => setHoverRating(rating)}
+                        onMouseLeave={() => setHoverRating(0)}
                     >
                         <i className={hoverRating >= 4 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
@@ -83,13 +82,13 @@ const ReviewCard = ({business}) => {
                         id='star5'
                         onClick={() => handleRatingClick(5)}
                         onMouseEnter={() => setHoverRating(5)}
-                        onMouseLeave={() => setHoverRating(rating)}
+                        onMouseLeave={() => setHoverRating(0)}
                     >
                         <i className={hoverRating === 5 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
 
                 </div>
-                    <small>{descArr[hoverRating]}</small>
+                <small className='review-card-small'>{descArr[hoverRating]}</small>
             </div>
         </div>
     )
