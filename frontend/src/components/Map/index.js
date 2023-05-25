@@ -7,7 +7,8 @@ const Map = ({
     mapOptions = {},
     businesses = [],
     markerEventHandlers = {},
-    handleRating
+    handleRating,
+    ratingArr
     }) => {
     const [map, setMap] = useState(null);
     const markers = useRef({})
