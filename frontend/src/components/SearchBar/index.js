@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import { getAllBusinesses, receiveAllBusiness } from '../../store/businessPages';
+import { getAllBusinesses, indexBusiness, receiveAllBusiness } from '../../store/businessPages';
 import csrfFetch from '../../store/csrf';
 import './SearchBar.css'
 import { useEffect, useRef, useState } from 'react';
@@ -8,12 +8,15 @@ import { useDispatch, useSelector } from 'react-redux';
 const SearchBar = () => {
     const dispatch = useDispatch();
     const location = useLocation();
-    const [query ,setQuery ] = useState();
     const queryRef = useRef("");
-    const [businesses, setBusinesses] = useState(null);
-    const [placeholder, setPlaceholder] = useState('Search for names or tags')
+    const [results, setResults] = useState(null);
+    const businesses = useSelector(getAllBusinesses)
     const searchbarRef = useRef(null);
     const searchResultsRef = useRef(null);
+    const params = new URLSearchParams(location.search);
+    const urlQuery = params.get('query');
+    const [query ,setQuery ] = useState();
+    const [placeholder, setPlaceholder] = useState('Search for names or tags')
     
     const handleTyping = (e) => {
         setQuery(e.target.value);
@@ -22,22 +25,28 @@ const SearchBar = () => {
     useEffect(() => {
         if (query !== "") {
             const delaySearch = setTimeout(async () => {
-                const res = await csrfFetch(`/api/business_pages?query=${query}`);
-                if (res.ok) {
-                    const data = await res.json();
-                    const businessPages = Object.values(data.businesses)
-                    setBusinesses(businessPages)
-                }
+                setResults(
+                    businesses.filter(
+                        business =>
+                            business.name.toLowerCase().includes(query.toLowerCase()) ||
+                            business.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
+                    )
+                );
             }, 400);
 
             return () => clearTimeout(delaySearch);
-        }
-
-        
+        } 
     }, [query]);
 
+    useEffect(()=> {
+        if (!!urlQuery) {
+            setPlaceholder(urlQuery)
+        } else {
+            setPlaceholder('Search for names or tags')
+        }
+    }, urlQuery)
 
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         if (query) {
@@ -61,7 +70,7 @@ const SearchBar = () => {
             searchResultsRef.current &&
             !searchResultsRef.current.contains(e.target)
         ) {
-            setBusinesses(null);
+            setResults(null);
         }
     };
 
@@ -73,15 +82,15 @@ const SearchBar = () => {
     }, []);
 
     useEffect(() => {
-        setBusinesses(null); // close the search results when URL changes
+        setResults(null); // close the search results when URL changes
     }, [location]);
 
     return (
         <div id='searchbar' ref={searchbarRef}>
             <div className='searchbar-container'>
-                {businesses &&
+                {results &&
                     <ul className='search-results' ref={searchResultsRef}>
-                        {businesses?.slice(0,10).map((business, idx) => (
+                        {results?.slice(0,6).map((business, idx) => (
                             <li key={idx}>
                                 <Link className="search-item" to={`/biz/${business.id}`}>
                                 <img src={business.photos[0]} />

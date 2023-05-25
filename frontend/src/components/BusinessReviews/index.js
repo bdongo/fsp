@@ -5,7 +5,7 @@ import { useState } from 'react';
 import EditModal from '../EditModal';
 import { useEffect } from 'react';
 
-const BusinessReviews = ({reviews, currentUser, biz}) => {
+const BusinessReviews = ({reviews, currentUser}) => {
     const dispatch = useDispatch();
     const [reviewInfo, setReviewInfo] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
