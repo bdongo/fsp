@@ -11,7 +11,6 @@ import Map from '../Map';
 import { Wrapper } from "@googlemaps/react-wrapper";
 import EditModal from '../EditModal';
 
-
 const Business = () => {
     const dispatch = useDispatch();
     const {bizId} = useParams();
@@ -19,6 +18,25 @@ const Business = () => {
     const reviews = useSelector(getReviews);
     const currentUser = useSelector(getCurrentUser);
     const [rating, setRating] = useState('zero-stars-big big-rating');
+    const [showEditButton, setShowEditButton] = useState(null);
+    const [showEditModal, setShowEditModal] = useState(false);
+    console.log(showEditButton, "showEditbutton")
+    
+    useEffect(()=> {
+        if (currentUser) {
+            setShowEditButton(findAuthorId(reviews, currentUser))
+        }
+    }, [reviews, currentUser])
+
+    const findAuthorId = (reviews, user) => {
+        const authoredReview = reviews?.find(review => review.authorId === user?.id);
+        if (authoredReview) {
+            console.log(authoredReview)
+            return authoredReview;
+        } else {
+            return null;
+        }
+    };
     
 
     
@@ -185,8 +203,24 @@ const Business = () => {
            <div id='business-container'>
                 <div id='left-scroll'>
                     <div id="action-items">
-                        <button className='red-button' onClick={handleReviewClick}>Write a Review</button>
-                        <button onClick={handleReviewClick}>Add photo</button>
+                        { !!showEditButton &&
+                        <>
+                            <button className='red-button' onClick={() => setShowEditModal(true)}>Edit your Review</button>
+                                <button onClick={() => setShowEditModal(true)}>Add photo</button>
+                            {showEditModal && 
+                                <EditModal
+                                    setShowEditModal={setShowEditModal}
+                                    reviewInfo={showEditButton}
+                                />
+                            }
+                        </>
+                        }
+                        { !showEditButton &&
+                        <>
+                            <button className='red-button' onClick={handleReviewClick}>Write a Review</button>
+                            <button onClick={handleReviewClick}>Add photo</button>
+                        </>
+                        }
                     </div>
                     <div id='location-hours'>
                         <div id='location-left'>
@@ -343,6 +377,8 @@ const Business = () => {
                         <BusinessReviews 
                             currentUser={currentUser} 
                             reviews={reviews} 
+                            showEditModal={showEditModal}
+                            setShowEditModal={setShowEditModal}
                             />
                     }
                 </div>
