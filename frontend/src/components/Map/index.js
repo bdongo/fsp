@@ -7,7 +7,7 @@ const Map = ({
     mapOptions = {},
     businesses = [],
     markerEventHandlers = {},
-    handleRating
+    // handleRating
     }) => {
     const [map, setMap] = useState(null);
     const markers = useRef({})
@@ -56,7 +56,7 @@ const Map = ({
                     `<div class="tooltip-container">` +
                     `<img src=${business?.photos[1]} />` +
                     `<h1>${business?.name}</h1>` +
-                    `<div class=${handleRating(business?.averageRating)}  />` +
+                    // `<div class=${handleRating(business?.averageRating)}  />` +
                     `</div>`
             
                 let infoWindow = new window.google.maps.InfoWindow({

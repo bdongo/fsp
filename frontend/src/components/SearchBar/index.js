@@ -8,13 +8,15 @@ import { useDispatch, useSelector } from 'react-redux';
 const SearchBar = () => {
     const dispatch = useDispatch();
     const location = useLocation();
-    const [query ,setQuery ] = useState();
     const queryRef = useRef("");
     const [results, setResults] = useState(null);
     const businesses = useSelector(getAllBusinesses)
-    const [placeholder, setPlaceholder] = useState('Search for names or tags')
     const searchbarRef = useRef(null);
     const searchResultsRef = useRef(null);
+    const params = new URLSearchParams(location.search);
+    const urlQuery = params.get('query');
+    const [query ,setQuery ] = useState();
+    const [placeholder, setPlaceholder] = useState('Search for names or tags')
     
     const handleTyping = (e) => {
         setQuery(e.target.value);
@@ -36,6 +38,15 @@ const SearchBar = () => {
         } 
     }, [query]);
 
+    useEffect(()=> {
+        if (!!urlQuery) {
+            setPlaceholder(urlQuery)
+        } else {
+            setPlaceholder('Search for names or tags')
+        }
+    }, urlQuery)
+
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         if (query) {
