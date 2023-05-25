@@ -7,6 +7,8 @@ import { getBusiness, showBusiness } from '../../store/businessPages';
 import { createReview, updateReview } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
 import LoginModal from '../LoginModal';
+import SearchBar from '../SearchBar';
+import SuggestedReviews from '../SuggestedReviews';
 
 const Review = ({reviewInfo, setShowEditModal, error}) => {
     const dispatch = useDispatch();
@@ -15,16 +17,15 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
     const params = new URLSearchParams(location.search);
     const currentUser = useSelector(getCurrentUser)
     const bizId = parseInt(params.get('bizId'));
+    const clickThruRating = parseInt(params.get('rating'))|| 0;
     const biz = useSelector(getBusiness(bizId));
     const [errors, setErrors] = useState([]);
     const [body, setBody] = useState('')
     const [businessId, setBusinessId] = useState('');
     const [authorId, setAuthorId] = useState('');
-    const [rating, setRating] = useState(null)
+    const [rating, setRating] = useState(clickThruRating)
     const [showLoginModal, setShowLoginModal] = useState(false);
-    const [hoverStar, setHoverStar] = useState('blank-star star-rating')
-    const [hoverRating, setHoverRating] = useState(0);
-    const [desc, setDesc] = useState('Select your rating')
+    const [hoverRating, setHoverRating] = useState(clickThruRating);
     const currentPath = location.pathname;
 
     useEffect(()=> {
@@ -59,27 +60,24 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
         }
     }, [currentUser])
 
-    useEffect(()=> {
-        if (hoverRating === 1) {
-            setHoverStar('yellow-star star-rating')
-            setDesc('Not good')
-        } else if (hoverRating === 2) {
-            setHoverStar('yellow-orange-star star-rating')
-            setDesc("Could've been better")
-        } else if (hoverRating === 3) {
-            setHoverStar('orange-star star-rating')
-            setDesc("OK")
-        } else if (hoverRating === 4) {
-            setHoverStar('red-orange-star star-rating')
-            setDesc("Good")
-        } else if (hoverRating === 5) {
-            setHoverStar('red-star star-rating')
-            setDesc("Great")
-        } else {
-            setHoverStar('blank-star star-rating')
-            setDesc('Select your rating')
-        }
-    }, [hoverRating])
+
+    const hoverStarArr = [
+        'blank-star star-rating',
+        'yellow-star star-rating',
+        'yellow-orange-star star-rating',
+        'orange-star star-rating',
+        'red-orange-star star-rating',
+        'red-star star-rating'
+    ]
+
+    const descArr = [
+        'Select your rating',
+        'Not good',
+        "Could've been better",
+        "OK",
+        "Good",
+        "Great"
+    ]
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -137,6 +135,12 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
         }
     }
 
+    if (!bizId) {
+        return (
+            <SuggestedReviews/>
+        )
+    }
+
     return (
         <>
         {showLoginModal &&
@@ -152,7 +156,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                         onMouseEnter={() => setHoverRating(1)}
                         onMouseLeave={()=>setHoverRating(rating)}
                     >
-                        <i className={hoverRating >= 1 ? hoverStar : 'blank-star star-rating'} />
+                        <i className={hoverRating >= 1 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
 
                     <div
@@ -161,7 +165,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                         onMouseEnter={() => setHoverRating(2)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
-                        <i className={hoverRating >= 2 ? hoverStar : 'blank-star star-rating'} />
+                            <i className={hoverRating >= 2 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
 
                     <div
@@ -170,7 +174,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                         onMouseEnter={() => setHoverRating(3)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
-                        <i className={hoverRating >= 3 ? hoverStar : 'blank-star star-rating'} />
+                            <i className={hoverRating >= 3 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
 
                     <div
@@ -179,7 +183,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                         onMouseEnter={() => setHoverRating(4)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
-                        <i className={hoverRating >= 4 ? hoverStar : 'blank-star star-rating'} />
+                            <i className={hoverRating >= 4 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
 
                     <div
@@ -188,10 +192,10 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                         onMouseEnter={() => setHoverRating(5)}
                         onMouseLeave={() => setHoverRating(rating)}
                     >
-                        <i className={hoverRating === 5 ? hoverStar : 'blank-star star-rating'} />
+                            <i className={hoverRating === 5 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
                     </div>
 
-                    <div>{desc}</div>
+                    <div>{descArr[hoverRating]}</div>
                 </div>
 
                 <textarea

@@ -1,0 +1,49 @@
+.find-review-container {
+    /* margin-top: 4em; */
+    min-height: 80vh;
+    margin-left: 15px;
+    margin-bottom: 50px;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.find-review-container-text {
+    width: 75%;
+    /* margin-bottom: 30px; */
+}
+
+.find-review-container-text > h1 {
+        font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 50px;
+        margin-bottom: 30px;
+}
+
+.show-more-container {
+    display: flex;
+    /* width: 100px; */
+}
+
+.show-more{
+    font-size: 16px;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(2, 122, 151);
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.show-more-icon {
+    color: rgb(2, 122, 151);
+    font-size: 1em;
+    width: 1em;
+    height: 1em;
+}
+
+.show-more:hover {
+    text-decoration: underline;
+}
