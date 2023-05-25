@@ -19,7 +19,7 @@ const BusinessDisplay = ({businessDisplay}) => {
     }
 
     const handleRating = (rating) => {
-        const roundedRating = Math.floor(rating * 2) / 2;
+        const roundedRating = Math.round(rating * 2) / 2;
         return ratingArr[roundedRating] || '';
     };
 

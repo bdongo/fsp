@@ -12,6 +12,26 @@ const BusinessReviews = ({reviews, currentUser, biz}) => {
     const [error, setError] = useState();
     const [clicks, setClicks] = useState(0);
  
+    
+    const lastInitial = (lastName) => {
+        let result = lastName.split('')[0]
+        result += "."
+        return result
+    }
+    
+    const ratingArr = {
+        0.5: 'one-star-big big-rating',
+        1: 'one-star-big big-rating',
+        1.5: 'one-half-stars-big big-rating',
+        2: 'two-stars-big big-rating',
+        2.5: 'two-half-stars-big big-rating',
+        3: 'three-stars-big big-rating',
+        3.5: 'three-half-stars-big big-rating',
+        4: 'four-stars-big big-rating',
+        4.5: 'four-stars-big big-rating',
+        5: 'five-stars-big big-rating'
+    }
+    
     const handleDelete = (reviewId) => {
         // let clicks = 0;
         return () => {
@@ -24,26 +44,11 @@ const BusinessReviews = ({reviews, currentUser, biz}) => {
             }
         }     
     }
-
-    const lastInitial = (lastName) => {
-        let result = lastName.split('')[0]
-        result += "."
-        return result
-    }
     
     const handleRating = (rating) => {
-        if (rating === 1) {
-            return 'one-star-big big-rating medium-rating';
-        } else if (rating === 2) {
-            return 'two-stars-big big-rating medium-rating';
-        } else if (rating === 3) {
-            return 'three-stars-big big-rating medium-rating';
-        } else if (rating === 4) {
-            return 'four-stars-big big-rating medium-rating';
-        } else if (rating === 5) { 
-            return 'five-stars-big big-rating medium-rating';
-        }
-    } 
+        const roundedRating = Math.round(rating * 2) / 2;
+        return ratingArr[roundedRating] || '';
+    };
 
     const handleShowEdit = (idx)=> {
         setReviewInfo(reviews[idx])

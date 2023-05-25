@@ -1,9 +1,16 @@
 import { useEffect } from 'react';
 import './StarTower.css';
+import { useSelector } from 'react-redux';
+import { getReviews } from '../../store/reviews';
 
-const StarTower = ({reviews}) => {
+const StarTower = () => {
+    const reviews = useSelector(getReviews);
+
     useEffect(() => {
-        const count = reviews.reduce((acc, { rating }) => {
+        const reviewsCopy = [...reviews]
+
+        if (reviews.length != reviews) {
+        const count = reviewsCopy.reduce((acc, { rating }) => {
             acc[rating] = (acc[rating] || 0) + 1;
             return acc;
         }, {});
@@ -23,7 +30,7 @@ const StarTower = ({reviews}) => {
 
         const oneStars = (count["1"] / largestNumber) * 450
         document.getElementById("one-bar").style.width = `${oneStars}px`;
-
+    }
     }, [reviews])
 
     return (

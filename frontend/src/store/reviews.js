@@ -16,9 +16,10 @@ export const editReview = (payload) => ({
     payload
 })
 
-export const removeReview = (reviewId) => ({
+export const removeReview = (reviewId, payload) => ({
     type: REMOVEREVIEW,
-    reviewId
+    reviewId,
+    payload
 })
 
 export const getReviews = (state) => (
@@ -75,7 +76,8 @@ export const deleteReview = (reviewId) => async (dispatch) => {
     })
 
     if (res.ok) {
-        dispatch(removeReview(reviewId));
+        const payload = await res.json();
+        dispatch(removeReview(reviewId, payload));
         return res;
     }
 }

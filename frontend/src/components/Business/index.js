@@ -19,9 +19,6 @@ const Business = () => {
     const biz = useSelector(getBusiness(bizId));
     const reviews = useSelector(getReviews);
     const currentUser = useSelector(getCurrentUser);
-    const [rating, setRating] = useState('zero-stars-big big-rating');
-    
-
     
     const showReviews = reviews.length !== 0
 
@@ -46,42 +43,19 @@ const Business = () => {
     }
 
     const handleRating = (rating) => {
-        const roundedRating = Math.floor(rating * 2) / 2;
+        const roundedRating = Math.round(rating * 2) / 2;
         return ratingArr[roundedRating] || '';
     };
 
-    useEffect(()=> {
-        // const ratingAverage = calculateRating()
-        const ratingAverage = biz?.averageRating
-        if (reviews.length === 0) {
-            setRating('zero-stars-big big-rating');
-        } else if (ratingAverage < 1.25 ) {
-            setRating('one-star-big big-rating');
-        } else if (ratingAverage < 1.875) {
-            setRating('one-half-stars-big big-rating');
-        } else if (ratingAverage < 2.25) {
-            setRating('two-stars-big big-rating');
-        } else if (ratingAverage < 2.875) {
-            setRating('two-half-stars-big big-rating');
-        } else if (ratingAverage < 3.25) {
-            setRating('three-stars-big big-rating');
-        } else if (ratingAverage < 3.875) {
-            setRating('three-half-stars-big big-rating');
-        } else if (ratingAverage < 4.3) {
-            setRating('four-stars-big big-rating');
-        } else if (ratingAverage < 5 ){
-            setRating('five-stars-big big-rating');
-        }
-    }, [biz?.averageRating])
+    const [currentRating, setCurrentRating] = useState(biz?.averageRating);
 
-    const calculateRating = () => {
-        let sum = 0;
-        reviews?.map((review) => {
-            sum += review.rating
-        })
-        let total = reviews?.length
-        return sum / total
-    }
+    // useEffect(()=> {
+    //     setCurrentRating(handleRating(biz?.averageRating))
+    // }, [reviews, biz])
+
+    useEffect(() => {
+        setCurrentRating(biz?.averageRating);
+    }, [biz?.averageRating]);
 
     useEffect(()=> {
         window.scrollTo(0, 0);
@@ -145,7 +119,8 @@ const Business = () => {
                  </div>
                     <div id="top-info"> 
                         <h1>{biz?.name}</h1>
-                        <div className={rating}></div>
+                        {/* <div className={rating}></div> */}
+                        <div className={handleRating(currentRating)}></div>
                         <ul>
                             <li>
                                 Unclaimed
@@ -295,8 +270,7 @@ const Business = () => {
                         <div id='rating-visualizer'>
                             <div>
                                 <h4>Overall rating</h4>
-                                {/* <div className={rating}></div> */}
-                                <div className={handleRating(biz?.averageRating)}></div>
+                                <div className={handleRating(currentRating)}></div>
                                 <div>
                                     
                                 </div>
