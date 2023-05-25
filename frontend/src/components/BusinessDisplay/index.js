@@ -4,27 +4,24 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { useState } from 'react';
 
 const BusinessDisplay = ({businessDisplay}) => {
-    // const [rating, setRating] = useState('zero-stars-big big-rating');
 
-    const handleRating = (ratingAverage) => {
-        if (ratingAverage < 1.25) {
-            return 'one-star-big big-rating';
-        } else if (ratingAverage < 1.875) {
-           return 'one-half-stars-big big-rating';
-        } else if (ratingAverage < 2.25) {
-            return 'two-stars-big big-rating';
-        } else if (ratingAverage < 2.875) {
-            return 'two-half-stars-big big-rating';
-        } else if (ratingAverage < 3.25) {
-            return 'three-stars-big big-rating';
-        } else if (ratingAverage < 3.875) {
-            return 'three-half-stars-big big-rating';
-        } else if (ratingAverage < 4.3) {
-            return 'four-stars-big big-rating';
-        } else if (ratingAverage < 5) {
-            return 'five-stars-big big-rating';
-        }
+    const ratingArr = {
+        0.5: 'one-star-big big-rating',
+        1: 'one-star-big big-rating',
+        1.5: 'one-half-stars-big big-rating',
+        2: 'two-stars-big big-rating',
+        2.5: 'two-half-stars-big big-rating',
+        3: 'three-stars-big big-rating',
+        3.5: 'three-half-stars-big big-rating',
+        4: 'four-stars-big big-rating',
+        4.5: 'four-stars-big big-rating',
+        5: 'five-stars-big big-rating'
     }
+
+    const handleRating = (rating) => {
+        const roundedRating = Math.round(rating * 2) / 2;
+        return ratingArr[roundedRating] || '';
+    };
 
 
     return (

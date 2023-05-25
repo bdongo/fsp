@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { EDITREVIEW, REMOVEREVIEW } from "./reviews";
 
 export const RECEIVEBUSINESS = 'businessPages/RECEIVEBUSINESS';
 export const RECEIVEALLBUSINESSES = 'businessPages/RECEIVEALLBUSINESSES';
@@ -63,6 +64,12 @@ const businessPagesReducer = (state = {}, action) => {
             return newState;
         case RECEIVEALLBUSINESSES:
             return  {...action.payload.businesses}
+        case REMOVEREVIEW:
+            newState[action.payload.business.id] = action.payload.business
+            return newState;
+        case EDITREVIEW:
+            newState[action.payload.business.id] = action.payload.business
+            return newState;
         default:
             return state;
     }
