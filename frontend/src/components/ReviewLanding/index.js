@@ -20,18 +20,13 @@ const ReviewLanding = ({reviewDisplay, state}) => {
         result += "..."
         return result
     }
-    const handleRating = (rating) => {
-        if (rating === 1) {
-            return 'one-star-big big-rating';
-        } else if (rating === 2) {
-            return 'two-stars-big big-rating';
-        } else if (rating === 3) {
-            return 'three-stars-big big-rating';
-        } else if (rating === 4) {
-            return 'four-stars-big big-rating';
-        } else if (rating === 5) {
-            return 'five-stars-big big-rating';
-        }
+
+    const ratingArr = {
+        1: 'one-star-big big-rating',
+        2: 'two-stars-big big-rating',
+        3: 'three-stars-big big-rating',
+        4: 'four-stars-big big-rating',
+        5: 'five-stars-big big-rating'
     }
 
     return (
@@ -53,7 +48,7 @@ const ReviewLanding = ({reviewDisplay, state}) => {
                         </Link>
                         
                         <p className='review-blurb'>{teaserText(review.body)}</p>
-                        <div className={handleRating(review.rating)}/>
+                        <div className={ratingArr[review.rating]}/>
                     </li>
                 )}
             </ul>
@@ -71,7 +66,7 @@ const ReviewLanding = ({reviewDisplay, state}) => {
                         </Link>
 
                         <p className='review-blurb'>{teaserText(review.body)}</p>
-                        <div className={handleRating(review.rating)} />
+                        <div className={ratingArr[review.rating]} />
                     </li>
                 )}
             </ul>
@@ -89,7 +84,7 @@ const ReviewLanding = ({reviewDisplay, state}) => {
                         </Link>
 
                         <p className='review-blurb'>{teaserText(review.body)}</p>
-                        <div className={handleRating(review.rating)} />
+                        <div className={ratingArr[review.rating]} />
                     </li>
                 )}
             </ul>
