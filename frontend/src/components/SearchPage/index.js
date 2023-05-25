@@ -116,6 +116,7 @@ const SearchPage = () => {
             <div id='search-map'>
                 <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
                     <Map
+                        ratingArr={ratingArr}
                         handleRating={handleRating}
                         businesses={results} />
                 </Wrapper>
