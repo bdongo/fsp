@@ -137,7 +137,7 @@ New code:
     id='star5'
     onClick={() => setRating(5)}
     onMouseEnter={() => setHoverRating(5)}
-    onMouseLeave={() => setHoverRating(rating)}
+    onMouseLeave={() => setHoverRating(0)}
     >
         <i className={hoverRating === 5 ? hoverStarArr[hoverRating] : 'blank-star star-rating'} />
     </div>
