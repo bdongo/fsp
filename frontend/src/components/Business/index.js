@@ -21,7 +21,6 @@ const Business = () => {
     const [rating, setRating] = useState('zero-stars-big big-rating');
     const [showEditButton, setShowEditButton] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
-    console.log(showEditButton, "showEditbutton")
     
     useEffect(()=> {
         if (currentUser) {
@@ -32,7 +31,6 @@ const Business = () => {
     const findAuthorId = (reviews, user) => {
         const authoredReview = reviews?.find(review => review.authorId === user?.id);
         if (authoredReview) {
-            console.log(authoredReview)
             return authoredReview;
         } else {
             return null;

@@ -7,7 +7,6 @@ const StarTower = () => {
     const reviews = useSelector(getReviews);
 
     useEffect(() => {
-        console.log("in useEffect")
         const reviewsCopy = [...reviews]
 
         if (reviews.length != reviews) {
@@ -16,7 +15,6 @@ const StarTower = () => {
             return acc;
         }, {});
         const largestNumber = Math.max(...Object.values(count));
-        console.log(count, "count")
 
         const fiveStars = (count["5"] / largestNumber) * 450 || 0;
         document.getElementById("five-bar").style.width = `${fiveStars}px`;
@@ -31,7 +29,6 @@ const StarTower = () => {
         document.getElementById("two-bar").style.width = `${twoStars}px`;
 
         const oneStars = (count["1"] / largestNumber) * 450 || 0;
-        console.log(oneStars, "oneStar")
         document.getElementById("one-bar").style.width = `${oneStars}px`;
     }
     }, [reviews])

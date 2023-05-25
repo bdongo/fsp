@@ -135,7 +135,6 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
         }
     }
 
-    console.log(reviewInfo, "review info")
     if (!bizId && !reviewInfo) {
         return (
             <SuggestedReviews/>
