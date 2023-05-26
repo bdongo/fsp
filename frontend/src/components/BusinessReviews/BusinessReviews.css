@@ -20,6 +20,20 @@
     line-height: 20px;
 }
 
+.review-photos-container {
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    overflow: auto;
+}
+
+.review-photos-container .businesspage-review-photo{
+    height: 200px;
+    margin-right: 15px;
+    border-radius: 3px;
+}
+
+
 .warning {
     margin-right: 60px;
     color: #d32323;
