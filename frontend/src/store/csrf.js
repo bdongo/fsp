@@ -6,8 +6,10 @@ const csrfFetch = async (url, options = {}) => {
     options.headers = options.headers || {};
 
     if (options.method.toUpperCase() !== 'GET') {
-        options.headers['Content-Type'] = options.headers['Content-Type'] || 'application/json';
-        options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token')
+        if (!options.headers["Content-Type"] && !(options.body instanceof FormData)) {
+            options.headers["Content-Type"] = "application/json";
+        }
+        options.headers["X-CSRF-Token"] = sessionStorage.getItem("X-CSRF-Token");
     }
 
     const res = await fetch(url, options);

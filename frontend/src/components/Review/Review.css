@@ -47,6 +47,10 @@
         margin-left: 15px;
 }
 
+.img-preview {
+    height: 100px;
+}
+
 #review > .textbox {
     margin-left: 25px;
     height: 250px;

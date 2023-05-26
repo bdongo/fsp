@@ -4,7 +4,7 @@ import './Review.css';
 import { useHistory, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBusiness, showBusiness } from '../../store/businessPages';
-import { createReview, updateReview } from '../../store/reviews';
+import { createPhotoReview, createReview, updateReview } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
 import LoginModal from '../LoginModal';
 import SearchBar from '../SearchBar';
@@ -25,6 +25,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
     const [authorId, setAuthorId] = useState('');
     const [rating, setRating] = useState(clickThruRating);
     const [photoFile, setPhotoFile] = useState(null);
+    const [photoURL, setPhotoURL] = useState(null);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [hoverRating, setHoverRating] = useState(clickThruRating);
     const currentPath = location.pathname;
@@ -90,22 +91,33 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
         }   else if (!currentUser) {
                 setShowLoginModal(true);
         } else {
-            dispatch(createReview({ body, businessId, authorId, rating }))
-                .then(() => {
-                    history.push(`/biz/${businessId}`)
-                })
-                .catch(async (res) => {
-                    let data;
-                    try {
-                        // .clone() essentially allows you to read the response body twice
-                        data = await res.clone().json();
-                    } catch {
-                        data = await res.text(); // Will hit this case if, e.g., server is down
-                    }
-                    if (data?.errors) setErrors(data.errors);
-                    else if (data) setErrors([data]);
-                    else setErrors([res.statusText]);
-                });
+            // dispatch(createReview({ body, businessId, authorId, rating }))
+            //     .then(() => {
+            //         history.push(`/biz/${businessId}`)
+            //     })
+            //     .catch(async (res) => {
+            //         let data;
+            //         try {
+            //             // .clone() essentially allows you to read the response body twice
+            //             data = await res.clone().json();
+            //         } catch {
+            //             data = await res.text(); // Will hit this case if, e.g., server is down
+            //         }
+            //         if (data?.errors) setErrors(data.errors);
+            //         else if (data) setErrors([data]);
+            //         else setErrors([res.statusText]);
+            //     });
+            const formData = new FormData();
+            formData.append('review[body]', body);
+            formData.append('review[businessId]', businessId);
+            formData.append('review[authorId]', authorId);
+            formData.append('review[rating]', rating);
+            if (photoFile){
+                formData.append('review[photos]', photoFile) 
+            }
+            
+            dispatch(createPhotoReview(formData))
+            
         }   
     }
 
@@ -139,8 +151,17 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
     const fileHandler = (e) => {
         const file = e.target.files[0];
         setPhotoFile(file)
+        if (file) {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => setPhotoURL(fileReader.result);
+        }
+        else setPhotoURL(null)
     }
     console.log(photoFile, "photofile")
+
+    let preview = null;
+    if (photoURL) preview = <img src={photoURL} className='img-preview'/>
 
     if (!bizId && !reviewInfo) {
         return (
@@ -227,6 +248,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                     onChange={fileHandler}
                     className='show-upload-modal'
                 ></input>
+                {preview}
             </div>
 
 
