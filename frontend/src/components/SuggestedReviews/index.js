@@ -36,7 +36,6 @@ const SuggestedReviews = () => {
                 {currentUser && businesses?.slice(0, numReviews).map((business, idx) => {
                     if (!currentUser.reviews.includes(business.id)){
                         displayNum += 1;
-                        console.log(displayNum, "displaynum")
                         return <ReviewCard business={business} key={idx} />
                     }
                 })}

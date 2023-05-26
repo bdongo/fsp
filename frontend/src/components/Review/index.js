@@ -272,7 +272,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                 <div className='show-upload-modal'>
                     <input type='file'
                         onChange={fileHandler}
-                        
+                        onDrop={fileHandler}
                         multiple
                     ></input>
                     {photoURLs?.map((photo, idx) => 
