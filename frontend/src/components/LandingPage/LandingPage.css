@@ -8,11 +8,13 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    
 }
 .slideshow-image {
-    width: 100%;
+    height: 100%;
     transition: opacity 0.5s ease-in-out;
     opacity: 1;
+    object-fit: cover;
 }
 
 .slideshow-image.hidden {

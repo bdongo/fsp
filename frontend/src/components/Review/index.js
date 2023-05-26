@@ -23,7 +23,8 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
     const [body, setBody] = useState('')
     const [businessId, setBusinessId] = useState('');
     const [authorId, setAuthorId] = useState('');
-    const [rating, setRating] = useState(clickThruRating)
+    const [rating, setRating] = useState(clickThruRating);
+    const [photoFile, setPhotoFile] = useState(null);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [hoverRating, setHoverRating] = useState(clickThruRating);
     const currentPath = location.pathname;
@@ -135,6 +136,12 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
         }
     }
 
+    const fileHandler = (e) => {
+        const file = e.target.files[0];
+        setPhotoFile(file)
+    }
+    console.log(photoFile, "photofile")
+
     if (!bizId && !reviewInfo) {
         return (
             <SuggestedReviews/>
@@ -212,6 +219,17 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                 </ul>
 
             </div>
+
+            <div className='file-container'>
+                <h2>Attach Photos</h2>
+
+                <input type='file'
+                    onChange={fileHandler}
+                    className='show-upload-modal'
+                ></input>
+            </div>
+
+
             {currentPath.startsWith('/writeareview') &&
             <button 
                 className='red-button button'
