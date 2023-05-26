@@ -24,8 +24,8 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
     const [businessId, setBusinessId] = useState('');
     const [authorId, setAuthorId] = useState('');
     const [rating, setRating] = useState(clickThruRating);
-    const [photoFile, setPhotoFile] = useState(null);
-    const [photoURL, setPhotoURL] = useState(null);
+    const [photoFiles, setPhotoFiles] = useState([]);
+    const [photoURLs, setPhotoURLs] = useState([]);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [hoverRating, setHoverRating] = useState(clickThruRating);
     const currentPath = location.pathname;
@@ -112,12 +112,28 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
             formData.append('review[businessId]', businessId);
             formData.append('review[authorId]', authorId);
             formData.append('review[rating]', rating);
-            if (photoFile){
-                formData.append('review[photos]', photoFile) 
+            if (photoFiles.length !== 0){
+                for (let i = 0; i < photoFiles.length;  i++) {
+                    formData.append('review[photos][]', photoFiles[i]) 
+                }
             }
             
             dispatch(createPhotoReview(formData))
-            
+                .then(() => {
+                    history.push(`/biz/${businessId}`)
+                })
+                .catch(async (res) => {
+                    let data;
+                    try {
+                        // .clone() essentially allows you to read the response body twice
+                        data = await res.clone().json();
+                    } catch {
+                        data = await res.text(); // Will hit this case if, e.g., server is down
+                    }
+                    if (data?.errors) setErrors(data.errors);
+                    else if (data) setErrors([data]);
+                    else setErrors([res.statusText]);
+                });       
         }   
     }
 
@@ -149,19 +165,28 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
     }
 
     const fileHandler = (e) => {
-        const file = e.target.files[0];
-        setPhotoFile(file)
-        if (file) {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-            fileReader.onload = () => setPhotoURL(fileReader.result);
+        const files = e.target.files;
+        setPhotoFiles(files)
+        if (files) {
+            if (files.length !== 0) {
+                let filesLoaded = 0;
+                const urls = []
+                Array.from(files).forEach((file, idx) => {
+                    const fileReader = new FileReader();
+                    fileReader.readAsDataURL(file);
+                    fileReader.onload = () => {
+                        urls[idx] = fileReader.result;
+                        if (++filesLoaded === files.length)
+                            setPhotoURLs(urls)
+                    }
+                })
+            }
         }
-        else setPhotoURL(null)
+        else setPhotoURLs([])
     }
-    console.log(photoFile, "photofile")
-
-    let preview = null;
-    if (photoURL) preview = <img src={photoURL} className='img-preview'/>
+    console.log(photoURLs, "photosURL")
+    console.log(photoFiles, "photofiles")
+   
 
     if (!bizId && !reviewInfo) {
         return (
@@ -244,11 +269,17 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
             <div className='file-container'>
                 <h2>Attach Photos</h2>
 
-                <input type='file'
-                    onChange={fileHandler}
-                    className='show-upload-modal'
-                ></input>
-                {preview}
+                <div className='show-upload-modal'>
+                    <input type='file'
+                        onChange={fileHandler}
+                        
+                        multiple
+                    ></input>
+                    {photoURLs?.map((photo, idx) => 
+                        <img key={idx} src={photo} className='img-preview' />
+                    )
+                    }
+                </div>
             </div>
 
 
