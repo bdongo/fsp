@@ -11,7 +11,8 @@
     
 }
 .slideshow-image {
-    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
     transition: opacity 0.5s ease-in-out;
     opacity: 1;
     object-fit: cover;

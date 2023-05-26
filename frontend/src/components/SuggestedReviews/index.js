@@ -3,11 +3,13 @@ import './SuggestedReviews.css';
 import { useEffect, useState } from 'react';
 import { getAllBusinesses, indexBusiness, showState } from '../../store/businessPages'
 import ReviewCard from '../ReviewCard';
+import { getCurrentUser } from '../../store/session';
 
 const SuggestedReviews = () => {
     const [numReviews, setNumReviews] = useState(6);
     const dispatch = useDispatch()
     const businesses = useSelector(getAllBusinesses)
+    const currentUser = useSelector(getCurrentUser)
 
     useEffect(()=> {
         dispatch(indexBusiness())
@@ -25,9 +27,12 @@ const SuggestedReviews = () => {
             {/* <SearchBar/> */}
             <div className='suggested-reviews-container'>
                 
-                {businesses?.slice(0,numReviews).map((business, idx) =>
+                {!currentUser && businesses?.slice(0,numReviews).map((business, idx) =>
                         <ReviewCard business={business} key={idx}/>
                 )}
+                {currentUser && businesses?.slice(0, numReviews).map((business, idx) => {
+                    <ReviewCard business={business} key={idx} />
+                })}
             </div>
 
            {numReviews === 6 &&

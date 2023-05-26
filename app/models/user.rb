@@ -61,6 +61,10 @@ class User < ApplicationRecord
     through: :reviews,
     source: :business
 
+    def show_business_ids 
+        self.reviewed_businesses.pluck(:id)
+    end
+
     private
     def generate_unique_session_token 
         token = SecureRandom.urlsafe_base64
