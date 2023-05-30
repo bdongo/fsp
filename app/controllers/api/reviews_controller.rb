@@ -41,6 +41,16 @@ class Api::ReviewsController < ApplicationController
         id = params[:id]
         @review = Review.find_by(id: id)
         @biz = BusinessPage.find_by(id: @review.business_id)
+        if params[:review][:remove_picture_idx]
+            remove_picture_index = params[:review][:remove_picture_idx]
+            p "arr"
+            p remove_picture_index
+            remove_picture_index.reverse_each do |num| 
+                idx = num.to_i
+                @review.photos[idx].purge_later
+            end
+        end
+
         if @review&.update(review_params)
             render '/api/business_pages/show'
         else

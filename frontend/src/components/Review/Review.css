@@ -37,7 +37,7 @@
     margin-left: 15px;
 }
 
-.show-upload-modal {
+.show-upload-modal-placeholder {
         height: 100px;
         width: 700px;
         /* margin-left: 50px; */
@@ -45,10 +45,58 @@
         border-radius: 4px;
         margin-top: 20px;
         margin-left: 15px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.show-uploaded-container {
+    margin-left: 15px;
+    margin-top: 20px;
+    display: flex;
+}
+
+.attach-photos-button {
+    height: 100px;
+    width: 100px;
+    border-radius: 3px;
+    border: 1px solid rgb(195, 195, 195);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.img-preview-container {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    border: 1px solid rgb(195, 195, 195);
+    border-radius: 3px;
+    margin-right: 8px;
+    position: relative;
 }
 
 .img-preview {
     height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.delete-img {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 24px;
+    height: 20px;
+    background-color: rgba(25, 25, 25, 0.406);
+    border-radius: 5px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 #review > .textbox {
