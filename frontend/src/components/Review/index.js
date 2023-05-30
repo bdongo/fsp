@@ -88,8 +88,6 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
 
     const showUpload = photoURLs?.length === 0 && oldPhotos?.length === 0
 
-    // useEffect(()=> {
-    // }, [photoFiles, oldPhotos])
 
 
 
@@ -200,11 +198,12 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
         updatedPhotoFiles.splice(idx, 1); 
         setPhotoFiles(updatedPhotoFiles)
     }
-    const deleteOldImg = (idx) => {
+    const deleteOldImg = (idx, photo) => {
         const updatedPhotoFiles = [...oldPhotos];
         updatedPhotoFiles.splice(idx, 1); 
         setOldPhotos(updatedPhotoFiles);
-        setDeleteIdxArr([...deleteIdxArr, idx])
+        const backendIdx = reviewInfo.photos.indexOf(photo)
+        setDeleteIdxArr([...deleteIdxArr, backendIdx])
     }
 
     console.log(photoFiles, "photoFiles")
@@ -327,7 +326,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                             <div key={idx} className='img-preview-container'>
                                 <img src={photo} className='img-preview' />
                                 <div className='delete-img'
-                                    onClick={() => deleteOldImg(idx)}
+                                    onClick={() => deleteOldImg(idx, photo)}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" className="bi bi-trash" viewBox="0 0 16 16">
                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />

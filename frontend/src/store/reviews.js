@@ -6,9 +6,9 @@ export const ADDREVIEW = "reviews/ADDREVIEW"
 export const EDITREVIEW = "reviews/EDITREVIEWS"
 export const REMOVEREVIEW = "review/REMOVEREVIEW"
 
-export const addReview = (review) => ({
+export const addReview = (payload) => ({
     type: ADDREVIEW,
-    review
+    payload
 })
 
 export const editReview = (payload) => ({
@@ -45,7 +45,7 @@ export const updateReview = (reviewId, formData) => async (dispatch) => {
     })
     if (res.ok) {
         const updatedReview = await res.json();
-        dispatch(addReview(updatedReview));
+        dispatch(editReview(updatedReview));
         return res;
     }
 }
@@ -70,7 +70,7 @@ const reviewReducer = (state = {}, action) => {
         case RECEIVEBUSINESS:
             return {...action.payload.reviews};
         case ADDREVIEW:
-
+            return { ...action.payload.reviews };
         case REMOVEREVIEW:
             delete newState[action.reviewId];
             return newState;

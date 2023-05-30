@@ -47,7 +47,8 @@ class Api::ReviewsController < ApplicationController
             p remove_picture_index
             remove_picture_index.reverse_each do |num| 
                 idx = num.to_i
-                @review.photos[idx].purge_later
+                attachment = @review.photos[idx]
+                attachment.purge_later if attachment
             end
         end
 
