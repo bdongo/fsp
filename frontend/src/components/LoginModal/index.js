@@ -60,7 +60,7 @@ const LoginModal = ({ setShowLoginModal }) => {
                             <h2>You're almost done!</h2>
 
                             <p className='subtle'>
-                                Choose how you want to post your review on Yelp
+                                Choose how you want to post your review on ylp
                             </p>
                             
 
@@ -68,23 +68,23 @@ const LoginModal = ({ setShowLoginModal }) => {
                             <button className="modal-button white-button" onClick={switchSignUpForm}>Continue With Email</button>
 
                             <div className="break small-footer">
-                            <small>Already on Yelp? <small className="link-color" onClick={switchLoginForm}>Log in</small></small>
+                            <small>Already on ylp? <small className="link-color" onClick={switchLoginForm}>Log in</small></small>
                             </div>  
                         </>
                     }
                     {showLoginForm &&
                         <>
                         <img src={profilePic} />
-                        <h2>You're almost done! Log in to Yelp</h2>
+                        <h2>You're almost done! Log in to ylp</h2>
                         <FormLogin/>
                         <div className="break small-footer">
-                            <small>Don't want to sign into Yelp? <small className="link-color" onClick={handleDemo}>Use a demo account.</small></small>
+                            <small>Don't want to sign into ylp? <small className="link-color" onClick={handleDemo}>Use a demo account.</small></small>
                         </div>
                         <div className='divider small-footer'>
                             <small>or</small>
                         </div>
                         <div className="small-footer">
-                            <small>New to Yelp? <small className="link-color" onClick={switchSignUpForm}>Sign up</small></small>
+                            <small>New to ylp? <small className="link-color" onClick={switchSignUpForm}>Sign up</small></small>
                         </div>  
                         </>  
                     }
@@ -94,13 +94,13 @@ const LoginModal = ({ setShowLoginModal }) => {
                         <h2>You're almost done! Sign up</h2>
                         <FormSignUp/>
                         <div className="break small-footer">
-                            <small>Don't want to sign up for Yelp? <small className="link-color" onClick={handleDemo}>Use a demo account</small></small>
+                            <small>Don't want to sign up for ylp? <small className="link-color" onClick={handleDemo}>Use a demo account</small></small>
                         </div>
                         <div className='divider small-footer'>
                             <small>or</small>
                         </div>
                         <div className="small-footer">
-                            <small>Already on Yelp? <small className="link-color" onClick={switchLoginForm}>Log in</small></small>
+                            <small>Already on ylp? <small className="link-color" onClick={switchLoginForm}>Log in</small></small>
                         </div>  
                         </>
                     }

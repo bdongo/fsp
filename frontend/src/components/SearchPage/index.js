@@ -25,9 +25,9 @@ const SearchPage = () => {
 
     useEffect(() => {
         if (query) {
-            document.title = `Yelp - ${query}`
+            document.title = `ylp - ${query}`
         } else {
-            document.title = `Yelp - Search`;
+            document.title = `ylp - Search`;
         }
     }, [query]);
 

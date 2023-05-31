@@ -45,7 +45,7 @@ const LandingPage = () => {
     }, [dispatch])
 
     useEffect(() => {
-        document.title = `Yelp`;
+        document.title = `ylp`;
     }, []);
 
     return (
