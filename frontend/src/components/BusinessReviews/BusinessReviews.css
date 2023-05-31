@@ -25,6 +25,7 @@
     width: 100%;
     height: 200px;
     overflow: auto;
+    display: flex;
 }
 
 .review-photos-container .businesspage-review-photo{
