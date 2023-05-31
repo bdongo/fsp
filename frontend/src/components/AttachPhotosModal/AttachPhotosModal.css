@@ -52,10 +52,22 @@ input[type=file]::file-selector-button {
     display: none;
 }
 
+input[type=file] {
+    color: transparent;
+}
+.attached-modal {
+    position: relative;
+}
+.attached-modal > h1 {
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
 .drop-files {
     position: absolute;
     height: 390px;
-    width: 6900px;
+    width: 690px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,6 +110,11 @@ input[type=file]::file-selector-button {
     object-fit: cover;
 }
 
+.attach-top-row {
+    display: flex;
+
+}
+
 .delete-modal-img {
     position: absolute;
     top: 4px;
@@ -116,9 +133,38 @@ input[type=file]::file-selector-button {
 .attach-bottomrow {
     display: flex;
     justify-content: space-between;
+    /* position: relative; */
 }
 
+.attach-button {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+}
+
+#hyperlink-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 700px;
+}
+
+.attach-bottomrow .hyper-link {
+    color: rgb(2, 122, 151);
+    font-weight: bold;
+    font-size: 1em;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+}
+.hyper-link:hover {
+    cursor: pointer;
+}
 .attach-error {
-    margin: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
     color: #d32323;
 }

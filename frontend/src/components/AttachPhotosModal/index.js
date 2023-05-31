@@ -11,8 +11,13 @@ const AttachPhotosModal = ({photoFiles, setPhotoFiles, setErrors, setShowPhotoMo
 
     const fileHandler = (e) => {
         const files = e.target.files;
-        if (files.length + photoFiles.length > 4) {
+        if (files.length + photoFiles.length + attachArr.length > 4) {
             setMaximumError("Maximum 4 pictures per review")
+            const remainder = 4 - (photoFiles.length + attachArr.length)
+            if (remainder > 0 ) {
+                const slicedArr = [...files].slice(0, remainder)
+                setAttachArr([...attachArr, ...slicedArr])
+            }
         } else {
             setAttachArr([...attachArr, ...files]);
         }
@@ -35,16 +40,13 @@ const AttachPhotosModal = ({photoFiles, setPhotoFiles, setErrors, setShowPhotoMo
             setAttachURLs([])
         }
     }, [attachArr])
-
     const cancelHandler = () => {
-        return () => {
             setClicks(clicks + 1)
             if (clicks === 0) {
                 setMaximumError("Changes will not save if you close editor. Click again to confirm")
             } else if (clicks === 1) {
                 setShowPhotoModal(false)
             }
-        }
     }
 
     const attachHandler = () => {
@@ -62,6 +64,7 @@ const AttachPhotosModal = ({photoFiles, setPhotoFiles, setErrors, setShowPhotoMo
         updatedPhotoFiles.splice(idx, 1); 
         setAttachArr(updatedPhotoFiles)
         setErrors([])
+        setMaximumError('')
     }
 
     console.log(attachArr, "attacharr")
@@ -85,6 +88,7 @@ const AttachPhotosModal = ({photoFiles, setPhotoFiles, setErrors, setShowPhotoMo
                         type="file"
                         onChange={fileHandler}
                         onDrop={fileHandler}
+                        title=''
                         multiple
                     />
                     <label
@@ -97,8 +101,11 @@ const AttachPhotosModal = ({photoFiles, setPhotoFiles, setErrors, setShowPhotoMo
                  
                 </div>}
                 {!showBlank && 
-                    <div>
-                        <h1>Almost Done!</h1>
+                    <div className='attached-modal'>
+                        <div className='attach-top-row'>
+                            <h1>Almost Done!</h1>   
+                            <p className='attach-error'>{maximumError}</p>
+                        </div>
                         <div className='attachment-preview-container'>
                             {attachURLs.map((photo, idx) => 
                                 <div key={idx} className='modal-preview-container'>
@@ -114,20 +121,27 @@ const AttachPhotosModal = ({photoFiles, setPhotoFiles, setErrors, setShowPhotoMo
                                 </div>
                             )}
                         </div>
+                        
                         <div className='attach-bottomrow'>
                             <input
-                                id='file-input'
+                                id='hyperlink-input'
                                 type="file"
                                 onChange={fileHandler}
                                 onDrop={fileHandler}
+                                title=''
                                 multiple
                             />
+                            <label for='hyperlink-input'>
+                                <span className='hyper-link'>
+                                    Browse
+                                </span> or drag and drop more photos
+                            </label>
+                            
                             <div>
-                                <button onClick={cancelHandler}>Cancel</button>
-                                <button className='red-button' onClick={attachHandler}>Attach</button>
+                                <button className="clear-button-outline attach-button" onClick={cancelHandler}>Cancel</button>
+                                <button className='red-button attach-button' onClick={attachHandler}>Attach</button>
                             </div>
                         </div> 
-                        <p className='attach-error'>{maximumError}</p>
                     </div>
                 }
             </div>
