@@ -197,6 +197,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
         const updatedPhotoFiles = [...photoFiles];
         updatedPhotoFiles.splice(idx, 1); 
         setPhotoFiles(updatedPhotoFiles)
+        setErrors([])
     }
     const deleteOldImg = (idx, photo) => {
         const updatedPhotoFiles = [...oldPhotos];
@@ -206,6 +207,13 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
         setDeleteIdxArr([...deleteIdxArr, backendIdx])
     }
 
+    const handleOpen = () => {
+        if (photoFiles.length + oldPhotos.length === 4) {
+            setErrors(["Maximum 4 pictures per review, delete unwanted pictures to attach more"])
+        } else {
+            setShowPhotoModal(true)
+        }
+    }
     console.log(photoFiles, "photoFiles")
     console.log(photoURLs, "photoURLs")
     console.log(oldPhotos, "oldPhotos")
@@ -292,6 +300,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                 />
 
                 <ul className="error-container">
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     {errors.map((error, idx) => <li key={idx}>{error.messages}</li>)}
                     {error}
                 </ul>
@@ -314,7 +323,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                 {!showUpload &&
                     <div className='show-uploaded-container'>
                         <div
-                            onClick={() => setShowPhotoModal(true)}
+                            onClick={handleOpen}
                             className='attach-photos-button'
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgb(195, 195, 195)" className="bi bi-camera" viewBox="0 0 16 16">
