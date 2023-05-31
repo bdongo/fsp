@@ -1345,6 +1345,17 @@ average_reviews = [
 ]
 # 82 entries + 30
 
+review_pictures_arr = [
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/review2.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/reviewpic.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/reviewpic1+copy.jpg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/reviewpic2.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/reviewpic3.jpeg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/reviewpic5.webp",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/reviewpic8+copy.jpg",
+  "https://ylp-seeds.s3.us-west-1.amazonaws.com/reviewpic9+copy.jpg"
+]
+
 business_ids = BusinessPage.pluck(:id)
 author_ids = User.pluck(:id)
 
@@ -1457,6 +1468,17 @@ def create_negative_reviews(businesses, reviews, author_ids)
 end
 
 create_negative_reviews(businesses, negative_reviews, author_ids)
+
+puts "seeding review pictures"
+
+reviews = Review.all
+random_reviews = reviews.shuffle.take((reviews.length * 0.2).ceil)
+
+random_reviews.each do |review|
+  random_selection = review_pictures_arr.shuffle.take(rand(1..4))
+  attach_photos(review, random_selection)
+end
+
 
 
 puts "done!"
