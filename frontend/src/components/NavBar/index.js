@@ -17,7 +17,7 @@ const NavBar = () => {
 
     const needSearchBar = currentPath === '/' || currentPath.startsWith('/biz/') || currentPath.startsWith('/search');
 
-    const needDarkText = currentPath.startsWith('/search')
+    const needDarkText = currentPath.startsWith('/search') || currentPath.startsWith('/biz')
     
     return (
         <header id="header" 

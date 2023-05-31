@@ -73,6 +73,14 @@ const BusinessReviews = ({reviews, currentUser}) => {
                     <div className={handleRating(review.rating)} />
   
                     <p>{review.body}</p>
+                    { review.photos && 
+                        <div className='review-photos-container'>
+                            {review.photos.map((photo, idx) => 
+                                <img key={idx} src={photo} className='businesspage-review-photo'/>
+                            )}
+                        </div>
+                    }
+
                     <div className='bottom-buttons'>
                         
                         {currentUser?.id === review.authorId &&

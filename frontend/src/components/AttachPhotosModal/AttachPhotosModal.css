@@ -1,0 +1,170 @@
+.photo-modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 120vh;
+    width: 100vw;
+    background-color: rgba(25, 25, 25, .5);
+    z-index: 5;
+}
+
+.photo-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    height: 480px;
+    width: 800px;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid rgb(195, 195, 195);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#photo-modal-container {
+    height: 400px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgb(195, 195, 195); 
+    border-radius: 8px;  
+}
+
+#photo-modal-container h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.custom-file-input {
+    margin-top: 20px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+input[type=file]::file-selector-button {
+    display: none;
+}
+
+input[type=file] {
+    color: transparent;
+}
+.attached-modal {
+    position: relative;
+}
+.attached-modal > h1 {
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.drop-files {
+    position: absolute;
+    height: 390px;
+    width: 690px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.browse-button {
+    /* background-color: red; */
+    margin-top: 15px;
+    text-align: center;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1;
+}
+.attachment-preview-container {
+    display: flex;
+    justify-content: flex-start;
+    height: 300px;
+    width: 700px;
+    align-items: center;
+    
+}
+
+.modal-preview-container {
+    height: 160px;
+    width: 200px;
+    overflow: hidden;
+    border: 1px solid rgb(195, 195, 195);
+    border-radius: 5px;
+    margin-right: 8px;
+    position: relative;
+}
+
+.modal-preview {
+    height: 160px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.attach-top-row {
+    display: flex;
+
+}
+
+.delete-modal-img {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 30px;
+    height: 26px;
+    background-color: rgba(25, 25, 25, 0.406);
+    border-radius: 5px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.attach-bottomrow {
+    display: flex;
+    justify-content: space-between;
+    /* position: relative; */
+}
+
+.attach-button {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+}
+
+#hyperlink-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 700px;
+}
+
+.attach-bottomrow .hyper-link {
+    color: rgb(2, 122, 151);
+    font-weight: bold;
+    font-size: 1em;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+}
+.hyper-link:hover {
+    cursor: pointer;
+}
+.attach-error {
+    margin-right: 20px;
+    margin-left: 20px;
+    color: #d32323;
+}

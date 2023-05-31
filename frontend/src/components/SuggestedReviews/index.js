@@ -3,11 +3,15 @@ import './SuggestedReviews.css';
 import { useEffect, useState } from 'react';
 import { getAllBusinesses, indexBusiness, showState } from '../../store/businessPages'
 import ReviewCard from '../ReviewCard';
+import { getCurrentUser } from '../../store/session';
 
 const SuggestedReviews = () => {
     const [numReviews, setNumReviews] = useState(6);
     const dispatch = useDispatch()
     const businesses = useSelector(getAllBusinesses)
+    const currentUser = useSelector(getCurrentUser)
+    let displayNum = 0;
+   
 
     useEffect(()=> {
         dispatch(indexBusiness())
@@ -25,16 +29,23 @@ const SuggestedReviews = () => {
             {/* <SearchBar/> */}
             <div className='suggested-reviews-container'>
                 
-                {businesses?.slice(0,numReviews).map((business, idx) =>
-                        <ReviewCard business={business} key={idx}/>
-                )}
+                {!currentUser && businesses?.slice(0,numReviews).map((business, idx) =>{
+                        displayNum += 1;
+                        return <ReviewCard business={business} key={idx}/>
+                })}
+                {currentUser && businesses?.slice(0, numReviews).map((business, idx) => {
+                    if (!currentUser.reviews.includes(business.id)){
+                        displayNum += 1;
+                        return <ReviewCard business={business} key={idx} />
+                    }
+                })}
             </div>
 
-           {numReviews === 6 &&
+           {displayNum < 12 &&
                 <div className='show-more-container' onClick={handleShowMore}>
                     <div className='show-more' onClick={handleShowMore}>Show more suggestions</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(2, 122, 151)" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(2, 122, 151)" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                         </svg>
                 </div>
             }

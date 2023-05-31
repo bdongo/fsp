@@ -6,9 +6,9 @@ export const ADDREVIEW = "reviews/ADDREVIEW"
 export const EDITREVIEW = "reviews/EDITREVIEWS"
 export const REMOVEREVIEW = "review/REMOVEREVIEW"
 
-export const addReview = (review) => ({
+export const addReview = (payload) => ({
     type: ADDREVIEW,
-    review
+    payload
 })
 
 export const editReview = (payload) => ({
@@ -26,19 +26,10 @@ export const getReviews = (state) => (
     state?.reviews ? Object.values(state.reviews) : []
 )
 
-export const createReview = (review) => async (dispatch) => {
-    const {authorId, businessId, body, rating} = review
+export const createReview = (formData) => async (dispatch) => {
     const res = await csrfFetch('/api/reviews', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ review: {
-            authorId,
-            businessId,
-            body,
-            rating
-        }})
+        body: formData
     })
     if (res.ok) {
         const newReview = await res.json();
@@ -47,21 +38,10 @@ export const createReview = (review) => async (dispatch) => {
     }
 }
 
-export const updateReview = (review) => async (dispatch) => {
-    const { authorId, businessId, body, rating } = review
-    const res = await csrfFetch(`/api/reviews/${review.id}`, {
+export const updateReview = (reviewId, formData) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            review: {
-            authorId,
-            businessId,
-            body,
-            rating
-        }
-        })
+        body: formData
     })
     if (res.ok) {
         const updatedReview = await res.json();
@@ -90,7 +70,7 @@ const reviewReducer = (state = {}, action) => {
         case RECEIVEBUSINESS:
             return {...action.payload.reviews};
         case ADDREVIEW:
-
+            return { ...action.payload.reviews };
         case REMOVEREVIEW:
             delete newState[action.reviewId];
             return newState;

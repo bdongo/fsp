@@ -20,9 +20,9 @@ const LoginForm = () => {
 
     useEffect(() => {
         if (currentPath === '/login'){
-            document.title = "Log In - Yelp";
+            document.title = "Log In - ylp";
         } else {
-            document.title = "Sign Up - Yelp";
+            document.title = "Sign Up - ylp";
         }
     }, []);
 
@@ -46,11 +46,11 @@ const LoginForm = () => {
             <div id="form-container">
                 <div className="form">
                     <h2>{currentPath === '/login' ?
-                        'Log in to Yelp' : 'Sign Up for Yelp'}</h2>
+                        'Log in to ylp' : 'Sign Up for ylp'}</h2>
 
                     {currentPath === '/login' &&
                         <p className="subheading">
-                            New to Yelp? <Link className="link" to="/signup">Sign Up</Link>
+                            New to ylp? <Link className="link" to="/signup">Sign Up</Link>
                         </p>}
 
                     {currentPath === '/signup' &&
@@ -70,12 +70,12 @@ const LoginForm = () => {
 
                     {currentPath === '/login' &&
                         <div className="small-footer align-right subtle">
-                            <small>New to Yelp? <Link className="link" to="/signup">Sign up</Link></small>
+                            <small>New to ylp? <Link className="link" to="/signup">Sign up</Link></small>
                         </div>
                     }
                     {currentPath === '/signup' &&
                         <div className="small-footer align-right subtle"> 
-                            <small>Already on Yelp? <Link className="link" to="/login">Log in</Link></small>
+                            <small>Already on ylp? <Link className="link" to="/login">Log in</Link></small>
                         </div>
                     }
                 </div>
