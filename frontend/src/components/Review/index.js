@@ -84,6 +84,12 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
         }
     }, [photoFiles])
 
+    useEffect(() => {
+        if(error) {
+            setErrors([error])
+        }
+    }, [error])
+
     const showUpload = photoURLs?.length === 0 && oldPhotos?.length === 0
 
 
@@ -212,10 +218,6 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
             setShowPhotoModal(true)
         }
     }
-    console.log(photoFiles, "photoFiles")
-    console.log(photoURLs, "photoURLs")
-    console.log(oldPhotos, "oldPhotos")
-    console.log(deleteIdxArr, "deleteidxarr")
    
 
     if (!bizId && !reviewInfo) {
@@ -300,7 +302,6 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
                 <ul className="error-container">
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     {errors.map((error, idx) => <li key={idx}>{error.messages}{error.title}{error.stack}</li>)}
-                    {error}
                 </ul>
 
             </div>
