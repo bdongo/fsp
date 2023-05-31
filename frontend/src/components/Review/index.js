@@ -299,7 +299,7 @@ const Review = ({reviewInfo, setShowEditModal, error}) => {
 
                 <ul className="error-container">
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    {errors.map((error, idx) => <li key={idx}>{error.messages}</li>)}
+                    {errors.map((error, idx) => <li key={idx}>{error.messages}{error.title}{error.stack}</li>)}
                     {error}
                 </ul>
 

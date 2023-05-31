@@ -52,7 +52,7 @@ class Api::ReviewsController < ApplicationController
             end
         end
 
-        if @review&.update(review_params)
+        if @review&.update(review_params.merge(photos: [*@review.photos.map(&:blob), *params[:review][:photos]]))
             render '/api/business_pages/show'
         else
             render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
@@ -64,5 +64,6 @@ class Api::ReviewsController < ApplicationController
     private
     def review_params
         params.require(:review).permit(:author_id, :business_id, :body, :rating, photos: [])
+        # params.require(:review).permit(:author_id, :business_id, :body, :rating)
     end
 end
