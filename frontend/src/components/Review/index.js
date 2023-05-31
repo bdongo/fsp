@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import NavBar from '../NavBar';
 import './Review.css';
 import { useHistory, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +6,6 @@ import { getBusiness, showBusiness } from '../../store/businessPages';
 import { createReview, updateReview } from '../../store/reviews';
 import { getCurrentUser } from '../../store/session';
 import LoginModal from '../LoginModal';
-import SearchBar from '../SearchBar';
 import SuggestedReviews from '../SuggestedReviews';
 import AttachPhotosModal from '../AttachPhotosModal'
 
