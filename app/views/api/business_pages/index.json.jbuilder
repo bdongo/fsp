@@ -9,13 +9,13 @@ json.businesses do
     end
 end
 
-json.users do
-     @users.each do |user|
-        json.set! user.id do
-            json.extract! user, :id, :email, :username, :f_name, :l_name
-    end
-  end
-end
+# json.users do
+#      @users.each do |user|
+#         json.set! user.id do
+#             json.extract! user, :id, :email, :username, :f_name, :l_name
+#     end
+#   end
+# end
 
 json.reviews do 
     @reviews.each do |review|

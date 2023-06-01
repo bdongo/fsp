@@ -67,9 +67,6 @@ const AttachPhotosModal = ({photoFiles, setPhotoFiles, setErrors, setShowPhotoMo
         setMaximumError('')
     }
 
-    console.log(attachArr, "attacharr")
-    console.log(attachURLs, "attachurls")
-
     return (
         <div className='photo-modal-background'
         >
