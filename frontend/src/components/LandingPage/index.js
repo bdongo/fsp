@@ -4,7 +4,7 @@ import { getCurrentUser, showCurrentUser } from '../../store/session'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useEffect } from 'react'
 import NavBar from '../NavBar'
-import { getAllBusinesses, indexBusiness, showState } from '../../store/businessPages'
+import { getAllBusinesses, indexBusiness, indexBusinessLanding, showState } from '../../store/businessPages'
 import { getUsers } from '../../store/users'
 import { getReviews } from '../../store/reviews'
 import BusinessDisplay from '../BusinessDisplay'
@@ -17,11 +17,9 @@ import ImageSlides from '../ImageSlides'
 
 const LandingPage = () => {
     const dispatch = useDispatch();
-    const users = useSelector(getUsers);
     const reviews = useSelector(getReviews);
     const currentUser = useSelector(getCurrentUser);
     const businesses = useSelector(getAllBusinesses);
-    const state = useSelector(showState);
 
 
     const shuffleDisplay = (array) => {
@@ -41,7 +39,8 @@ const LandingPage = () => {
     const showReviews = reviews.length !== 0;
 
     useEffect(()=> {
-        dispatch(indexBusiness())
+
+        dispatch(indexBusinessLanding())
     }, [dispatch])
 
     useEffect(() => {
@@ -55,7 +54,7 @@ const LandingPage = () => {
                 <ImageSlides/>
             </div>
            {showReviews &&
-                <ReviewLanding reviewDisplay={reviewDisplay} state={state}/>
+                <ReviewLanding reviewDisplay={reviewDisplay}/>
             }
             { showBusiness && 
                 <BusinessDisplay businessDisplay={businessDisplay}/>

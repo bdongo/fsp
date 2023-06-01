@@ -46,6 +46,16 @@ export const indexBusiness = () => async (dispatch) => {
     }
 }
 
+export const indexBusinessLanding = () => async (dispatch) => {
+    const res = await csrfFetch('/api/business_pages?require=pictures')
+
+    if (res.ok) {
+        const businessPages = await res.json()
+        dispatch(receiveAllBusiness(businessPages))
+        return res
+    }
+}
+
 export const searchBusinesses = (query) => async (dispatch) => {
     const res = await csrfFetch(`/api/business_pages?query=${query}`)
     if (res.ok) {

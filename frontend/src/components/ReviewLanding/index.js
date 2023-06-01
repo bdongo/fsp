@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import './ReviewLanding.css';
 
-const ReviewLanding = ({reviewDisplay, state}) => {
-    const [_, users, businesses, __] = state
+const ReviewLanding = ({reviewDisplay}) => {
 
     const lastInitial = (lastName) => {
         let result = lastName.split('')[0]
@@ -37,54 +36,108 @@ const ReviewLanding = ({reviewDisplay, state}) => {
             <ul>
                 {reviewDisplay?.slice(0, 3).map((review, idx) =>
                     <li key={idx}> 
-                        <h3>{users[review.authorId]?.fName} {lastInitial(users[review.authorId]?.lName)}</h3>
+                        <h3>{review.authorFName} {lastInitial(review.authorLName)}</h3>
                         <p>Wrote a review</p>
                         <Link className="link" to={`/biz/${review.businessId}`}>
                             <div>
                                 <h3>
-                                    {businesses[review.businessId]?.name}
+                                    {review.businessName}
                                 </h3>
                             </div>
                         </Link>
-                        
+                        {review?.photos?.length === 1 &&
+                            <div className='review-landing-photos-container'>
+                                <img
+                                    className='review-landing-photo-single'
+                                    key={idx}
+                                    src={review.photos[0]} />
+                            </div>
+                        }
+
+                        {review?.photos?.length > 1 &&
+                            <div className='review-landing-photos-container'>
+                                {review.photos.map((photo, idx) =>
+                                    <img
+                                        className='review-landing-photo'
+                                        key={idx}
+                                        src={photo} />
+                                )}
+                            </div>
+                        }
                         <p className='review-blurb'>{teaserText(review.body)}</p>
-                        <div className={ratingArr[review.rating]}/>
+                        <div className={`landing-margin ${ratingArr[review.rating]}`}/>
                     </li>
                 )}
             </ul>
             <ul>
                 {reviewDisplay?.slice(3, 6).map((review, idx) =>
                     <li key={idx}>
-                        <h3>{users[review.authorId]?.fName} {lastInitial(users[review.authorId]?.lName)}</h3>
+                        <h3>{review.authorFName} {lastInitial(review.authorLName)}</h3>
                         <p>Wrote a review</p>
                         <Link className="link" to={`/biz/${review.businessId}`}>
                             <div>
                                 <h3>
-                                    {businesses[review.businessId]?.name}
+                                    {review.businessName}
                                 </h3>
                             </div>
                         </Link>
+                        {review?.photos?.length === 1 &&
+                            <div className='review-landing-photos-container'>
+                                <img
+                                    className='review-landing-photo-single'
+                                    key={idx}
+                                    src={review.photos[0]} />
+                            </div>
+                        }
 
+                        {review?.photos?.length > 1 &&
+                            <div className='review-landing-photos-container'>
+                                {review.photos.map((photo, idx) =>
+                                    <img
+                                        className='review-landing-photo'
+                                        key={idx}
+                                        src={photo} />
+                                )}
+                            </div>
+                        }
                         <p className='review-blurb'>{teaserText(review.body)}</p>
-                        <div className={ratingArr[review.rating]} />
+                        <div className={`landing-margin ${ratingArr[review.rating]}`} />
                     </li>
                 )}
             </ul>
             <ul>
                 {reviewDisplay?.slice(6, 9).map((review, idx) =>
                     <li key={idx}>
-                        <h3>{users[review.authorId]?.fName} {lastInitial(users[review.authorId]?.lName)}</h3>
+                        <h3>{review.authorFName} {lastInitial(review.authorLName)}</h3>
                         <p>Wrote a review</p>
                         <Link className="link" to={`/biz/${review.businessId}`}>
                             <div>
                                 <h3>
-                                    {businesses[review.businessId]?.name}
+                                    {review.businessName}
                                 </h3>
                             </div>
                         </Link>
+                        {review?.photos?.length === 1 &&
+                            <div className='review-landing-photos-container'>
+                                <img
+                                    className='review-landing-photo-single'
+                                    key={idx}
+                                    src={review.photos[0]} />
+                            </div>
+                        }
 
+                        {review?.photos?.length > 1 &&
+                            <div className='review-landing-photos-container'>
+                                {review.photos.map((photo, idx) =>
+                                    <img
+                                        className='review-landing-photo'
+                                        key={idx}
+                                        src={photo} />
+                                )}
+                            </div>
+                        }
                         <p className='review-blurb'>{teaserText(review.body)}</p>
-                        <div className={ratingArr[review.rating]} />
+                        <div className={`landing-margin ${ratingArr[review.rating]}`} />
                     </li>
                 )}
             </ul>

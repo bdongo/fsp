@@ -47,7 +47,7 @@
     margin-top: 15px;
     margin-left: 15px;
 }
-.landing-review-container>ul>li>div {
+.landing-review-container>ul>li>.landing-margin {
     margin-top: 15px;
     margin-left: 10px;
 }
@@ -64,4 +64,28 @@
     font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin-left: 15px;
     margin-top: 25px;
+}
+
+.review-landing-photos-container {
+    margin-top: 15px;
+    margin-left: none;
+    height: 125px;
+    width: 300px;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+}
+
+.review-landing-photo {
+    min-height: 150px; 
+    width: 180px;
+    margin-right: 4px;
+    object-fit: cover;
+}
+
+.review-landing-photo-single {
+    min-height: 150px;
+    width: 300px;
+    object-fit: cover;
 }
