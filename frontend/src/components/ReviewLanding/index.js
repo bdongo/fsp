@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import './ReviewLanding.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getReviews, reviewIndex } from '../../store/reviews';
+import { useEffect } from 'react';
 
-const ReviewLanding = ({reviewDisplay}) => {
+const ReviewLanding = ({shuffleDisplay}) => {
+    const dispatch = useDispatch();
+    const reviews = useSelector(getReviews);
+    const reviewDisplay = Array.from(new Set(shuffleDisplay(reviews)));
+
+    useEffect(() => {
+        dispatch(reviewIndex("landing"));
+    }, [dispatch]);
 
     const lastInitial = (lastName) => {
         let result = lastName.split('')[0]
@@ -26,6 +36,10 @@ const ReviewLanding = ({reviewDisplay}) => {
         3: 'three-stars-big big-rating',
         4: 'four-stars-big big-rating',
         5: 'five-stars-big big-rating'
+    }
+
+    if (reviews.length === 0) {
+        return null;
     }
 
     return (

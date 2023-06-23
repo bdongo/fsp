@@ -5,6 +5,12 @@ import csrfFetch from "./csrf";
 export const ADDREVIEW = "reviews/ADDREVIEW"
 export const EDITREVIEW = "reviews/EDITREVIEWS"
 export const REMOVEREVIEW = "review/REMOVEREVIEW"
+export const RECIEVEALLREVIEWS = "review/RECIEVEALLREVIEWS"
+
+export const revieveAllReviews = (reviews) => ({
+    type: RECIEVEALLREVIEWS,
+    reviews
+})
 
 export const addReview = (payload) => ({
     type: ADDREVIEW,
@@ -25,6 +31,24 @@ export const removeReview = (reviewId, payload) => ({
 export const getReviews = (state) => (
     state?.reviews ? Object.values(state.reviews) : []
 )
+
+export const reviewIndex = (landing = null) => async (dispatch) => {
+    if (landing) {
+        const res = await csrfFetch('/api/reviews?require=pictures')
+        if (res.ok) {
+            const reviews = await res.json();
+            dispatch(revieveAllReviews(reviews));
+            return res;
+        }
+    } else {
+        const res = await csrfFetch('/api/reviews')
+        if (res.ok) {
+            const reviews = await res.json();
+            dispatch(revieveAllReviews(reviews));
+            return res;
+        }
+    }
+}
 
 export const createReview = (formData) => async (dispatch) => {
     const res = await csrfFetch('/api/reviews', {
@@ -65,8 +89,8 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 const reviewReducer = (state = {}, action) => {
     const newState = {...state}
     switch (action.type){
-        case RECEIVEALLBUSINESSES:
-            return { ...action.payload.reviews };
+        case RECIEVEALLREVIEWS:
+            return { ...action.reviews };
         case RECEIVEBUSINESS:
             return {...action.payload.reviews};
         case ADDREVIEW:

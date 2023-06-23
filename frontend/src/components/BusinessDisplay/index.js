@@ -2,8 +2,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import './BusinessDisplay.css';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { useState } from 'react';
+import { getAllBusinesses, indexBusiness } from '../../store/businessPages';
+import { useEffect } from 'react';
 
-const BusinessDisplay = ({businessDisplay}) => {
+const BusinessDisplay = ({shuffleDisplay}) => {
+    const dispatch = useDispatch();
+    const businesses = useSelector(getAllBusinesses)
+
+    useEffect(()=> {
+
+        dispatch(indexBusiness())
+    }, [dispatch])
 
     const ratingArr = {
         0.5: 'one-star-big big-rating',
@@ -22,6 +31,12 @@ const BusinessDisplay = ({businessDisplay}) => {
         const roundedRating = Math.round(rating * 2) / 2;
         return ratingArr[roundedRating] || '';
     };
+
+    const businessDisplay = Array.from(new Set(shuffleDisplay(businesses)))
+
+    if (businesses.length === 0) {
+        return null;
+    }
 
 
     return (
