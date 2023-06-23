@@ -32,12 +32,21 @@ export const getReviews = (state) => (
     state?.reviews ? Object.values(state.reviews) : []
 )
 
-export const reviewIndex = () => async (dispatch) => {
-    const res = await csrfFetch('/api/reviews')
-    if (res.ok) {
-        const reviews = await res.json();
-        dispatch(revieveAllReviews(reviews));
-        return res;
+export const reviewIndex = (landing = null) => async (dispatch) => {
+    if (landing) {
+        const res = await csrfFetch('/api/reviews?require=pictures')
+        if (res.ok) {
+            const reviews = await res.json();
+            dispatch(revieveAllReviews(reviews));
+            return res;
+        }
+    } else {
+        const res = await csrfFetch('/api/reviews')
+        if (res.ok) {
+            const reviews = await res.json();
+            dispatch(revieveAllReviews(reviews));
+            return res;
+        }
     }
 }
 

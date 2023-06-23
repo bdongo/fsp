@@ -10,7 +10,7 @@ const ReviewLanding = ({shuffleDisplay}) => {
     const reviewDisplay = Array.from(new Set(shuffleDisplay(reviews)));
 
     useEffect(() => {
-        dispatch(reviewIndex());
+        dispatch(reviewIndex("landing"));
     }, [dispatch]);
 
     const lastInitial = (lastName) => {
@@ -38,7 +38,7 @@ const ReviewLanding = ({shuffleDisplay}) => {
         5: 'five-stars-big big-rating'
     }
 
-    if (!reviews) {
+    if (reviews.length === 0) {
         return null;
     }
 

@@ -9,7 +9,6 @@ import { useState } from 'react';
 
 const SearchPage = () => {
     const businesses = useSelector(getAllBusinesses);
-    const [results, setResults] = useState();
     const location = useLocation();
     const dispatch = useDispatch();
     const params = new URLSearchParams(location.search);
@@ -18,7 +17,6 @@ const SearchPage = () => {
             business.name.toLowerCase().includes(query.toLowerCase()) ||
             business.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
         )
-    console.log("hello from search")
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -76,12 +74,20 @@ const SearchPage = () => {
         4: '$$$$'
     };
 
+    if (businesses.length === 0 ){
+        return (
+            <div id='searchpage' >
+                <h2 className='search-welcome'>Loading "{query}" results in San Francisco, California...</h2>
+            </div>
+        )
+    }
+
     return(
         <div id='searchpage' > 
-            {results && 
+            {filterBusinesses && 
                 <ul>
                     <h2 className='search-welcome'>All "{query}" results in San Francisco, California</h2>
-                    {results?.map((business, idx) => ( 
+                    {filterBusinesses?.map((business, idx) => ( 
                         <li key={idx}>
                             <Link className="search-page-item" to={`/biz/${business.id}`}>
                                 <img src={business.photos[0]} />
@@ -113,7 +119,7 @@ const SearchPage = () => {
                     <Map
                         ratingArr={ratingArr}
                         handleRating={handleRating}
-                        businesses={results} />
+                        businesses={filterBusinesses} />
                 </Wrapper>
 
             </div>

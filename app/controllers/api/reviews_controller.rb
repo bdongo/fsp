@@ -2,8 +2,14 @@ class Api::ReviewsController < ApplicationController
     before_action :require_login, only: [:update, :destroy]
 
     def index
-        @reviews = Review.all
-        render :index
+        picture = params[:require]
+        if picture
+            @reviews = Review.joins(:photos_attachments).distinct
+            render :index
+        else
+            @reviews = Review.all
+            render :index      
+        end
     end
     
     def create
