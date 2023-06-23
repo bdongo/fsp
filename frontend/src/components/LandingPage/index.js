@@ -27,10 +27,10 @@ const LandingPage = () => {
         return shuffledArray;
     };
 
-    const businessDisplay = Array.from(new Set(shuffleDisplay(businesses)))
-    const showBusiness = businesses.length !== 0;
-    const reviewDisplay = Array.from(new Set(shuffleDisplay(reviews)))
-    const showReviews = reviews.length !== 0;
+    // const businessDisplay = Array.from(new Set(shuffleDisplay(businesses)))
+    // const showBusiness = businesses.length !== 0;
+    // const reviewDisplay = Array.from(new Set(shuffleDisplay(reviews)))
+    // const showReviews = reviews.length !== 0;
 
     // useEffect(()=> {
 

@@ -34,7 +34,7 @@ const BusinessDisplay = ({shuffleDisplay}) => {
 
     const businessDisplay = Array.from(new Set(shuffleDisplay(businesses)))
 
-    if (!businessDisplay) {
+    if (!businesses) {
         return null;
     }
 
