@@ -32,10 +32,10 @@ const LandingPage = () => {
     const reviewDisplay = Array.from(new Set(shuffleDisplay(reviews)))
     const showReviews = reviews.length !== 0;
 
-    useEffect(()=> {
+    // useEffect(()=> {
 
-        dispatch(indexBusinessLanding())
-    }, [dispatch])
+    //     dispatch(indexBusinessLanding())
+    // }, [dispatch])
 
     useEffect(() => {
         document.title = `ylp`;
@@ -47,12 +47,9 @@ const LandingPage = () => {
             <div id="image-container">
                 <ImageSlides/>
             </div>
-           {showReviews &&
-                <ReviewLanding reviewDisplay={reviewDisplay}/>
-            }
-            { showBusiness && 
-                <BusinessDisplay businessDisplay={businessDisplay}/>
-            }
+                <ReviewLanding shuffleDisplay={shuffleDisplay}/>
+
+                <BusinessDisplay shuffleDisplay={shuffleDisplay} />
             <div className='landing-container'>
                 <div>
                     <h2>Categories</h2>

@@ -14,6 +14,11 @@ const SearchPage = () => {
     const dispatch = useDispatch();
     const params = new URLSearchParams(location.search);
     const query = params.get('query');
+    const filterBusinesses = businesses.filter(business =>
+            business.name.toLowerCase().includes(query.toLowerCase()) ||
+            business.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
+        )
+    console.log("hello from search")
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -30,16 +35,6 @@ const SearchPage = () => {
             document.title = `ylp - Search`;
         }
     }, [query]);
-
-    useEffect(()=> {
-        setResults(
-            businesses.filter(
-                business =>
-                    business.name.toLowerCase().includes(query.toLowerCase()) ||
-                    business.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
-            )
-        );
-    }, [businesses])
 
     const ratingArr = {
         0.5: 'one-star-big big-rating',

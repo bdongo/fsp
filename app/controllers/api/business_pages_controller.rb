@@ -16,7 +16,6 @@ class Api::BusinessPagesController < ApplicationController
         if query 
             @bizs = BusinessPage.joins(:tags)
                         .where("name ILIKE ? OR tags.tag_name ILIKE ?", "%#{query}%", "%#{query}%")
-            @reviews = Review.all
             render :index
             
         elsif picture
@@ -25,7 +24,6 @@ class Api::BusinessPagesController < ApplicationController
             render :index
         else
             @bizs = BusinessPage.all
-            @reviews = Review.all
             render :index
         end
     end
